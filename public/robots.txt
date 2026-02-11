@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap (atualize a URL com seu domínio em produção)
+Sitemap: https://graficonrevestimento.com/sitemap.xml
