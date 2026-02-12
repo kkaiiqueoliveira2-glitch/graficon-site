@@ -1,5 +1,7 @@
-const MAP_ADDRESS = "Rua Mara Rosa 95, Bairro dos Eucaliptos, São Paulo";
-const MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_ADDRESS)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+// Coordenadas exatas para Rua Mara Rosa 95, Jardim Dona Sinha, São Paulo
+const MAP_LAT = -23.5996576;
+const MAP_LNG = -46.5076932;
+const MAP_EMBED_URL = `https://maps.google.com/maps?q=${MAP_LAT},${MAP_LNG}+(Rua+Mara+Rosa+95)&z=17&output=embed`;
 
 const GoogleMapEmbed = () => {
   return (

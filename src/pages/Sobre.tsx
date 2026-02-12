@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 const Sobre = () => {
   useEffect(() => {
-    document.title = "Sobre a Graficon | Revestimento de Cilindros Industriais";
+    document.title = "Sobre | Graficon - Revestimento de Cilindros Industriais em São Paulo";
   }, []);
 
   const pillars = [

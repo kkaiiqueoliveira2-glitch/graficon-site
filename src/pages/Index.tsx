@@ -12,7 +12,7 @@ const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
-    document.title = "Graficon | Revestimento e Recuperação de Cilindros Industriais";
+    document.title = "Revestimento de Cilindros | Graficon - São Paulo";
   }, []);
 
   useEffect(() => {

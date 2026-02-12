@@ -5,7 +5,7 @@ import ServicesSection from "@/components/ServicesSection";
 
 const OQueFazemos = () => {
   useEffect(() => {
-    document.title = "O que fazemos | Graficon Revestimento de Cilindros";
+    document.title = "Revestimento e Recuperação de Cilindros | Graficon - Serviços";
   }, []);
   return (
     <div className="min-h-screen">

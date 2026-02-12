@@ -151,7 +151,7 @@
   }
 
   .hero-panel-item {
-    @apply flex items-start justify-between gap-4 rounded-xl border border-white/10 bg-white/5 p-4;
+    @apply flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 p-4;
   }
 
   .hero-panel-badge {
@@ -359,7 +359,7 @@
   }
 
   .segment-carousel-content {
-    @apply flex flex-col justify-center px-8 py-10 text-left;
+    @apply flex flex-col justify-center px-8 py-10 text-center md:text-left;
   }
 
   .segment-carousel-controls {

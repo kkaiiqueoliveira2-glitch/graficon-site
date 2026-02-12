@@ -88,7 +88,7 @@ const SegmentsSection = () => {
                 decoding="async"
               />
             </div>
-            <div key={`content-${currentIndex}`} className="segment-carousel-content segment-content-animate">
+            <div key={`content-${currentIndex}`} className="segment-carousel-content segment-content-animate items-center md:items-start">
               <span className="segment-label">Segmento</span>
               <h3 className="text-2xl font-semibold text-foreground">
                 {currentSegment.title}

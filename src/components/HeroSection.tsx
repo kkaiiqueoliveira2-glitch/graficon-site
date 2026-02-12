@@ -21,10 +21,10 @@ const HeroSection = () => {
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-            <div className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 self-center">
+            <div className="hidden md:inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 self-center">
               Qualidade industrial comprovada
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-5 leading-tight max-w-3xl mx-auto lg:mx-0">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-0 md:mt-5 leading-tight max-w-3xl mx-auto lg:mx-0">
               Revestimento e Recuperação de Cilindros Industriais
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
@@ -50,7 +50,7 @@ const HeroSection = () => {
 
           <div className="hero-panel mt-8 lg:mt-0 w-full max-w-lg mx-auto lg:mx-0 lg:max-w-none">
             <div className="grid gap-4">
-              <div className="hero-panel-item">
+              <div className="hero-panel-item flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
                 <div>
                   <p className="text-sm font-semibold text-white">
                     Precisão e uniformidade
@@ -61,7 +61,7 @@ const HeroSection = () => {
                 </div>
                 <span className="hero-panel-badge">ISO</span>
               </div>
-              <div className="hero-panel-item">
+              <div className="hero-panel-item flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
                 <div>
                   <p className="text-sm font-semibold text-white">
                     Atendimento técnico especializado
@@ -72,7 +72,7 @@ const HeroSection = () => {
                 </div>
                 <span className="hero-panel-badge">24h</span>
               </div>
-              <div className="hero-panel-item">
+              <div className="hero-panel-item flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
                 <div>
                   <p className="text-sm font-semibold text-white">
                     Durabilidade e performance
@@ -85,7 +85,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="hero-panel-stats">
+            <div className="hero-panel-stats text-center md:text-left">
               <div>
                 <p className="text-2xl font-bold text-white">+20 anos</p>
                 <p className="text-xs text-white/70">Experiência industrial</p>

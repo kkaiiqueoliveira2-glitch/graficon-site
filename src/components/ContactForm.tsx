@@ -89,7 +89,7 @@ const ContactForm = () => {
 
       <section id="contato" className="section-industrial bg-muted py-16 md:py-24">
         <div className="container">
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-3 gap-8 mb-12 text-center md:text-left">
             <div className="contact-info-card">
               <div className="contact-info-icon">
                 <Phone className="w-5 h-5 text-primary" />
@@ -130,22 +130,22 @@ const ContactForm = () => {
                 equipe retornará em breve.
               </p>
               <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
+                  <Clock className="w-5 h-5 text-primary flex-shrink-0" />
                   <div>
                     <p className="font-medium text-foreground text-sm">Resposta rápida</p>
                     <p className="text-sm text-muted-foreground">Retorno ágil para projetos e manutenção.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Users className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
+                  <Users className="w-5 h-5 text-primary flex-shrink-0" />
                   <div>
                     <p className="font-medium text-foreground text-sm">Atendimento técnico</p>
                     <p className="text-sm text-muted-foreground">Avaliação por especialistas em cilindros.</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <FileCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
+                  <FileCheck className="w-5 h-5 text-primary flex-shrink-0" />
                   <div>
                     <p className="font-medium text-foreground text-sm">Orçamento sob medida</p>
                     <p className="text-sm text-muted-foreground">Escopo alinhado com desempenho e durabilidade.</p>
@@ -251,13 +251,13 @@ const ContactForm = () => {
 
         <div className="contact-map-section">
           <div className="contact-map-header">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-center sm:text-left">
+              <div className="flex flex-col items-center sm:items-start">
                 <h3 className="text-xl font-semibold text-foreground mb-2">
                   Como chegar
                 </h3>
-                <div className="flex items-start gap-3 text-muted-foreground">
-                  <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5 text-primary" />
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 text-muted-foreground text-center sm:text-left">
+                  <MapPin className="w-5 h-5 flex-shrink-0 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Graficon Revestimento de Cilindros</p>
                     <p className="text-sm">Rua Mara Rosa, 95</p>
@@ -269,7 +269,7 @@ const ContactForm = () => {
                 href="https://www.google.com/maps/search/?api=1&query=Rua+Mara+Rosa+95+Bairro+dos+Eucaliptos+São+Paulo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground shrink-0"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground shrink-0 sm:justify-start"
               >
                 Abrir no Google Maps
                 <ExternalLink className="w-4 h-4" />
