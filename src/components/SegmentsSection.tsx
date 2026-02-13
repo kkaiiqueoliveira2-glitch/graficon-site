@@ -33,6 +33,8 @@ const segments = [
   },
 ];
 
+const SWIPE_THRESHOLD = 50;
+
 const SegmentsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentSegment = segments[currentIndex];
@@ -46,6 +48,56 @@ const SegmentsSection = () => {
   };
 
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [mouseStart, setMouseStart] = useState<number | null>(null);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsPaused(true);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (touchStart == null || touchEnd == null) return;
+    const diff = touchStart - touchEnd;
+    if (Math.abs(diff) > SWIPE_THRESHOLD) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+    setIsPaused(false);
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    setMouseStart(e.clientX);
+    setIsPaused(true);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (mouseStart == null) return;
+    const diff = mouseStart - e.clientX;
+    if (Math.abs(diff) > SWIPE_THRESHOLD) {
+      if (diff > 0) goNext();
+      else goPrev();
+      setMouseStart(null);
+    }
+  };
+
+  const onMouseUp = () => {
+    setMouseStart(null);
+    setIsPaused(false);
+  };
+
+  const onMouseLeave = () => {
+    setMouseStart(null);
+    setIsPaused(false);
+  };
 
   useEffect(() => {
     if (isPaused) {
@@ -73,9 +125,17 @@ const SegmentsSection = () => {
         </div>
 
         <div
-          className="segment-carousel"
+          className="segment-carousel select-none touch-pan-y cursor-grab active:cursor-grabbing"
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseLeave={onMouseLeave}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          role="region"
+          aria-label="Carrossel de segmentos - arraste ou deslize para navegar"
         >
           <div className="segment-carousel-card">
             <div key={`image-${currentIndex}`} className="segment-carousel-image segment-image-animate">

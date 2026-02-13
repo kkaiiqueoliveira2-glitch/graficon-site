@@ -121,34 +121,34 @@ const ContactForm = () => {
           </div>
 
           <div className="contact-form-float grid lg:grid-cols-[1.05fr_0.95fr] gap-0 items-stretch overflow-hidden bg-card">
-            <div className="contact-panel text-center lg:text-left rounded-none border-r border-b lg:border-b-0 border-border/60">
-              <h2 className="text-2xl font-bold text-foreground mb-4">
+            <div className="contact-form-panel-blue contact-panel text-center lg:text-left rounded-none border-r border-b lg:border-b-0 border-white/10">
+              <h2 className="text-2xl font-bold text-white mb-4">
                 Envie sua solicitação
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <p className="text-white/90 leading-relaxed mb-6">
                 Preencha o formulário e envie direto para nosso WhatsApp. Nossa
                 equipe retornará em breve.
               </p>
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
-                  <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                  <Clock className="w-5 h-5 text-white flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-foreground text-sm">Resposta rápida</p>
-                    <p className="text-sm text-muted-foreground">Retorno ágil para projetos e manutenção.</p>
+                    <p className="font-medium text-white text-sm">Resposta rápida</p>
+                    <p className="text-sm text-white/80">Retorno ágil para projetos e manutenção.</p>
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
-                  <Users className="w-5 h-5 text-primary flex-shrink-0" />
+                  <Users className="w-5 h-5 text-white flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-foreground text-sm">Atendimento técnico</p>
-                    <p className="text-sm text-muted-foreground">Avaliação por especialistas em cilindros.</p>
+                    <p className="font-medium text-white text-sm">Atendimento técnico</p>
+                    <p className="text-sm text-white/80">Avaliação por especialistas em cilindros.</p>
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
-                  <FileCheck className="w-5 h-5 text-primary flex-shrink-0" />
+                  <FileCheck className="w-5 h-5 text-white flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-foreground text-sm">Orçamento sob medida</p>
-                    <p className="text-sm text-muted-foreground">Escopo alinhado com desempenho e durabilidade.</p>
+                    <p className="font-medium text-white text-sm">Orçamento sob medida</p>
+                    <p className="text-sm text-white/80">Escopo alinhado com desempenho e durabilidade.</p>
                   </div>
                 </div>
               </div>

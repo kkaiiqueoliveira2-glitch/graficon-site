@@ -16,13 +16,13 @@ const Header = () => {
     <header className="header-navbar-wrapper sticky top-0 z-50">
       <div className="header-navbar-pill container flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 shrink-0 rounded flex items-center justify-center bg-white">
+          <div className="w-11 h-11 shrink-0 flex items-center justify-center">
             <img
-              src="/logo-graficon.png"
+              src="/logo-graficon.png?v=3"
               alt="Graficon"
               className="w-full h-full object-contain"
-              width={40}
-              height={40}
+              width={44}
+              height={44}
               decoding="async"
             />
           </div>

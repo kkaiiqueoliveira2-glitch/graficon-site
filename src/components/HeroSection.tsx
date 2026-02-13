@@ -18,13 +18,13 @@ const HeroSection = () => {
       <div className="absolute inset-0 hero-overlay" />
       
       {/* Content */}
-      <div className="container relative z-10">
+      <div className="container relative z-10 pt-12 pb-8 md:pt-0 md:pb-0">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
             <div className="hidden md:inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 self-center">
               Qualidade industrial comprovada
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-0 md:mt-5 leading-tight max-w-3xl mx-auto lg:mx-0">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-0 md:mt-5 leading-tight max-w-3xl mx-auto lg:mx-0 pt-4 md:pt-0">
               Revestimento e Recuperação de Cilindros Industriais
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
