@@ -120,6 +120,69 @@
     @apply py-16 md:py-24;
   }
 
+  /* Linha decorativa entre seções */
+  .section-divider {
+    @apply relative py-8 md:py-12 overflow-hidden;
+  }
+
+  .section-divider-cmyk-bar {
+    @apply absolute inset-0 flex opacity-20;
+  }
+
+  .section-divider-cmyk-stripe {
+    @apply flex-1 h-full;
+  }
+
+  .section-divider-content {
+    @apply relative z-10 flex items-center justify-center gap-4 md:gap-8;
+  }
+
+  .section-divider-line {
+    @apply flex-1 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent;
+    max-width: 120px;
+  }
+
+  .section-divider-icons {
+    @apply flex items-center gap-3 md:gap-5;
+  }
+
+  .section-divider-icon {
+    @apply w-5 h-5 md:w-6 md:h-6;
+  }
+
+  .section-divider-dot {
+    @apply w-1 h-1 rounded-full bg-primary/40;
+  }
+
+  /* Cards CMYK - Por que a Graficon - fundo com imagem do Hero */
+  .cmyk-highlight-card {
+    @apply relative rounded-xl p-6 md:p-8 text-center overflow-hidden transition-all duration-300;
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .cmyk-highlight-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .cmyk-highlight-card:hover::before {
+    opacity: 1;
+  }
+
+  .cmyk-highlight-card:hover {
+    transform: scale(1.05);
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .cmyk-highlight-card h3,
+  .cmyk-highlight-card p,
+  .cmyk-highlight-card svg {
+    @apply relative z-10;
+  }
+
   /* Hero overlay for industrial look */
   .hero-overlay {
     background: linear-gradient(
@@ -398,14 +461,18 @@
     @apply w-8 bg-primary;
   }
 
-  /* Seção de feedbacks - esteira com pause e zoom */
-  .feedback-section {
-    @apply py-16 md:py-24;
+  /* Gradiente azul padrão - uso em contact-hero e feedback-section */
+  .section-blue-gradient {
     background: linear-gradient(
       135deg,
-      hsl(var(--primary)) 0%,
-      hsl(var(--navy-medium)) 100%
+      hsl(215 50% 18%) 0%,
+      hsl(215 45% 25%) 100%
     );
+  }
+
+  /* Seção de feedbacks - esteira com pause e zoom */
+  .feedback-section {
+    @apply py-16 md:py-24 section-blue-gradient;
   }
 
   .feedback-section .section-eyebrow {
@@ -717,12 +784,7 @@
 
   /* Contato - layout profissional */
   .contact-hero {
-    @apply py-16 md:py-24;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary)) 0%,
-      hsl(var(--navy-medium)) 100%
-    );
+    @apply py-16 md:py-24 section-blue-gradient;
   }
 
   .contact-eyebrow {

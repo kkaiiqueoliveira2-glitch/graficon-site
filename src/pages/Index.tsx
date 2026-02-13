@@ -3,8 +3,9 @@ import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import SegmentsSection from "@/components/SegmentsSection";
-import FeedbackSection from "@/components/FeedbackSection";
+import CmykHighlights from "@/components/CmykHighlights";
 import CTASection from "@/components/CTASection";
+import FeedbackSection from "@/components/FeedbackSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -30,6 +31,7 @@ const Index = () => {
         <SegmentsSection />
         <CTASection />
         <FeedbackSection />
+        <CmykHighlights />
         <ContactForm />
       </main>
       <Footer />
