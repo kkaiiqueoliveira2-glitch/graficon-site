@@ -154,7 +154,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-          <div className="contact-card rounded-none border-0 shadow-none">
+          <div className="contact-card rounded-none border-0">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>

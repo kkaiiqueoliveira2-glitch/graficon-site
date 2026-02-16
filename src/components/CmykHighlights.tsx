@@ -40,7 +40,7 @@ const CmykHighlights = () => {
     <section className="relative py-16 md:py-20 cmyk-highlights-section overflow-hidden">
       {/* Background Image - mesma do Hero */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat cmyk-bg-image"
         style={{ backgroundImage: `url(${heroImage})` }}
         aria-hidden
       />
