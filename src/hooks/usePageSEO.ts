@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const SITE_URL = "https://graficonrevestimento.com";
 
 const DEFAULT_CANONICAL = `${SITE_URL}/`;
