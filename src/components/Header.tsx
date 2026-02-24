@@ -6,8 +6,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isSobre = location.pathname === "/sobre";
   const isOQueFazemos = location.pathname === "/o-que-fazemos";
-  const scrollToContact = () => {
-    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToFormulario = () => {
+    document.getElementById("formulario-orcamento")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   const navLinkBase = "nav-link";
   const navLinkActive = "nav-link nav-link-active";
@@ -64,12 +64,12 @@ const Header = () => {
               O que fazemos
             </Link>
             <Link
-              to="/#contato"
+              to="/#formulario-orcamento"
               className={navLinkBase}
               onClick={(e) => {
                 if (location.pathname === "/") {
                   e.preventDefault();
-                  scrollToContact();
+                  scrollToFormulario();
                 }
               }}
             >
@@ -79,12 +79,18 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={scrollToContact}
+          <Link
+            to="/#formulario-orcamento"
             className="header-cta hidden md:inline-flex"
+            onClick={(e) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                scrollToFormulario();
+              }
+            }}
           >
             Solicitar Orçamento
-          </button>
+          </Link>
           <button
             type="button"
             className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground"
@@ -121,21 +127,29 @@ const Header = () => {
             O que fazemos
           </Link>
           <Link
-            to="/#contato"
+            to="/#formulario-orcamento"
             className={navLinkBase}
-            onClick={() => {
+            onClick={(e) => {
               setIsMenuOpen(false);
-              if (location.pathname === "/") setTimeout(scrollToContact, 100);
+              if (location.pathname === "/") {
+                e.preventDefault();
+                window.history.replaceState(null, "", "/#formulario-orcamento");
+                setTimeout(scrollToFormulario, 200);
+              }
             }}
           >
             Contato
           </Link>
           <Link
-            to="/#contato"
+            to="/#formulario-orcamento"
             className="mobile-cta"
-            onClick={() => {
+            onClick={(e) => {
               setIsMenuOpen(false);
-              if (location.pathname === "/") setTimeout(scrollToContact, 100);
+              if (location.pathname === "/") {
+                e.preventDefault();
+                window.history.replaceState(null, "", "/#formulario-orcamento");
+                setTimeout(scrollToFormulario, 200);
+              }
             }}
           >
             Solicitar Orçamento

@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
-  const scrollToContact = () => {
-    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToFormulario = () => {
+    document.getElementById("formulario-orcamento")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -23,7 +23,7 @@ const CTASection = () => {
             <span>Soluções sob medida</span>
           </div>
           <Button
-            onClick={scrollToContact}
+            onClick={scrollToFormulario}
             size="lg"
             className="btn-cylinder font-semibold text-base px-10 py-6 text-white border-0 bg-transparent hover:bg-transparent"
           >

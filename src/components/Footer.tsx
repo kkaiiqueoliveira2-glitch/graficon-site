@@ -121,7 +121,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="/#contato" className="footer-link">
+                <a href="/#formulario-orcamento" className="footer-link">
                   Solicitar Orçamento
                 </a>
               </li>

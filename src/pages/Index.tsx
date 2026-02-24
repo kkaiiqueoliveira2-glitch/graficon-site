@@ -17,10 +17,10 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    if (location.hash === "#contato") {
+    if (location.hash === "#contato" || location.hash === "#formulario-orcamento") {
       setTimeout(() => {
-        document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+        document.getElementById("formulario-orcamento")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
     }
   }, [location.hash]);
   return (

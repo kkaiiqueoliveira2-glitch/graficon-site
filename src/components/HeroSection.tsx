@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
 const HeroSection = () => {
-  const scrollToContact = () => {
-    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToFormulario = () => {
+    document.getElementById("formulario-orcamento")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -45,7 +45,7 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
               <Button
-                onClick={scrollToContact}
+                onClick={scrollToFormulario}
                 size="lg"
                 className="btn-embossed btn-embossed-pulse text-primary font-semibold text-base px-8 py-6"
               >
