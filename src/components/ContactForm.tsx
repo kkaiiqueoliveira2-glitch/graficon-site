@@ -53,7 +53,7 @@ const ContactForm = () => {
       formData.mensagem,
     ].join("\n");
 
-    const url = `https://wa.me/5511994757315?text=${encodeURIComponent(mensagem)}`;
+    const url = `https://wa.me/5511915291313?text=${encodeURIComponent(mensagem)}`;
     window.open(url, "_blank", "noopener,noreferrer");
 
     toast({
@@ -94,9 +94,8 @@ const ContactForm = () => {
               <div className="contact-info-icon">
                 <Phone className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Telefones</h3>
+              <h3 className="font-semibold text-foreground mb-2">Telefone</h3>
               <p className="text-sm text-muted-foreground">Comercial: (11) 91529-1313</p>
-              <p className="text-sm text-muted-foreground">Gilda Ogalha: (11) 99475-7315</p>
             </div>
             <div className="contact-info-card">
               <div className="contact-info-icon">

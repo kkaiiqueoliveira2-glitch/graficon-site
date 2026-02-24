@@ -2,21 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://graficonrevestimento.com/</loc>
+    <lastmod>2026-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://graficonrevestimento.com/sobre</loc>
+    <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://graficonrevestimento.com/o-que-fazemos</loc>
+    <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://graficonrevestimento.com/como-funciona-revestimento-de-cilindros</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://graficonrevestimento.com/o-que-e-revestimento-grafico</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://graficonrevestimento.com/diferenca-entre-gravacao-e-revestimento</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://graficonrevestimento.com/problemas-desgaste-cilindros-graficos</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://graficonrevestimento.com/privacidade</loc>
+    <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

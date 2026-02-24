@@ -383,6 +383,7 @@
 
   .segment-carousel-card {
     @apply grid overflow-hidden rounded-2xl border border-border/80 bg-card md:grid-cols-[1.1fr_0.9fr];
+    min-height: 320px;
     box-shadow:
       0 35px 80px -15px rgba(0, 0, 0, 0.28),
       0 18px 45px -10px rgba(0, 0, 0, 0.2),
@@ -400,11 +401,21 @@
   }
 
   .segment-carousel-image {
-    @apply h-full min-h-[260px] bg-muted;
+    @apply relative overflow-hidden bg-muted;
+    aspect-ratio: 16 / 10;
+    min-height: 240px;
+  }
+
+  @media (min-width: 768px) {
+    .segment-carousel-image {
+      aspect-ratio: auto;
+      height: 320px;
+      min-height: 320px;
+    }
   }
 
   .segment-carousel-image img {
-    @apply h-full w-full object-cover transition-transform duration-500;
+    @apply absolute inset-0 h-full w-full object-cover transition-transform duration-500;
   }
 
   .segment-carousel-card:hover .segment-carousel-image img {

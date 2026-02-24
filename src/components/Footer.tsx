@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
+import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 
 const Footer = () => {
   return (
@@ -29,7 +30,7 @@ const Footer = () => {
             </p>
             <div className="footer-cta">
               <a
-                href="https://wa.me/5511994757315"
+                href={WHATSAPP_URL_ORCAMENTO}
                 target="_blank"
                 rel="noreferrer"
                 className="footer-whatsapp-button"
@@ -52,10 +53,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <div>
-                  <div>Comercial: +55 (11) 91529-1313</div>
-                  <div>Gilda Ogalha: +55 (11) 99475-7315</div>
-                </div>
+                <div>Comercial: +55 (11) 91529-1313</div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 flex-shrink-0" />
@@ -88,19 +86,39 @@ const Footer = () => {
             <h4 className="footer-title">Navegação</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="/" className="footer-link">
+                <Link to="/" className="footer-link">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/sobre" className="footer-link">
+                <Link to="/sobre" className="footer-link">
                   Sobre
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/o-que-fazemos" className="footer-link">
+                <Link to="/o-que-fazemos" className="footer-link">
                   O que fazemos
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/o-que-e-revestimento-grafico" className="footer-link">
+                  O que é revestimento gráfico
+                </Link>
+              </li>
+              <li>
+                <Link to="/como-funciona-revestimento-de-cilindros" className="footer-link">
+                  Como funciona o revestimento
+                </Link>
+              </li>
+              <li>
+                <Link to="/diferenca-entre-gravacao-e-revestimento" className="footer-link">
+                  Gravação e revestimento
+                </Link>
+              </li>
+              <li>
+                <Link to="/problemas-desgaste-cilindros-graficos" className="footer-link">
+                  Desgaste de cilindros
+                </Link>
               </li>
               <li>
                 <a href="/#contato" className="footer-link">

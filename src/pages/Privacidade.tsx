@@ -110,7 +110,7 @@ const Privacidade = () => {
                     <br />
                     E-mail: comercialgraficon@gmail.com
                     <br />
-                    Telefone: (11) 99475-7315
+                    Telefone: (11) 91529-1313
                   </p>
                 </section>
               </div>

@@ -1,9 +1,19 @@
-const WHATSAPP_NUMBER = "5511994757315";
+const WHATSAPP_NUMBER = "5511915291313";
+
+const WHATSAPP_MSG_ORCAMENTO = [
+  "Olá! Tudo bem? 😊",
+  "",
+  "Estou entrando em contato pelo site da Graficon, através do *Solicitar orçamento*. Gostaria de receber uma proposta para revestimento ou recuperação de cilindros.",
+  "",
+  "Aguardo retorno. Obrigado(a)!",
+].join("\n");
+
+export const WHATSAPP_URL_ORCAMENTO = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG_ORCAMENTO)}`;
 
 const WhatsAppFloatingButton = () => {
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+      href={WHATSAPP_URL_ORCAMENTO}
       target="_blank"
       rel="noreferrer"
       className="whatsapp-floating-button"

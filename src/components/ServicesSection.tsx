@@ -1,4 +1,5 @@
 import { Zap, Settings, Layers, Cog, Box, TestTube } from "lucide-react";
+import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 
 const services = [
   {
@@ -77,7 +78,7 @@ const ServicesSection = () => {
 
           <div className="mt-16 text-center">
             <a
-              href="https://wa.me/5511994757315"
+              href={WHATSAPP_URL_ORCAMENTO}
               target="_blank"
               rel="noreferrer"
               className="about-cta-button"

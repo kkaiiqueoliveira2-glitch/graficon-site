@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Users, Wrench, Briefcase, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 
 const Sobre = () => {
   useEffect(() => {
@@ -36,7 +37,7 @@ const Sobre = () => {
   ];
 
   const stats = [
-    { value: "+20 anos", label: "Experiência industrial" },
+    { value: "+40 anos", label: "de profissão" },
     { value: "100%", label: "Controle de qualidade" },
     { value: "Sob medida", label: "Soluções técnicas" },
   ];
@@ -97,7 +98,7 @@ const Sobre = () => {
 
             <div className="mt-16 text-center">
               <a
-                href="https://wa.me/5511994757315"
+                href={WHATSAPP_URL_ORCAMENTO}
                 target="_blank"
                 rel="noreferrer"
                 className="about-cta-button"

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
@@ -27,9 +28,20 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-0 md:mt-5 leading-tight max-w-3xl mx-auto lg:mx-0 pt-4 md:pt-0">
               Revestimento e Recuperação de Cilindros Industriais
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-white/90 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Especialistas em cilindros para flexografia, gráfica e processos
               industriais com alta precisão, desempenho e confiabilidade.
+            </p>
+            <p className="text-sm md:text-base text-white/80 mb-8 max-w-2xl mx-auto lg:mx-0">
+              Saiba{" "}
+              <Link to="/o-que-e-revestimento-grafico" className="text-white underline underline-offset-2 hover:text-white/95">
+                o que é revestimento gráfico
+              </Link>{" "}
+              e{" "}
+              <Link to="/como-funciona-revestimento-de-cilindros" className="text-white underline underline-offset-2 hover:text-white/95">
+                como funciona o revestimento de cilindros
+              </Link>
+              .
             </p>
             <div className="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
               <Button
@@ -39,12 +51,12 @@ const HeroSection = () => {
               >
                 Solicitar Orçamento
               </Button>
-              <a
-                href="/o-que-fazemos"
+              <Link
+                to="/o-que-fazemos"
                 className="hero-secondary-btn"
               >
                 Ver serviços
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -87,8 +99,8 @@ const HeroSection = () => {
 
             <div className="hero-panel-stats text-center md:text-left">
               <div>
-                <p className="text-2xl font-bold text-white">+20 anos</p>
-                <p className="text-xs text-white/70">Experiência industrial</p>
+                <p className="text-2xl font-bold text-white">+40 anos</p>
+                <p className="text-xs text-white/70">de profissão</p>
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">100%</p>
