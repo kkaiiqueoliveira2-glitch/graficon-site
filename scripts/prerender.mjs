@@ -1,0 +1,91 @@
+/**
+ * Prerender (SSG) das rotas do site para SEO.
+ *
+ * Por que existe: o site é um SPA Vite + React e o conteúdo (mais as meta tags
+ * injetadas pelo hook usePageSEO via document) só aparece depois que o JS roda.
+ * O Google indexa muito melhor HTML já renderizado. Este script sobe um
+ * `vite preview` sobre o /dist, visita cada rota com um Chromium headless,
+ * espera a renderização + a injeção de SEO, e grava o HTML final em
+ * dist/<rota>/index.html. Roda automaticamente no `postbuild`.
+ */
+import { preview } from "vite";
+import puppeteer from "puppeteer";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+import { mkdir, writeFile } from "node:fs/promises";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const distDir = join(__dirname, "..", "dist");
+
+// Rotas indexáveis (mesmo conjunto do sitemap.xml).
+const ROUTES = [
+  "/",
+  "/sobre",
+  "/o-que-fazemos",
+  "/como-funciona-revestimento-de-cilindros",
+  "/o-que-e-revestimento-grafico",
+  "/diferenca-entre-gravacao-e-revestimento",
+  "/problemas-desgaste-cilindros-graficos",
+  "/servicos/galvanizacao-e-cromo",
+  "/servicos/preparacao-tecnica-e-tratamentos",
+  "/servicos/processos-de-revestimento",
+  "/servicos/usinagem-e-fabricacao",
+  "/servicos/cilindros-especiais",
+  "/servicos/prova-e-analise",
+  "/privacidade",
+];
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function run() {
+  const server = await preview({
+    preview: { port: 4185, strictPort: true },
+    logLevel: "warn",
+  });
+  const base = `http://localhost:4185`;
+
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+
+  let ok = 0;
+  try {
+    for (const route of ROUTES) {
+      const page = await browser.newPage();
+      // Sinaliza às animações (CountUp etc.) que estamos no prerender, para
+      // renderizarem o valor final direto no HTML estático.
+      await page.evaluateOnNewDocument(() => {
+        window.__PRERENDER__ = true;
+      });
+      const url = `${base}${route}`;
+      await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+      // Garante que o React montou e o usePageSEO já rodou (useEffect).
+      await page.waitForSelector("footer", { timeout: 30000 }).catch(() => {});
+      await sleep(500);
+
+      const html = await page.evaluate(
+        () => "<!DOCTYPE html>\n" + document.documentElement.outerHTML
+      );
+
+      const outDir =
+        route === "/" ? distDir : join(distDir, route.replace(/^\/|\/$/g, ""));
+      await mkdir(outDir, { recursive: true });
+      await writeFile(join(outDir, "index.html"), html, "utf8");
+      console.log(`prerendered ${route} -> ${join(outDir, "index.html").replace(distDir, "dist")}`);
+      ok++;
+      await page.close();
+    }
+  } finally {
+    await browser.close();
+    await server.httpServer.close();
+  }
+
+  console.log(`\nPrerender concluído: ${ok}/${ROUTES.length} rotas.`);
+  if (ok !== ROUTES.length) process.exitCode = 1;
+}
+
+run().catch((err) => {
+  console.error("Falha no prerender:", err);
+  process.exit(1);
+});

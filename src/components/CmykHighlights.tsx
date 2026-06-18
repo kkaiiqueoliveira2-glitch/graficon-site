@@ -37,7 +37,7 @@ const highlights = [
 
 const CmykHighlights = () => {
   return (
-    <section className="relative py-16 md:py-20 cmyk-highlights-section overflow-hidden">
+    <section className="relative pt-28 md:pt-36 pb-16 md:pb-20 cmyk-highlights-section overflow-hidden">
       {/* Background Image - mesma do Hero */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat cmyk-bg-image"
@@ -45,8 +45,24 @@ const CmykHighlights = () => {
         aria-hidden
       />
       <div className="absolute inset-0 hero-overlay" aria-hidden />
+
+      {/* Borda curva no topo (vinda da seção clara acima) */}
+      <div className="section-curve-top" aria-hidden>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,0 L1440,0 L1440,50 C1080,110 360,-10 0,40 Z"
+            fill="hsl(210 15% 94%)"
+          />
+          <path
+            d="M0,40 C360,-10 1080,110 1440,50"
+            fill="none"
+            stroke="hsl(189 94% 43%)"
+            strokeWidth="3"
+          />
+        </svg>
+      </div>
       <div className="container relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10 md:mb-12">
+        <h2 data-reveal className="text-2xl md:text-3xl font-bold text-white text-center mb-10 md:mb-12">
           Por que escolher revestimento de cilindros com a Graficon?
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">

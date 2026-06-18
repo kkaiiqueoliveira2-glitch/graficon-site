@@ -1,13 +1,39 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const ProblemasDesgasteCilindros = () => {
-  useEffect(() => {
-    document.title =
-      "Problemas causados pelo desgaste de cilindros gráficos | Graficon - Guia Técnico";
-  }, []);
+  usePageSEO({
+    title:
+      "Problemas causados pelo desgaste de cilindros gráficos | Graficon - Guia Técnico",
+    description:
+      "Saiba como o desgaste de cilindros gráficos afeta qualidade, custo e produtividade, e como o revestimento técnico reduz falhas.",
+    path: "/problemas-desgaste-cilindros-graficos",
+    type: "article",
+    faqItems: [
+      {
+        question: "Quais problemas o desgaste de cilindros gráficos causa?",
+        answer:
+          "Falhas de registro, variação de cor, manchas, retrabalho e paradas de produção por perda de uniformidade da superfície.",
+      },
+      {
+        question: "Quando recuperar e quando trocar o cilindro?",
+        answer:
+          "A decisão depende do estado do núcleo, nível de desgaste e viabilidade técnica da recuperação, avaliados em diagnóstico especializado.",
+      },
+      {
+        question: "O revestimento ajuda a aumentar a vida útil?",
+        answer:
+          "Sim. Quando bem especificado e aplicado, o revestimento melhora resistência ao desgaste e mantém o padrão de impressão por mais tempo.",
+      },
+    ],
+    jsonLd: {
+      name: "Problemas causados pelo desgaste de cilindros gráficos",
+      description:
+        "Guia técnico sobre impactos do desgaste de cilindros e estratégias de recuperação por revestimento.",
+    },
+  });
 
   return (
     <div className="min-h-screen">
@@ -19,8 +45,7 @@ const ProblemasDesgasteCilindros = () => {
               <div className="max-w-3xl mx-auto text-center">
                 <p className="about-eyebrow">Guia técnico</p>
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                  Problemas causados pelo desgaste de cilindros gráficos e o
-                  revestimento gráfico
+                  Problemas causados pelo desgaste de cilindros gráficos na impressão
                 </h1>
                 <p className="text-white/90 text-lg md:text-xl leading-relaxed">
                   O desgaste de cilindros gráficos, o revestimento gráfico e o

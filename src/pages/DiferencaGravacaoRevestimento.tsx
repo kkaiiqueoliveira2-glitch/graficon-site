@@ -9,6 +9,24 @@ const DiferencaGravacaoRevestimento = () => {
     description:
       "Entenda a diferença entre gravação e revestimento gráfico de cilindros na indústria de rotogravura e flexografia.",
     path: "/diferenca-entre-gravacao-e-revestimento",
+    type: "article",
+    faqItems: [
+      {
+        question: "Qual a diferença entre gravação e revestimento gráfico?",
+        answer:
+          "O revestimento adiciona a camada funcional do cilindro, enquanto a gravação cria células ou relevo pela remoção/modificação da superfície.",
+      },
+      {
+        question: "Revestimento substitui a gravação?",
+        answer:
+          "Depende do processo. Em alguns fluxos o revestimento é seguido de gravação; em outros, o relevo já é definido no próprio revestimento.",
+      },
+      {
+        question: "Como evitar retrabalho na especificação?",
+        answer:
+          "Com diagnóstico técnico do cilindro e definição correta de qual etapa é necessária: revestimento, gravação ou ambos.",
+      },
+    ],
     jsonLd: {
       name: "Diferença entre gravação e revestimento gráfico",
       description:
@@ -26,7 +44,7 @@ const DiferencaGravacaoRevestimento = () => {
               <div className="max-w-3xl mx-auto text-center">
                 <p className="about-eyebrow">Guia técnico</p>
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                  Diferença entre gravação e revestimento gráfico
+                  Diferença entre gravação e revestimento gráfico de cilindros
                 </h1>
                 <p className="text-white/90 text-lg md:text-xl leading-relaxed">
                   Entenda a distinção técnica entre gravação e revestimento

@@ -1,44 +1,5 @@
-import { Zap, Settings, Layers, Cog, Box, TestTube } from "lucide-react";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
-
-const services = [
-  {
-    icon: Zap,
-    title: "Galvanização e Cromo",
-    description:
-      "Todo trabalho de qualidade começa pela base. Realizamos processos de galvanização e aplicação de cromo com alto controle técnico, garantindo base confiável, uniforme e adequada ao revestimento para diferentes demandas industriais.",
-  },
-  {
-    icon: Settings,
-    title: "Preparação Técnica e Tratamentos",
-    description:
-      "Processos técnicos atualizados para preparação e tratamento dos cilindros: análise de materiais, ajustes técnicos e definição do revestimento mais adequado para cada aplicação, com resultados consistentes.",
-  },
-  {
-    icon: Layers,
-    title: "Processos Técnicos de Revestimento",
-    description:
-      "Revestimento realizado com controle rigoroso e tecnologia adequada para assegurar precisão, uniformidade e repetibilidade em cada entrega.",
-  },
-  {
-    icon: Cog,
-    title: "Usinagem e Fabricação",
-    description:
-      "Estrutura e capacidade técnica para usinagem e fabricação de cilindros industriais, atendendo diferentes equipamentos, medidas e aplicações, com balanceamento adequado e conforme especificações.",
-  },
-  {
-    icon: Box,
-    title: "Cilindros Especiais",
-    description:
-      "Atendemos demandas específicas: processos diferenciados, materiais especiais ou condições particulares. Soluções adequadas para cada necessidade técnica.",
-  },
-  {
-    icon: TestTube,
-    title: "Prova e Análise",
-    description:
-      "Provas e análises técnicas para verificação da qualidade dos cilindros revestidos, avaliando acabamento, uniformidade e características técnicas para aprovação com segurança.",
-  },
-];
+import { services } from "@/data/services";
 
 const ServicesSection = () => {
   return (

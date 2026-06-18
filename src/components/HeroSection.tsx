@@ -1,118 +1,130 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import { ChevronDown } from "lucide-react";
+import { trackMetaEvent } from "@/lib/metaPixel";
+import CountUp from "@/components/CountUp";
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
 const HeroSection = () => {
+  useEffect(() => {
+    let preload = document.querySelector<HTMLLinkElement>('link[data-seo-preload="hero-image"]');
+    if (!preload) {
+      preload = document.createElement("link");
+      preload.rel = "preload";
+      preload.as = "image";
+      preload.href = heroImage;
+      preload.setAttribute("fetchpriority", "high");
+      preload.setAttribute("data-seo-preload", "hero-image");
+      document.head.appendChild(preload);
+    }
+
+    return () => {
+      if (preload?.parentNode) preload.parentNode.removeChild(preload);
+    };
+  }, []);
+
   const scrollToFormulario = () => {
-    document.getElementById("formulario-orcamento")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    trackMetaEvent("CliqueBotaoOrcamento", {
+      origem: "hero",
+      botao: "Solicitar Orçamento",
+    });
+    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const scrollToConteudo = () => {
+    document.getElementById("segmentos")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <section id="home" className="relative min-h-[600px] md:min-h-[700px] flex items-center">
-      {/* Background Image */}
+    <section id="home" className="hero-usitemb">
+      {/* Imagem de fundo */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
-      
       {/* Overlay */}
-      <div className="absolute inset-0 hero-overlay" />
-      
-      {/* Content */}
-      <div className="container relative z-10 pt-12 pb-8 md:pt-0 md:pb-0">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-            <div className="hidden md:inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 self-center">
-              Qualidade industrial comprovada
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-0 md:mt-5 leading-tight max-w-3xl mx-auto lg:mx-0 pt-4 md:pt-0">
-              Revestimento e Recuperação de Cilindros Industriais
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Especialistas em cilindros para flexografia, gráfica e processos
-              industriais com alta precisão, desempenho e confiabilidade.
-            </p>
-            <p className="text-sm md:text-base text-white/80 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Saiba{" "}
-              <Link to="/o-que-e-revestimento-grafico" className="text-white underline underline-offset-2 hover:text-white/95">
-                o que é revestimento gráfico
-              </Link>{" "}
-              e{" "}
-              <Link to="/como-funciona-revestimento-de-cilindros" className="text-white underline underline-offset-2 hover:text-white/95">
-                como funciona o revestimento de cilindros
-              </Link>
-              .
-            </p>
-            <div className="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
-              <Button
-                onClick={scrollToFormulario}
-                size="lg"
-                className="btn-embossed btn-embossed-pulse text-primary font-semibold text-base px-8 py-6"
-              >
-                Solicitar Orçamento
-              </Button>
-              <Link
-                to="/o-que-fazemos"
-                className="hero-secondary-btn"
-              >
-                Ver serviços
-              </Link>
-            </div>
+      <div className="absolute inset-0 hero-usitemb-overlay" />
+
+      {/* Conteúdo */}
+      <div className="container relative z-10 py-20 md:py-0">
+        <div className="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start">
+          <span className="hero-eyebrow">Qualidade industrial · +40 anos</span>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-6">
+            Revestimento e recuperação de{" "}
+            <span className="text-cyan">cilindros industriais</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-xl">
+            Especialistas em cilindros para flexografia, rotogravura, embalagens, papel e
+            celulose — com alta precisão, desempenho e confiabilidade.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start">
+            <button
+              onClick={scrollToFormulario}
+              className="btn-cyan px-8 py-4 text-base uppercase tracking-wide"
+            >
+              Solicitar orçamento
+            </button>
+            <Link to="/o-que-fazemos" className="btn-outline-white text-base">
+              Ver serviços
+            </Link>
           </div>
 
-          <div className="hero-panel mt-8 lg:mt-0 w-full max-w-lg mx-auto lg:mx-0 lg:max-w-none">
-            <div className="grid gap-4">
-              <div className="hero-panel-item flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
-                <div>
-                  <p className="text-sm font-semibold text-white">
-                    Precisão e uniformidade
-                  </p>
-                  <p className="text-sm text-white/70">
-                    Controle dimensional e acabamento técnico rigoroso.
-                  </p>
-                </div>
-                <span className="hero-panel-badge">ISO</span>
-              </div>
-              <div className="hero-panel-item flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
-                <div>
-                  <p className="text-sm font-semibold text-white">
-                    Atendimento técnico especializado
-                  </p>
-                  <p className="text-sm text-white/70">
-                    Diagnóstico e solução sob medida para cada aplicação.
-                  </p>
-                </div>
-                <span className="hero-panel-badge">24h</span>
-              </div>
-              <div className="hero-panel-item flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
-                <div>
-                  <p className="text-sm font-semibold text-white">
-                    Durabilidade e performance
-                  </p>
-                  <p className="text-sm text-white/70">
-                    Revestimentos de alta resistência para longas tiragens.
-                  </p>
-                </div>
-                <span className="hero-panel-badge">Alta</span>
-              </div>
-            </div>
+          <p className="mt-6 text-sm text-white/70 max-w-xl">
+            Saiba{" "}
+            <Link to="/o-que-e-revestimento-grafico" className="text-white underline underline-offset-2 hover:text-cyan">
+              o que é revestimento gráfico
+            </Link>{" "}
+            e{" "}
+            <Link to="/como-funciona-revestimento-de-cilindros" className="text-white underline underline-offset-2 hover:text-cyan">
+              como funciona o revestimento de cilindros
+            </Link>
+            .
+          </p>
 
-            <div className="hero-panel-stats text-center md:text-left">
-              <div>
-                <p className="text-2xl font-bold text-white">+40 anos</p>
-                <p className="text-xs text-white/70">de profissão</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">100%</p>
-                <p className="text-xs text-white/70">Controle de qualidade</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">Sob medida</p>
-                <p className="text-xs text-white/70">Soluções técnicas</p>
-              </div>
+          {/* Stats inline */}
+          <div className="mt-10 grid grid-cols-3 gap-8 border-t border-white/15 pt-8 w-full max-w-xl">
+            <div className="hero-stat-inline">
+              <strong><CountUp end={40} prefix="+" suffix=" anos" /></strong>
+              <span>de profissão</span>
+            </div>
+            <div className="hero-stat-inline">
+              <strong><CountUp end={100} suffix="%" /></strong>
+              <span>Controle de qualidade</span>
+            </div>
+            <div className="hero-stat-inline">
+              <strong>Sob medida</strong>
+              <span>Soluções técnicas</span>
             </div>
           </div>
         </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={scrollToConteudo}
+        className="hero-scroll-chevron"
+        aria-label="Rolar para o conteúdo"
+      >
+        <ChevronDown className="h-7 w-7" />
+      </button>
+
+      {/* Borda curva na base, igual à referência */}
+      <div className="hero-curve" aria-hidden>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,70 C360,140 1080,10 1440,80 L1440,120 L0,120 Z"
+            fill="hsl(0 0% 100%)"
+          />
+          <path
+            d="M0,70 C360,140 1080,10 1440,80"
+            fill="none"
+            stroke="hsl(189 94% 43%)"
+            strokeWidth="3"
+          />
+        </svg>
       </div>
     </section>
   );

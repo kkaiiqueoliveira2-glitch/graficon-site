@@ -104,8 +104,8 @@ const FeedbackSection = () => {
   const duplicatedFeedbacks = [...feedbacks, ...feedbacks];
 
   return (
-    <section className="feedback-section">
-      <div className="container text-center mb-12">
+    <section className="feedback-section relative overflow-hidden pb-28 md:pb-40">
+      <div className="container text-center mb-12" data-reveal>
         <p className="section-eyebrow">Depoimentos</p>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
           O que nossos clientes dizem
@@ -121,6 +121,22 @@ const FeedbackSection = () => {
             <FeedbackCard key={`${feedback.name}-${index}`} {...feedback} />
           ))}
         </div>
+      </div>
+
+      {/* Borda curva na base (transição para a FAQ branca) */}
+      <div className="hero-curve" aria-hidden>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,70 C360,140 1080,10 1440,80 L1440,120 L0,120 Z"
+            fill="hsl(0 0% 100%)"
+          />
+          <path
+            d="M0,70 C360,140 1080,10 1440,80"
+            fill="none"
+            stroke="hsl(189 94% 43%)"
+            strokeWidth="3"
+          />
+        </svg>
       </div>
     </section>
   );

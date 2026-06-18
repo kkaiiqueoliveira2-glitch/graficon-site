@@ -5,31 +5,31 @@ const segments = [
     title: "Gráficas e Flexografia",
     description:
       "Soluções técnicas para impressão com alto padrão de precisão e acabamento.",
-    image: "/segments/graficas-flexografia.jpg",
+    image: "/segments/graficas-flexografia.webp",
   },
   {
     title: "Papel e Celulose",
     description:
       "Revestimentos duráveis para processos contínuos e exigentes.",
-    image: "/segments/papel-celulose.jpg",
+    image: "/segments/papel-celulose.webp",
   },
   {
     title: "Embalagens e Cartonagem",
     description:
       "Cilindros ajustados para alta produtividade e qualidade no empacotamento.",
-    image: "/segments/embalagens-cartonagem.jpg",
+    image: "/segments/embalagens-cartonagem.webp",
   },
   {
     title: "Metalgrafia e Automação Industrial",
     description:
       "Desempenho confiável em operações industriais complexas.",
-    image: "/segments/metalgrafia-automacao.jpg",
+    image: "/segments/metalgrafia-automacao.webp",
   },
   {
     title: "Plásticos e Indústria Geral",
     description:
       "Flexibilidade para diferentes aplicações, materiais e exigências.",
-    image: "/segments/plasticos-industria-geral.jpg",
+    image: "/segments/plasticos-industria-geral.webp",
   },
 ];
 
@@ -110,10 +110,10 @@ const SegmentsSection = () => {
   }, [isPaused]);
 
   return (
-    <section className="section-industrial bg-muted">
+    <section id="segmentos" className="section-industrial bg-muted">
       <div className="container">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="section-eyebrow">Segmentos atendidos</p>
+        <div className="max-w-5xl mx-auto text-center" data-reveal>
+          <p className="section-eyebrow justify-center">Segmentos atendidos</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Expertise técnica para indústrias exigentes
           </h2>

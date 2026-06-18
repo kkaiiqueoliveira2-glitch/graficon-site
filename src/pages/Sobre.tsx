@@ -1,13 +1,21 @@
-import { useEffect } from "react";
 import { Users, Wrench, Briefcase, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const Sobre = () => {
-  useEffect(() => {
-    document.title = "Sobre | Graficon - Revestimento de Cilindros Industriais em São Paulo";
-  }, []);
+  usePageSEO({
+    title: "Sobre | Graficon - Revestimento de Cilindros Industriais em São Paulo",
+    description:
+      "Conheça a Graficon: +40 anos em revestimento e recuperação de cilindros industriais e gráficos. Equipe técnica, controle de qualidade e soluções sob medida em São Paulo.",
+    path: "/sobre",
+    jsonLd: {
+      name: "Sobre a Graficon",
+      description:
+        "Especialistas em revestimento e recuperação de cilindros industriais e gráficos, com +40 anos de profissão e controle de qualidade rigoroso.",
+    },
+  });
 
   const pillars = [
     {

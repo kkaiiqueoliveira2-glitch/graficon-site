@@ -4,8 +4,16 @@ import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 
 const Footer = () => {
   return (
-    <footer className="footer-industrial">
-      <div className="container">
+    <footer className="footer-industrial relative overflow-hidden pt-28 md:pt-36">
+      {/* Curva no topo (vinda da seção clara acima) */}
+      <div className="section-curve-top" aria-hidden>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,0 L1440,0 L1440,50 C1080,110 360,-10 0,40 Z" fill="hsl(210 15% 94%)" />
+          <path d="M0,40 C360,-10 1080,110 1440,50" fill="none" stroke="hsl(189 94% 43%)" strokeWidth="3" />
+        </svg>
+      </div>
+
+      <div className="container relative z-10">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_0.8fr]">
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -121,7 +129,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="/#formulario-orcamento" className="footer-link">
+                <a href="/#contato" className="footer-link">
                   Solicitar Orçamento
                 </a>
               </li>

@@ -1,0 +1,144 @@
+import { Link, useParams } from "react-router-dom";
+import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import NotFound from "@/pages/NotFound";
+import { usePageSEO } from "@/hooks/usePageSEO";
+import { getServiceBySlug, services } from "@/data/services";
+import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
+
+const ServicoDetalhe = () => {
+  const { slug } = useParams();
+  const service = getServiceBySlug(slug);
+
+  usePageSEO({
+    title: service ? service.seoTitle : "Serviço não encontrado | Graficon",
+    description: service ? service.seoDescription : "Página não encontrada.",
+    path: service ? `/servicos/${service.slug}` : "/servicos",
+    type: "article",
+    noindex: !service,
+    image: service ? `https://graficonrevestimento.com${service.image}` : undefined,
+    jsonLd: service
+      ? { name: service.title, description: service.seoDescription }
+      : undefined,
+  });
+
+  if (!service) {
+    return <NotFound />;
+  }
+
+  const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        {/* Banner */}
+        <section className="services-hero">
+          <div className="container">
+            <nav className="mb-5 flex items-center justify-center gap-1 text-sm text-white/70">
+              <Link to="/" className="hover:text-white">Início</Link>
+              <ChevronRight className="h-4 w-4" />
+              <Link to="/o-que-fazemos" className="hover:text-white">Serviços</Link>
+              <ChevronRight className="h-4 w-4" />
+              <span className="text-white">{service.title}</span>
+            </nav>
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                {service.title}
+              </h1>
+              <p className="text-white/90 text-lg md:text-xl leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Conteúdo: imagem + texto */}
+        <section className="section-industrial bg-white">
+          <div className="container">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <div className="overflow-hidden rounded-2xl border border-border shadow-lg">
+                <img
+                  src={service.image}
+                  alt={`${service.title} — Graficon Revestimento de Cilindros`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div>
+                <p className="section-eyebrow">Serviço</p>
+                <h2 className="section-title mb-5">{service.title}</h2>
+                {service.longDescription.map((p, i) => (
+                  <p key={i} className="text-muted-foreground leading-relaxed mb-4">
+                    {p}
+                  </p>
+                ))}
+
+                <ul className="mt-6 space-y-3">
+                  {service.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: "hsl(var(--cyan) / 0.15)", border: "1px solid hsl(var(--cyan) / 0.4)" }}>
+                        <Check className="h-3.5 w-3.5 text-cyan" />
+                      </span>
+                      <span className="text-foreground/90">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link to="/#contato" className="btn-cyan px-8 py-3.5 text-sm uppercase tracking-wide">
+                    Solicitar orçamento <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href={WHATSAPP_URL_ORCAMENTO}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-primary transition-colors hover:border-primary"
+                  >
+                    Falar no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Outros serviços */}
+        <section className="section-industrial bg-muted">
+          <div className="container">
+            <p className="section-eyebrow">Outros serviços</p>
+            <h2 className="section-title mb-10">Conheça também</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {others.map((s) => (
+                <Link key={s.slug} to={`/servicos/${s.slug}`} className="svc-card">
+                  <div className="svc-card-media">
+                    <img src={s.image} alt={s.title} loading="lazy" decoding="async" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(215_60%_10%/0.65)] to-transparent" />
+                    <div className="svc-card-icon absolute bottom-4 left-4">
+                      <s.icon className="h-6 w-6 text-cyan" />
+                    </div>
+                  </div>
+                  <div className="svc-card-body">
+                    <h3 className="text-xl font-semibold text-primary mb-3">{s.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm flex-1">
+                      {s.description}
+                    </p>
+                    <span className="svc-card-link">
+                      Saiba mais <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default ServicoDetalhe;

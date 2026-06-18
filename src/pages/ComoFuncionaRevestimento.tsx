@@ -9,6 +9,24 @@ const ComoFuncionaRevestimento = () => {
     description:
       "Saiba como funciona o revestimento de cilindros gráficos, as etapas do processo e quando é indicado para rotogravura e flexografia.",
     path: "/como-funciona-revestimento-de-cilindros",
+    type: "article",
+    faqItems: [
+      {
+        question: "Como funciona o revestimento de cilindros gráficos?",
+        answer:
+          "O processo inclui inspeção do núcleo, preparação da superfície, aplicação do material, tratamento e acabamento com controle dimensional final.",
+      },
+      {
+        question: "Quando o revestimento de cilindros é indicado?",
+        answer:
+          "É indicado para recuperar cilindros desgastados, restaurar padrão de impressão e prolongar a vida útil em rotogravura e flexografia.",
+      },
+      {
+        question: "Quanto tempo leva para revestir um cilindro?",
+        answer:
+          "O prazo varia conforme dimensão, material e complexidade técnica, sendo definido após análise do cilindro e das especificações do processo.",
+      },
+    ],
     jsonLd: {
       name: "Como funciona o revestimento de cilindros",
       description:
@@ -26,7 +44,7 @@ const ComoFuncionaRevestimento = () => {
               <div className="max-w-3xl mx-auto text-center">
                 <p className="about-eyebrow">Guia técnico</p>
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                  Como funciona o revestimento de cilindros
+                  Como funciona o revestimento de cilindros para rotogravura e flexografia
                 </h1>
                 <p className="text-white/90 text-lg md:text-xl leading-relaxed">
                   Processo técnico, aplicações e critérios para decisão na

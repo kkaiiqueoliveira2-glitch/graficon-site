@@ -9,6 +9,24 @@ const OQueERevestimentoGrafico = () => {
     description:
       "Entenda o que é revestimento gráfico, como funciona e quando ele é utilizado na indústria de impressão.",
     path: "/o-que-e-revestimento-grafico",
+    type: "article",
+    faqItems: [
+      {
+        question: "O que é revestimento gráfico?",
+        answer:
+          "É a aplicação de uma camada técnica sobre o cilindro para formar a superfície de impressão e garantir resistência ao desgaste.",
+      },
+      {
+        question: "Qual a diferença entre revestimento e gravação?",
+        answer:
+          "O revestimento adiciona material ao cilindro, enquanto a gravação remove ou modifica a superfície para criar células ou relevo.",
+      },
+      {
+        question: "Quais segmentos usam revestimento gráfico?",
+        answer:
+          "Rotogravura, flexografia, embalagens, papel e celulose e outros processos industriais que exigem uniformidade e repetibilidade.",
+      },
+    ],
     jsonLd: {
       name: "O que é revestimento gráfico",
       description:
@@ -26,7 +44,7 @@ const OQueERevestimentoGrafico = () => {
               <div className="max-w-3xl mx-auto text-center">
                 <p className="about-eyebrow">Guia técnico</p>
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                  O que é revestimento gráfico
+                  O que é revestimento gráfico para cilindros industriais
                 </h1>
                 <p className="text-white/90 text-lg md:text-xl leading-relaxed">
                   Definição técnica, aplicações e importância do processo de
