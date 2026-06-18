@@ -115,6 +115,8 @@
      continua funcionando. */
   html {
     overflow-x: clip;
+    /* remove o double-tap-to-zoom e o delay de 300ms */
+    touch-action: manipulation;
   }
 
   body {
@@ -716,6 +718,15 @@
   .segment-carousel-card {
     @apply grid overflow-hidden rounded-2xl border border-border/80 bg-card md:grid-cols-[1.1fr_0.9fr];
     min-height: 320px;
+    max-width: 100%;
+  }
+
+  /* evita o overflow do grid: itens não podem exceder a coluna (min-width: auto) */
+  .segment-carousel-card > * {
+    min-width: 0;
+  }
+
+  .segment-carousel-card {
     box-shadow:
       0 35px 80px -15px rgba(0, 0, 0, 0.28),
       0 18px 45px -10px rgba(0, 0, 0, 0.2),
@@ -734,6 +745,7 @@
 
   .segment-carousel-image {
     @apply relative overflow-hidden bg-muted;
+    width: 100%;
     aspect-ratio: 16 / 10;
     min-height: 240px;
   }
