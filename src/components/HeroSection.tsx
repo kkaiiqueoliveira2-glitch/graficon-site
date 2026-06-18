@@ -1,28 +1,10 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import CountUp from "@/components/CountUp";
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
 const HeroSection = () => {
-  useEffect(() => {
-    let preload = document.querySelector<HTMLLinkElement>('link[data-seo-preload="hero-image"]');
-    if (!preload) {
-      preload = document.createElement("link");
-      preload.rel = "preload";
-      preload.as = "image";
-      preload.href = heroImage;
-      preload.setAttribute("fetchpriority", "high");
-      preload.setAttribute("data-seo-preload", "hero-image");
-      document.head.appendChild(preload);
-    }
-
-    return () => {
-      if (preload?.parentNode) preload.parentNode.removeChild(preload);
-    };
-  }, []);
-
   const scrollToFormulario = () => {
     trackMetaEvent("CliqueBotaoOrcamento", {
       origem: "hero",
@@ -37,10 +19,14 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="hero-usitemb">
-      {/* Imagem de fundo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+      {/* Imagem de fundo — <img> real com prioridade alta (LCP) em vez de background CSS */}
+      <img
+        src={heroImage}
+        alt="Revestimento e recuperação de cilindros industriais — Graficon, São Paulo"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
       />
       {/* Overlay */}
       <div className="absolute inset-0 hero-usitemb-overlay" />

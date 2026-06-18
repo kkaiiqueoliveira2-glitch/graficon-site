@@ -3,9 +3,17 @@ import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NotFound from "@/pages/NotFound";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { usePageSEO } from "@/hooks/usePageSEO";
 import { getServiceBySlug, services } from "@/data/services";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
+
+const SITE_URL = "https://graficonrevestimento.com";
 
 const ServicoDetalhe = () => {
   const { slug } = useParams();
@@ -17,10 +25,13 @@ const ServicoDetalhe = () => {
     path: service ? `/servicos/${service.slug}` : "/servicos",
     type: "article",
     noindex: !service,
-    image: service ? `https://graficonrevestimento.com${service.image}` : undefined,
+    image: service ? `${SITE_URL}${service.image}` : undefined,
     jsonLd: service
       ? { name: service.title, description: service.seoDescription }
       : undefined,
+    faqItems: service
+      ? service.faq.map((f) => ({ question: f.q, answer: f.a }))
+      : [],
   });
 
   if (!service) {
@@ -28,6 +39,21 @@ const ServicoDetalhe = () => {
   }
 
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Serviços", item: `${SITE_URL}/o-que-fazemos` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: `${SITE_URL}/servicos/${service.slug}`,
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen">
@@ -63,7 +89,8 @@ const ServicoDetalhe = () => {
                   src={service.image}
                   alt={`${service.title} — Graficon Revestimento de Cilindros`}
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  fetchPriority="high"
+                  loading="eager"
                   decoding="async"
                 />
               </div>
@@ -106,6 +133,29 @@ const ServicoDetalhe = () => {
           </div>
         </section>
 
+        {/* Perguntas frequentes do serviço */}
+        <section className="section-industrial bg-white">
+          <div className="container max-w-3xl">
+            <div className="text-center mb-10">
+              <p className="section-eyebrow justify-center">Perguntas frequentes</p>
+              <h2 className="section-title">Dúvidas sobre {service.title.toLowerCase()}</h2>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              {service.faq.map((f, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="faq-item border-b-0">
+                  <AccordionTrigger className="text-left text-base font-semibold text-primary hover:no-underline py-5">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
         {/* Outros serviços */}
         <section className="section-industrial bg-muted">
           <div className="container">
@@ -137,6 +187,10 @@ const ServicoDetalhe = () => {
         </section>
       </main>
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
     </div>
   );
 };
