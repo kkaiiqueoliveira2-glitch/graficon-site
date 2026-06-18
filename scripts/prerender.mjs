@@ -9,10 +9,30 @@
  * dist/<rota>/index.html. Roda automaticamente no `postbuild`.
  */
 import { preview } from "vite";
-import puppeteer from "puppeteer";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
+
+// No ambiente da Vercel/CI o Chromium do Puppeteer não roda (faltam libs de
+// sistema). Usamos @sparticuz/chromium (Chromium com libs embutidas) +
+// puppeteer-core. No local usamos o Puppeteer completo normalmente.
+async function getBrowser() {
+  const isServerless = !!(process.env.VERCEL || process.env.CI || process.env.AWS_REGION);
+  if (isServerless) {
+    const chromium = (await import("@sparticuz/chromium")).default;
+    const puppeteer = (await import("puppeteer-core")).default;
+    return puppeteer.launch({
+      args: [...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    });
+  }
+  const puppeteer = (await import("puppeteer")).default;
+  return puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "..", "dist");
@@ -44,10 +64,7 @@ async function run() {
   });
   const base = `http://localhost:4185`;
 
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await getBrowser();
 
   let ok = 0;
   try {
