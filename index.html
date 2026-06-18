@@ -25,13 +25,22 @@
     <!-- End Meta Pixel Code -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fontes: preconnect + link direto (em paralelo com o CSS, sem a cadeia do @import) -->
+    <!-- Fontes: preconnect + carregamento assíncrono (não bloqueia a renderização;
+         o texto pinta na fonte de fallback e troca quando a webfont carrega). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@400;700&display=swap"
+      onload="if(!window.__PRERENDER__){this.onload=null;this.rel='stylesheet'}"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@400;700&display=swap"
+      />
+    </noscript>
     <title>Revestimento de Cilindros | Graficon - Recuperação e Revestimento Industrial em São Paulo</title>
     <meta name="description" content="Revestimento de cilindros industriais e gráficos. Recuperação de cilindros para flexografia, embalagens, papel e celulose. Orçamento em São Paulo. +40 anos de profissão." />
     <meta name="keywords" content="revestimento de cilindros, revestimento de cilindros industriais, revestimento de cilindros gráficos, recuperação de cilindros, cilindros para flexografia, revestimento flexográfico, cilindros industriais, revestimento de cilindros São Paulo, cilindros para impressão, revestimento e recuperação de cilindros" />
