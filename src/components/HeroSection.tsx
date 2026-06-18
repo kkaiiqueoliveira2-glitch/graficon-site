@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import CountUp from "@/components/CountUp";
-import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
+// Versões responsivas: o celular baixa ~640/960px em vez dos 1920px (LCP).
+import heroSrcset from "@/assets/hero-industrial.jpg?w=640;960;1280;1920&format=webp&as=srcset";
+import heroImage from "@/assets/hero-industrial.jpg?w=1280&format=webp";
 
 const HeroSection = () => {
   const scrollToFormulario = () => {
@@ -22,6 +24,8 @@ const HeroSection = () => {
       {/* Imagem de fundo — <img> real com prioridade alta (LCP) em vez de background CSS */}
       <img
         src={heroImage}
+        srcSet={heroSrcset}
+        sizes="100vw"
         alt="Revestimento e recuperação de cilindros industriais — Graficon, São Paulo"
         className="absolute inset-0 w-full h-full object-cover object-center"
         fetchPriority="high"
