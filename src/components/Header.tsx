@@ -43,7 +43,7 @@ const Header = () => {
         <div className="header-solid-inner">
           <Link to="/" className="flex items-center gap-3" aria-label="Graficon — página inicial">
             <img
-              src="/logo-graficon.png?v=3"
+              src="/logo-graficon.png?v=4"
               alt="Graficon Revestimento de Cilindros"
               className="h-11 w-auto object-contain"
               height={44}

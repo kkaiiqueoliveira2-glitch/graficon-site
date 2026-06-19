@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-4">
               <div className="footer-logo">
                 <img
-                  src="/logo-graficon.png?v=3"
+                  src="/logo-graficon.png?v=4"
                   alt="Graficon"
                   className="h-8 w-8 object-contain"
                   width={32}

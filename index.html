@@ -1,28 +1,48 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQL4R5BLWG"></script>
+    <!-- Analytics adiado (GA4 + Meta Pixel): os scripts externos só baixam
+         após a 1ª interação do usuário (ou 3,5s de fallback), pra não competir
+         com o LCP (imagem do hero). PageView e conversões são preservados:
+         as chamadas ficam enfileiradas e disparam quando o script carrega. -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-WQL4R5BLWG');
+      (function(){
+        // GA4 stub — chamadas ficam no dataLayer até o gtag.js carregar
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-WQL4R5BLWG');
+
+        // Meta Pixel stub — enfileira chamadas até o fbevents.js carregar
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];}(window, document);
+        fbq('init', '1530604112121279');
+        fbq('track', 'PageView');
+
+        // Não carrega analytics durante o prerender (Puppeteer)
+        if (window.__PRERENDER__) return;
+
+        var loaded = false;
+        function loadAnalytics(){
+          if (loaded) return; loaded = true;
+          var g = document.createElement('script'); g.async = true;
+          g.src = 'https://www.googletagmanager.com/gtag/js?id=G-WQL4R5BLWG';
+          document.head.appendChild(g);
+          var fb = document.createElement('script'); fb.async = true;
+          fb.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          document.head.appendChild(fb);
+        }
+        var evs = ['scroll','pointerdown','touchstart','keydown','mousemove'];
+        function onFirst(){ evs.forEach(function(ev){ window.removeEventListener(ev, onFirst); }); loadAnalytics(); }
+        evs.forEach(function(ev){ window.addEventListener(ev, onFirst, { passive: true, once: true }); });
+        // Fallback: garante PageView mesmo sem interação
+        setTimeout(loadAnalytics, 3500);
+      })();
     </script>
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1530604112121279');
-      fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <!-- Bloqueio de zoom no iOS: o Safari ignora user-scalable=no, então
