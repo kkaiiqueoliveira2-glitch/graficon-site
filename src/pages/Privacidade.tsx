@@ -1,12 +1,15 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const Privacidade = () => {
-  useEffect(() => {
-    document.title = "Política de Privacidade | Graficon Revestimento de Cilindros";
-  }, []);
+  usePageSEO({
+    title: "Política de Privacidade | Graficon Revestimento de Cilindros",
+    description:
+      "Política de privacidade da Graficon Revestimento de Cilindros: como tratamos os dados enviados pelos formulários de contato e orçamento.",
+    path: "/privacidade",
+  });
 
   return (
     <div className="min-h-screen">
