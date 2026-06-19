@@ -160,7 +160,7 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <div id="formulario-orcamento" className="contact-form-float grid lg:grid-cols-[1.05fr_0.95fr] gap-0 items-stretch overflow-hidden bg-card">
+          <div id="formulario-orcamento" className="contact-form-float grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-0 items-stretch overflow-hidden bg-card">
             <div className="contact-form-panel-blue contact-panel text-center lg:text-left rounded-none border-r border-b lg:border-b-0 border-white/10">
               <span className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "hsl(var(--cyan-foreground))", backgroundColor: "hsl(var(--cyan))" }}>
                 Orçamento gratuito
