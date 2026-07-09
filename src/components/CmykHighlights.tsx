@@ -1,4 +1,3 @@
-import { Award, Headphones, Repeat, Palette } from "lucide-react";
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
 const CMYK = {
@@ -11,27 +10,31 @@ const CMYK = {
 const highlights = [
   {
     color: CMYK.cyan,
-    icon: Award,
-    title: "Alta qualidade de impressão",
-    description: "Controle dimensional rigoroso e acabamento técnico em cada revestimento.",
+    image: "/card-revestimento.png",
+    alt: "Cilindro revestido com acabamento técnico espelhado",
+    title: "Revestimento de alta qualidade",
+    description: "Controle dimensional rigoroso e acabamento técnico em cada cilindro.",
   },
   {
     color: CMYK.magenta,
-    icon: Headphones,
-    title: "Atendimento personalizado",
-    description: "Suporte técnico especializado para analisar sua demanda e indicar a melhor solução.",
+    image: "/card-analise.png",
+    alt: "Técnico medindo um cilindro com paquímetro de precisão",
+    title: "Análise técnica dedicada",
+    description: "Avaliamos sua demanda e indicamos a melhor solução pra cada peça.",
   },
   {
     color: CMYK.yellow,
-    icon: Repeat,
-    title: "Parceria de longo prazo",
-    description: "Clientes recorrentes contam com benefícios e prioridade no atendimento.",
+    image: "/card-precisao.png",
+    alt: "Usinagem de cilindro industrial em torno CNC",
+    title: "Precisão e repetibilidade",
+    description: "Tecnologia e processos sob controle pra entregar o mesmo padrão sempre.",
   },
   {
     color: CMYK.black,
-    icon: Palette,
+    image: "/card-sob-medida.png",
+    alt: "Vários cilindros industriais de tamanhos diferentes",
     title: "Soluções sob medida",
-    description: "Tecnologia e processos adaptados para cada segmento e aplicação.",
+    description: "Cilindros especiais que fogem do padrão por material, dimensão ou aplicação.",
   },
 ];
 
@@ -65,14 +68,21 @@ const CmykHighlights = () => {
         <h2 data-reveal className="text-2xl md:text-3xl font-bold text-white text-center mb-10 md:mb-12">
           Por que escolher revestimento de cilindros com a Graficon?
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-16 md:gap-x-6 md:gap-y-20 pt-12 md:pt-16">
           {highlights.map((item, index) => (
             <div
               key={index}
               className="cmyk-highlight-card"
               style={{ backgroundColor: item.color }}
             >
-              <item.icon className="w-10 h-10 md:w-12 md:h-12 text-white mb-4" aria-hidden />
+              <img
+                src={item.image}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                className="cmyk-highlight-card__photo"
+                style={{ borderColor: item.color }}
+              />
               <h3 className="text-white font-semibold text-base md:text-lg mb-2">
                 {item.title}
               </h3>

@@ -10,7 +10,7 @@ const pillars = [
 
 const AboutBand = () => {
   return (
-    <section className="section-industrial bg-muted">
+    <section className="section-industrial bg-muted overflow-hidden">
       <div className="container">
         <div className="about-band grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div>
@@ -41,28 +41,36 @@ const AboutBand = () => {
             <Link to="/sobre" className="btn-cyan px-7 py-3.5 text-sm uppercase tracking-wide">
               Conheça a Graficon <ArrowRight className="h-4 w-4" />
             </Link>
+
+            <div className="grid grid-cols-3 gap-4 mt-10 max-w-md">
+              <div className="about-band-stat">
+                <p className="text-2xl md:text-3xl font-bold text-white">
+                  <CountUp end={40} prefix="+" />
+                </p>
+                <p className="text-xs text-white/70 mt-1">anos de profissão</p>
+              </div>
+              <div className="about-band-stat">
+                <p className="text-2xl md:text-3xl font-bold text-white">
+                  <CountUp end={100} suffix="%" />
+                </p>
+                <p className="text-xs text-white/70 mt-1">controle de qualidade</p>
+              </div>
+              <div className="about-band-stat">
+                <p className="text-2xl md:text-3xl font-bold text-white">
+                  <CountUp end={5} suffix="+" />
+                </p>
+                <p className="text-xs text-white/70 mt-1">segmentos atendidos</p>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            <div className="about-band-stat">
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                <CountUp end={40} prefix="+" />
-              </p>
-              <p className="text-xs text-white/70 mt-1">anos de profissão</p>
-            </div>
-            <div className="about-band-stat">
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                <CountUp end={100} suffix="%" />
-              </p>
-              <p className="text-xs text-white/70 mt-1">controle de qualidade</p>
-            </div>
-            <div className="about-band-stat">
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                <CountUp end={5} suffix="+" />
-              </p>
-              <p className="text-xs text-white/70 mt-1">segmentos atendidos</p>
-            </div>
-          </div>
+          <img
+            src="/cilindros-quem-somos.png"
+            alt="Cilindros industriais revestidos pela Graficon, com acabamento espelhado"
+            loading="lazy"
+            decoding="async"
+            className="about-band-photo"
+          />
         </div>
       </div>
     </section>

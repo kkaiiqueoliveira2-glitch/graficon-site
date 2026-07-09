@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import CountUp from "@/components/CountUp";
+import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 // Versões responsivas: o celular baixa ~640/960px em vez dos 1920px (LCP).
 import heroSrcset from "@/assets/hero-industrial.jpg?w=640;960;1280;1920&format=webp&as=srcset";
 import heroImage from "@/assets/hero-industrial.jpg?w=1280&format=webp";
@@ -17,6 +18,10 @@ const HeroSection = () => {
 
   const scrollToConteudo = () => {
     document.getElementById("segmentos")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const trackWhatsAppHero = () => {
+    trackMetaEvent("CliqueWhatsApp", { origem: "hero", botao: "Chamar no WhatsApp" });
   };
 
   return (
@@ -57,9 +62,15 @@ const HeroSection = () => {
             >
               Solicitar orçamento
             </button>
-            <Link to="/o-que-fazemos" className="btn-outline-white text-base">
-              Ver serviços
-            </Link>
+            <a
+              href={WHATSAPP_URL_ORCAMENTO}
+              target="_blank"
+              rel="noreferrer"
+              onClick={trackWhatsAppHero}
+              className="btn-outline-white text-base"
+            >
+              Chamar no WhatsApp
+            </a>
           </div>
 
           <p className="mt-6 text-sm text-white/70 max-w-xl">
