@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGoogleEvent } from "@/lib/gtagEvent";
 import CountUp from "@/components/CountUp";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 // Versões responsivas: o celular baixa ~640/960px em vez dos 1920px (LCP).
@@ -13,6 +14,7 @@ const HeroSection = () => {
       origem: "hero",
       botao: "Solicitar Orçamento",
     });
+    trackGoogleEvent("clique_orcamento", { origem: "hero" });
     document.getElementById("contato")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -22,6 +24,7 @@ const HeroSection = () => {
 
   const trackWhatsAppHero = () => {
     trackMetaEvent("CliqueWhatsApp", { origem: "hero", botao: "Chamar no WhatsApp" });
+    trackGoogleEvent("clique_whatsapp", { origem: "hero" });
   };
 
   return (

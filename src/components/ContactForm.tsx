@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGoogleEvent } from "@/lib/gtagEvent";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -54,6 +55,7 @@ const ContactForm = () => {
 
     trackMetaEvent("FormularioOrcamentoEnviado", conversionPayload);
     trackMetaEvent("Lead", conversionPayload, false);
+    trackGoogleEvent("gerar_lead", { canal: conversionPayload.canal, origem: conversionPayload.origem });
 
     const mensagem = [
       "*Nova solicitação de orçamento*",

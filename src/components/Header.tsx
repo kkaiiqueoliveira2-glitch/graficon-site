@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Clock, Instagram } from "lucide-react";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
+import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGoogleEvent } from "@/lib/gtagEvent";
 
 const INSTAGRAM_URL = "https://www.instagram.com/graficon.revestimento/";
 
@@ -18,6 +20,10 @@ const Header = () => {
   const isOQueFazemos = location.pathname === "/o-que-fazemos";
   const scrollToFormulario = () => {
     document.getElementById("contato")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const trackWhatsAppHeader = () => {
+    trackMetaEvent("CliqueWhatsApp", { origem: "header", botao: "Ícone WhatsApp" });
+    trackGoogleEvent("clique_whatsapp", { origem: "header" });
   };
   const navLinkBase = "nav-link";
   const navLinkActive = "nav-link nav-link-active";
@@ -103,6 +109,7 @@ const Header = () => {
               href={WHATSAPP_URL_ORCAMENTO}
               target="_blank"
               rel="noreferrer"
+              onClick={trackWhatsAppHeader}
               className="nav-icon-btn-wa"
               aria-label="WhatsApp da Graficon"
             >

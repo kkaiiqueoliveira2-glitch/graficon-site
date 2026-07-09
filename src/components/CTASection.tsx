@@ -1,4 +1,5 @@
 import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGoogleEvent } from "@/lib/gtagEvent";
 import { ArrowRight } from "lucide-react";
 
 const CTASection = () => {
@@ -7,6 +8,7 @@ const CTASection = () => {
       origem: "cta",
       botao: "Solicitar orçamento técnico",
     });
+    trackGoogleEvent("clique_orcamento", { origem: "cta" });
     document.getElementById("contato")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
