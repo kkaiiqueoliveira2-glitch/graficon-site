@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, ExternalLink, Clock, Users, FileCheck, Phone, Mail, Check } from "lucide-react";
+import { MapPin, ExternalLink, Clock, Users, FileCheck, Phone, Mail, Check, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,21 +9,40 @@ import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
 import CurvaSecao from "@/components/CurvaSecao";
 
+/**
+ * Formulário de orçamento.
+ *
+ * Os campos espelham, na mesma ordem, o que a saudação automática do WhatsApp
+ * da Graficon pede: empresa, qual peça, medidas (diâmetro e comprimento) e
+ * foto. A ideia é que quem preenche aqui já chegue na conversa com o
+ * consultor sem precisar responder tudo de novo.
+ *
+ * Diâmetro e comprimento ficam OPCIONAIS de propósito. São o que separa um
+ * lead vago de um orçamento técnico — os dois leads reais da conta chegaram com
+ * medida, foto e urgência — mas exigir número de quem não está com o paquímetro
+ * na mão custa lead, e a conta tem verba de tráfego rodando. Quem não souber,
+ * o consultor pergunta no WhatsApp.
+ *
+ * Foto não vira campo: o formulário não tem backend, ele monta uma mensagem e
+ * abre o wa.me. Não dá pra anexar arquivo num link do WhatsApp. Então a peça
+ * vira instrução — anexar na conversa que abre.
+ */
 const ContactForm = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     empresa: "",
     responsavel: "",
     whatsapp: "",
-    servico: "",
+    peca: "",
+    diametro: "",
+    comprimento: "",
     mensagem: "",
   });
   const isFormValid =
     formData.empresa.trim().length > 0 &&
     formData.responsavel.trim().length > 0 &&
     formData.whatsapp.trim().length > 0 &&
-    formData.servico.trim().length > 0 &&
-    formData.mensagem.trim().length > 0;
+    formData.peca.trim().length > 0;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -38,17 +57,22 @@ const ContactForm = () => {
     if (!isFormValid) {
       toast({
         title: "Campos obrigatórios",
-        description: "Por favor, preencha todos os campos obrigatórios.",
+        description: "Preencha empresa, responsável, WhatsApp e qual peça precisa de serviço.",
         variant: "destructive",
       });
       return;
     }
 
+    const medida = [formData.diametro.trim(), formData.comprimento.trim()]
+      .filter(Boolean)
+      .join(" × ");
+
     const conversionPayload = {
       empresa: formData.empresa.trim(),
       responsavel: formData.responsavel.trim(),
       whatsapp: formData.whatsapp.trim(),
-      servico: formData.servico.trim(),
+      peca: formData.peca.trim(),
+      medida,
       mensagem: formData.mensagem.trim(),
       canal: "site",
       origem: "formulario_orcamento",
@@ -58,31 +82,40 @@ const ContactForm = () => {
     trackMetaEvent("Lead", conversionPayload, false);
     trackGoogleEvent("gerar_lead", { canal: conversionPayload.canal, origem: conversionPayload.origem });
 
+    // Mesma ordem da saudação automática do WhatsApp, pra o consultor bater o
+    // olho e já ter tudo. Linhas vazias são omitidas em vez de virarem "—".
     const mensagem = [
-      "*Nova solicitação de orçamento*",
+      "*Solicitação de orçamento pelo site*",
       "",
-      `*Empresa:* ${formData.empresa}`,
-      `*Responsável:* ${formData.responsavel}`,
-      `*WhatsApp:* ${formData.whatsapp}`,
-      `*Serviço desejado:* ${formData.servico}`,
+      `*Empresa:* ${formData.empresa.trim()}`,
+      `*Responsável:* ${formData.responsavel.trim()}`,
+      `*WhatsApp:* ${formData.whatsapp.trim()}`,
+      `*Peça:* ${formData.peca.trim()}`,
+      medida ? `*Medidas:* ${medida}` : null,
+      formData.mensagem.trim() ? "" : null,
+      formData.mensagem.trim() ? "*O que precisa ser feito:*" : null,
+      formData.mensagem.trim() || null,
       "",
-      "*Mensagem:*",
-      formData.mensagem,
-    ].join("\n");
+      "_Se tiver foto da peça, mando aqui na sequência._",
+    ]
+      .filter((linha) => linha !== null)
+      .join("\n");
 
     const url = `https://wa.me/5511915291313?text=${encodeURIComponent(mensagem)}`;
     window.open(url, "_blank", "noopener,noreferrer");
 
     toast({
       title: "Abrindo WhatsApp",
-      description: "Envie a mensagem para finalizar sua solicitação.",
+      description: "Envie a mensagem e anexe a foto da peça, se tiver.",
     });
 
     setFormData({
       empresa: "",
       responsavel: "",
       whatsapp: "",
-      servico: "",
+      peca: "",
+      diametro: "",
+      comprimento: "",
       mensagem: "",
     });
   };
@@ -130,6 +163,7 @@ const ContactForm = () => {
               </div>
               <h3 className="font-semibold text-foreground mb-2">Telefone</h3>
               <p className="text-sm text-muted-foreground">Comercial: (11) 91529-1313</p>
+              <p className="mt-1 text-sm text-muted-foreground">Seg a qui, 08h–18h · Sex, 08h–15h</p>
             </div>
             <div className="contact-info-card">
               <div className="contact-info-icon">
@@ -246,13 +280,13 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Serviço Desejado *
+                    Qual peça precisa de serviço? *
                   </label>
                   <Input
-                    name="servico"
-                    value={formData.servico}
+                    name="peca"
+                    value={formData.peca}
                     onChange={handleChange}
-                    placeholder="Ex: Revestimento de cilindros"
+                    placeholder="Ex: rolo de borracha, haste hidráulica"
                     className="contact-input"
                     maxLength={150}
                     required
@@ -262,18 +296,58 @@ const ContactForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Mensagem *
+                  Medidas da peça
+                  <span className="ml-2 font-normal text-muted-foreground">
+                    opcional, mas agiliza o orçamento
+                  </span>
+                </label>
+                <div className="grid grid-cols-2 gap-5">
+                  <Input
+                    name="diametro"
+                    value={formData.diametro}
+                    onChange={handleChange}
+                    placeholder="Diâmetro (ex: 120 mm)"
+                    className="contact-input"
+                    maxLength={40}
+                    aria-label="Diâmetro da peça"
+                  />
+                  <Input
+                    name="comprimento"
+                    value={formData.comprimento}
+                    onChange={handleChange}
+                    placeholder="Comprimento (ex: 800 mm)"
+                    className="contact-input"
+                    maxLength={40}
+                    aria-label="Comprimento da peça"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  O que precisa ser feito?
+                  <span className="ml-2 font-normal text-muted-foreground">opcional</span>
                 </label>
                 <Textarea
                   name="mensagem"
                   value={formData.mensagem}
                   onChange={handleChange}
-                  placeholder="Descreva sua necessidade..."
-                  rows={4}
+                  placeholder="Ex: repor camada de cromo duro, reencape de borracha, retífica..."
+                  rows={3}
                   className="contact-input resize-none"
                   maxLength={1000}
-                  required
                 />
+              </div>
+
+              {/* O wa.me não aceita anexo, então a foto vira instrução. Ela é o
+                  que mais qualifica o lead nessa conta — vale o destaque. */}
+              <div className="flex items-start gap-3 rounded-lg border border-border bg-muted/60 px-4 py-3">
+                <Camera className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Tem foto da peça?</span>{" "}
+                  Anexe direto na conversa do WhatsApp que vai abrir — é o que
+                  permite avaliar o desgaste e fechar o orçamento mais rápido.
+                </p>
               </div>
 
               <Button

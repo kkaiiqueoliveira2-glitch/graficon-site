@@ -35,7 +35,7 @@ const Header = () => {
             <Phone className="h-3.5 w-3.5" /> (11) 91529-1313
           </a>
           <span className="inline-flex items-center gap-1.5 text-white/70">
-            <Clock className="h-3.5 w-3.5" /> Seg–Sex, 08h–18h
+            <Clock className="h-3.5 w-3.5" /> Seg a qui, 08h–18h · Sex, 08h–15h
           </span>
         </div>
       </div>

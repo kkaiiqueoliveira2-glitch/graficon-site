@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Onde a Graficon está localizada?",
-    a: "Estamos em São Paulo/SP, na Rua Mara Rosa, 95 — Bairro dos Eucaliptos. Atendimento de segunda a sexta, das 08h às 18h.",
+    a: "Estamos em São Paulo/SP, na Rua Mara Rosa, 95 — Bairro dos Eucaliptos. Atendimento de segunda a quinta das 08h às 18h, e sexta das 08h às 15h.",
   },
 ];
 
