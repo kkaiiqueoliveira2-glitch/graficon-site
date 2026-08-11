@@ -20,6 +20,13 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const PUBLIC = path.join(ROOT, "public");
+/**
+ * PNGs originais das fotos. Ficam FORA de `public/` de propósito: tudo que está
+ * em `public/` é copiado inteiro pro build e vai parar no CDN, e esses cinco
+ * arquivos somam 6,7 MB que ninguém baixa (o site serve as versões WebP).
+ * Aqui eles continuam versionados como fonte, sem serem publicados.
+ */
+const ORIGINAIS = path.join(ROOT, "assets-originais");
 
 const KIT = "C:/Users/Administrator/Desktop/agencia-conect-plus/clientes/Graficon-Revestimento/identidade";
 
@@ -39,6 +46,7 @@ const MARCA = [
  * Fotos que estavam em PNG no `public/`, somando ~6,7 MB. PNG só se justifica
  * quando precisa de transparência; essas quatro são fotos opacas.
  * `cilindros-quem-somos` é a exceção — tem alpha e continua com alpha em WebP.
+ * Lê de `assets-originais/`, grava o WebP em `public/`.
  */
 const FOTOS = [
   { arquivo: "card-revestimento.png", largura: 640 },
@@ -160,7 +168,7 @@ async function main() {
   let antes = 0;
   let depois = 0;
   for (const { arquivo, largura, alpha } of FOTOS) {
-    const origem = path.join(PUBLIC, arquivo);
+    const origem = path.join(ORIGINAIS, arquivo);
     if (!existsSync(origem)) {
       console.warn(`  ! não achei ${arquivo} — pulando`);
       continue;
@@ -169,7 +177,7 @@ async function main() {
     // o tamanho do original vem do fs.
     const { size: tamanhoOriginal } = await stat(origem);
     antes += tamanhoOriginal;
-    const destino = origem.replace(/\.png$/, ".webp");
+    const destino = path.join(PUBLIC, arquivo.replace(/\.png$/, ".webp"));
     const { size } = await sharp(origem)
       .resize({ width: largura, withoutEnlargement: true })
       .webp({ quality: 82, alphaQuality: alpha ? 100 : 80 })
@@ -180,7 +188,7 @@ async function main() {
     );
   }
   console.log(`\n  total: ${kb(antes)} → ${kb(depois)}`);
-  console.log("\n  Os .png originais continuam no repo até o preview ser aprovado.");
+  console.log("  (originais em assets-originais/, fora do que vai pro CDN)");
 
   console.log("\nCartão de compartilhamento");
   await gerarCartaoCompartilhamento();

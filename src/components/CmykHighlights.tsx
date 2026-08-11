@@ -1,5 +1,17 @@
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
+/**
+ * As quatro cores de seleção do CMYK.
+ *
+ * É a única coisa nesta página que sai da paleta azul do manual da marca, e é
+ * PROPOSITAL (confirmado pelo cliente em 11/08/2026): a Graficon é ferramentaria
+ * gráfica, e ciano/magenta/amarelo/preto é o vocabulário do setor que ela
+ * atende. Quem vê reconhece na hora.
+ *
+ * Não trocar por tons de azul "pra ficar dentro do manual" — o manual rege a
+ * identidade da marca, e aqui a cor está funcionando como referência ao ramo do
+ * cliente, não como cor institucional.
+ */
 const CMYK = {
   cyan: "#00A5E0",
   magenta: "#D81B60",
