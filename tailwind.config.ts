@@ -13,9 +13,15 @@ export default {
       },
     },
     extend: {
+      // Manual da marca: título = Nexa Text Extra Bold, subtítulo/texto = Neue
+      // Kabel. As duas são comerciais e não estão licenciadas aqui, então o site
+      // usa as mesmas substitutas geométricas já adotadas nos carrosséis do
+      // Instagram — Poppins no lugar da Nexa, Jost no lugar da Neue Kabel.
+      // Quando os .otf chegarem, trocar as duas linhas abaixo e o <link> do
+      // index.html por um @font-face local.
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['Roboto Condensed', 'Inter', 'sans-serif'],
+        sans: ['Jost', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['Poppins', 'Jost', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

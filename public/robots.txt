@@ -1,5 +1,51 @@
+# graficonrevestimento.com
+# O arquivo estava vazio (0 byte) até 10/08/2026. Vazio não bloqueia nada, mas
+# também não declarava o sitemap nem dizia nada aos rastreadores de IA.
+
 User-agent: *
 Allow: /
 
-# Sitemap (atualize a URL com seu domínio em produção)
+# ===== Rastreadores de IA =====
+# Liberados de propósito. O site é hoje a única fonte pública sobre a Graficon —
+# não há diretório, review externo nem menção de terceiro que descreva a empresa.
+# Se os modelos não puderem ler esta página, não existe resposta possível sobre a
+# empresa em ChatGPT, Perplexity, Gemini ou Claude. Bloquear aqui seria abrir mão
+# do único canal onde a marca pode ser citada.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://graficonrevestimento.com/sitemap.xml

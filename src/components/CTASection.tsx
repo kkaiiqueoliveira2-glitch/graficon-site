@@ -1,6 +1,8 @@
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
 import { ArrowRight } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 
 const CTASection = () => {
   const scrollToFormulario = () => {
@@ -10,6 +12,11 @@ const CTASection = () => {
     });
     trackGoogleEvent("clique_orcamento", { origem: "cta" });
     document.getElementById("contato")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const trackWhatsAppCta = () => {
+    trackMetaEvent("CliqueWhatsApp", { origem: "cta", botao: "Falar no WhatsApp" });
+    trackGoogleEvent("clique_whatsapp", { origem: "cta" });
   };
 
   return (
@@ -40,10 +47,20 @@ const CTASection = () => {
               completa e retornamos com um orçamento sob medida, com foco em desempenho
               e durabilidade.
             </p>
-            <div>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a
+                href={WHATSAPP_URL_ORCAMENTO}
+                target="_blank"
+                rel="noreferrer"
+                onClick={trackWhatsAppCta}
+                className="btn-wa px-8 py-4 text-base uppercase tracking-wide"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+                Falar no WhatsApp
+              </a>
               <button
                 onClick={scrollToFormulario}
-                className="btn-cyan px-10 py-4 text-base uppercase tracking-wide"
+                className="btn-outline-white px-8 py-4 text-base uppercase tracking-wide"
               >
                 Solicitar orçamento <ArrowRight className="h-5 w-5" />
               </button>

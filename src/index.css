@@ -7,39 +7,57 @@
 
 /* Graficon Industrial Design System
    Traditional, minimalist, corporate industrial aesthetic
-   Colors: Navy blue, metallic gray, clean whites
+
+   PALETA: manual oficial da marca, recebido do cliente em 10/08/2026.
+   Antes dessa data o site usava um navy #2E3A87 e um ciano #29A9C4 escolhidos
+   no redesign de junho a partir da referência usitemb.com.br — nenhum dos dois
+   existe na marca. O manual manda; ver
+   `clientes/Graficon-Revestimento/identidade/LEIA-ME.md` no workspace da Conect+.
+
+     Cor 1  #1b2e75  navy escuro          -> --brand-1
+     Cor 2  #3545a8  azul principal       -> --brand-2
+     Cor 3  #71a0e2  azul claro, DESTAQUE -> --brand-3
+     Degradê: preto 50% sobre Cor 2       -> --brand-deep / --brand-deepest
 */
 
 @layer base {
   :root {
-    /* Primary: Deep Navy Blue - corporate, trustworthy */
-    --primary: 215 50% 18%;
+    /* ===== Cores do manual (fonte de verdade) ===== */
+    --brand-1: 227 63% 28%;   /* #1b2e75 */
+    --brand-2: 232 52% 43%;   /* #3545a8 */
+    --brand-3: 215 66% 66%;   /* #71a0e2 */
+    --brand-deep: 232 53% 22%;    /* #1a2254 — preto 50% sobre Cor 2 */
+    --brand-mid: 232 53% 18%;     /* passo intermediário do degradê */
+    --brand-deepest: 234 53% 13%; /* #101434 — extremo escuro do degradê */
+
+    /* Primary: Cor 1 do manual */
+    --primary: var(--brand-1);
     --primary-foreground: 0 0% 100%;
 
     /* Secondary: Metallic Steel Gray */
-    --secondary: 215 15% 45%;
+    --secondary: 225 12% 45%;
     --secondary-foreground: 0 0% 100%;
 
     /* Background: Clean whites and light grays */
     --background: 0 0% 100%;
-    --foreground: 215 30% 15%;
+    --foreground: 227 25% 16%;
 
     /* Card surfaces */
-    --card: 210 20% 98%;
-    --card-foreground: 215 30% 15%;
+    --card: 225 25% 98%;
+    --card-foreground: 227 25% 16%;
 
     /* Muted: Subtle industrial gray */
-    --muted: 210 15% 94%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 225 18% 95%;
+    --muted-foreground: 225 12% 45%;
 
     /* Accent: Steel blue accent */
-    --accent: 210 25% 90%;
-    --accent-foreground: 215 50% 18%;
+    --accent: 220 30% 92%;
+    --accent-foreground: var(--brand-1);
 
     /* Borders */
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 215 50% 18%;
+    --border: 220 20% 89%;
+    --input: 220 20% 89%;
+    --ring: var(--brand-2);
 
     /* Destructive */
     --destructive: 0 65% 50%;
@@ -47,30 +65,40 @@
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 215 30% 15%;
+    --popover-foreground: 227 25% 16%;
 
     --radius: 0.375rem;
 
     /* Custom tokens for industrial design */
-    --steel: 215 10% 55%;
-    --steel-light: 210 15% 92%;
-    --navy-dark: 215 55% 12%;
-    --navy-medium: 215 45% 25%;
+    --steel: 225 10% 55%;
+    --steel-light: 220 18% 93%;
+    --navy-dark: var(--brand-deepest);
+    --navy-medium: var(--brand-2);
 
-    /* Accent: vibrant cyan (substitui o laranja da referência, mantendo a marca azul) */
-    --cyan: 189 94% 43%;
-    --cyan-strong: 192 91% 36%;
-    --cyan-foreground: 215 60% 12%;
+    /* ===== Cor de destaque =====
+       Os nomes `--cyan*` e as classes `.btn-cyan`/`.text-cyan` são legado do
+       redesign de junho e continuam aqui só pra não espalhar um rename por 11
+       arquivos numa branch que vai passar por revisão visual. O valor agora é a
+       Cor 3 do manual, não ciano. Renomear pra `--accent-brand` fica como
+       faxina separada.
+
+       Uso: Cor 3 puxa o olho sobre fundo escuro, mas sobre branco tem contraste
+       de 2,3:1 — reprova em AA pra texto. Por isso texto/link de destaque sobre
+       branco usa `--cyan-strong` (Cor 2, 7,4:1), e a Cor 3 fica pra fundo
+       escuro, preenchimento e detalhe gráfico. */
+    --cyan: var(--brand-3);
+    --cyan-strong: var(--brand-2);
+    --cyan-foreground: var(--brand-1);
 
     /* Sidebar (keeping for compatibility) */
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 30% 25%;
-    --sidebar-primary: 215 50% 18%;
+    --sidebar-background: 225 25% 98%;
+    --sidebar-foreground: 227 25% 25%;
+    --sidebar-primary: var(--brand-1);
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 15% 94%;
-    --sidebar-accent-foreground: 215 50% 18%;
-    --sidebar-border: 210 20% 88%;
-    --sidebar-ring: 215 50% 18%;
+    --sidebar-accent: 225 18% 95%;
+    --sidebar-accent-foreground: var(--brand-1);
+    --sidebar-border: 220 20% 89%;
+    --sidebar-ring: var(--brand-2);
   }
 
   .dark {
@@ -121,7 +149,11 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    /* Jost = substituta da Neue Kabel Book do manual. Geométrica, com altura de
+       x menor que a Inter, então o corpo sobe um degrau pra não perder leitura
+       em texto técnico corrido. */
+    font-family: 'Jost', 'Inter', system-ui, sans-serif;
+    font-size: 1.0625rem;
     overflow-x: clip;
     width: 100%;
     max-width: 100%;
@@ -132,9 +164,13 @@
     max-width: 100%;
   }
 
+  /* Título = Poppins 800 (substituta da Nexa Text Extra Bold). A Poppins é bem
+     mais larga que a Roboto Condensed que estava aqui, então o tracking abre em
+     vez de apertar — condensar uma geométrica larga deixa o título sujo. */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Condensed', 'Inter', sans-serif;
-    @apply font-bold tracking-tight;
+    font-family: 'Poppins', 'Jost', sans-serif;
+    @apply font-extrabold;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -263,9 +299,9 @@
   .hero-overlay {
     background: linear-gradient(
       135deg,
-      hsl(215 60% 10% / 0.95) 0%,
-      hsl(215 55% 14% / 0.9) 45%,
-      hsl(215 50% 18% / 0.85) 100%
+      hsl(var(--brand-deepest) / 0.95) 0%,
+      hsl(var(--brand-mid) / 0.9) 45%,
+      hsl(var(--brand-deep) / 0.85) 100%
     );
   }
 
@@ -361,11 +397,64 @@
     @apply mt-2 inline-flex items-center justify-center rounded-md border border-primary/20 bg-primary/5 px-4 py-3 text-sm font-semibold text-primary;
   }
 
-  /* ===== Accent cyan utilities ===== */
+  /* ===== Accent utilities ===== */
   .text-cyan {
     color: hsl(var(--cyan));
   }
 
+  /* ===== Hierarquia de CTA =====
+     O WhatsApp é o canal que converte nesta conta, então o verde é o botão
+     principal em toda a página e o azul da marca é o segundo passo. Antes o
+     primário era o pill ciano e o WhatsApp ficava de contorno — a ordem estava
+     invertida em relação ao que o cliente realmente atende.
+
+       .btn-wa            verde cheio     — ação principal (abre o WhatsApp)
+       .btn-brand         Cor 2 cheia     — principal sobre fundo claro sem WhatsApp
+       .btn-brand-outline Cor 2 contorno  — ação secundária sobre fundo claro
+       .btn-outline-white branco contorno — ação secundária sobre fundo escuro
+  */
+  .btn-wa {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition-all;
+    background-color: #25d366;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  }
+
+  .btn-wa:hover {
+    background-color: #20bd5a;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
+  }
+
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white transition-all;
+    background-color: hsl(var(--brand-2));
+    box-shadow: 0 8px 20px hsl(var(--brand-2) / 0.35);
+  }
+
+  .btn-brand:hover {
+    background-color: hsl(var(--brand-1));
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px hsl(var(--brand-2) / 0.45);
+  }
+
+  .btn-brand-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all;
+    border: 2px solid hsl(var(--brand-2));
+    color: hsl(var(--brand-2));
+    background-color: transparent;
+  }
+
+  .btn-brand-outline:hover {
+    background-color: hsl(var(--brand-2));
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px hsl(var(--brand-2) / 0.3);
+  }
+
+  /* Legado: as telas que ainda não passaram pela revisão de hierarquia caem
+     aqui. Hoje é a Cor 3 do manual com texto Cor 1 (5,3:1, passa AA). */
   .btn-cyan {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all;
     background-color: hsl(var(--cyan));
@@ -375,7 +464,7 @@
 
   .btn-cyan:hover {
     background-color: hsl(var(--cyan-strong));
-    color: hsl(var(--cyan-foreground));
+    color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 12px 28px hsl(var(--cyan) / 0.45);
   }
@@ -387,6 +476,62 @@
   .btn-outline-white:hover {
     @apply border-white bg-white/10 text-white;
     transform: translateY(-2px);
+  }
+
+  /* ===== Bloco "pergunte a uma IA" (ver PerguntarIA.tsx) ===== */
+  .ia-bloco {
+    @apply rounded-xl border border-border bg-muted/60 px-5 py-4;
+  }
+
+  .ia-bloco-escuro {
+    @apply border-white/15 bg-white/5;
+  }
+
+  .ia-bloco-titulo {
+    @apply mb-3 flex items-center gap-2 text-sm font-semibold;
+    color: hsl(var(--brand-2));
+  }
+
+  .ia-bloco-escuro .ia-bloco-titulo {
+    color: hsl(var(--brand-3));
+  }
+
+  .ia-bloco-botoes {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .ia-botao {
+    @apply inline-flex items-center justify-center rounded-full border px-4 py-2 text-sm font-semibold transition-all;
+    border-color: hsl(var(--brand-2) / 0.35);
+    color: hsl(var(--brand-2));
+    background-color: #fff;
+  }
+
+  .ia-botao:hover {
+    border-color: hsl(var(--brand-2));
+    background-color: hsl(var(--brand-2));
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .ia-bloco-escuro .ia-botao {
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+
+  .ia-bloco-escuro .ia-botao:hover {
+    background-color: #fff;
+    color: hsl(var(--brand-1));
+    border-color: #fff;
+  }
+
+  .ia-bloco-nota {
+    @apply mt-3 text-xs text-muted-foreground;
+  }
+
+  .ia-bloco-escuro .ia-bloco-nota {
+    @apply text-white/55;
   }
 
   /* ===== Top utility bar (estilo USITEMB) ===== */
@@ -452,9 +597,9 @@
   .hero-usitemb-overlay {
     background: linear-gradient(
       100deg,
-      hsl(215 60% 8% / 0.96) 0%,
-      hsl(215 58% 11% / 0.92) 40%,
-      hsl(215 50% 16% / 0.78) 100%
+      hsl(var(--brand-deepest) / 0.96) 0%,
+      hsl(var(--brand-mid) / 0.92) 40%,
+      hsl(var(--brand-deep) / 0.78) 100%
     );
   }
 
@@ -529,8 +674,8 @@
     background: linear-gradient(
       180deg,
       #ffffff 0%,
-      hsl(210 20% 98%) 50%,
-      hsl(215 15% 96%) 100%
+      hsl(225 25% 98%) 50%,
+      hsl(225 18% 96%) 100%
     );
   }
 
@@ -613,7 +758,7 @@
   }
 
   .svc-card-media {
-    @apply relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br from-[hsl(215_50%_18%)] to-[hsl(215_45%_28%)];
+    @apply relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br from-[hsl(var(--brand-deep))] to-[hsl(var(--brand-1))];
   }
 
   .svc-card-media img {
@@ -646,7 +791,7 @@
   /* ===== Faixa CTA escura (estilo USITEMB) ===== */
   .cta-band {
     @apply relative overflow-hidden rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center;
-    background: linear-gradient(120deg, hsl(215 60% 12%) 0%, hsl(215 52% 20%) 100%);
+    background: linear-gradient(120deg, hsl(var(--brand-deepest)) 0%, hsl(var(--brand-1)) 100%);
     box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5);
   }
 
@@ -659,7 +804,7 @@
   /* ===== Faixa CTA com imagem (showcase, estilo USITEMB) ===== */
   .cta-showcase {
     @apply relative grid overflow-hidden rounded-2xl md:grid-cols-2;
-    background: linear-gradient(120deg, hsl(215 60% 12%) 0%, hsl(215 52% 20%) 100%);
+    background: linear-gradient(120deg, hsl(var(--brand-deepest)) 0%, hsl(var(--brand-1)) 100%);
     box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5);
   }
 
@@ -680,19 +825,19 @@
   .cta-showcase-media::after {
     content: "";
     @apply absolute inset-0;
-    background: linear-gradient(90deg, transparent 55%, hsl(215 60% 12%) 100%);
+    background: linear-gradient(90deg, transparent 55%, hsl(var(--brand-deepest)) 100%);
   }
 
   @media (min-width: 768px) {
     .cta-showcase-media::after {
-      background: linear-gradient(90deg, transparent 60%, hsl(215 58% 14%) 100%);
+      background: linear-gradient(90deg, transparent 60%, hsl(var(--brand-mid)) 100%);
     }
   }
 
   /* ===== Faixa "Quem somos" (estilo USITEMB) ===== */
   .about-band {
     @apply relative rounded-2xl p-8 md:p-12;
-    background: linear-gradient(120deg, hsl(215 60% 12%) 0%, hsl(215 52% 20%) 100%);
+    background: linear-gradient(120deg, hsl(var(--brand-deepest)) 0%, hsl(var(--brand-1)) 100%);
     box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.45);
   }
 
@@ -865,8 +1010,8 @@
   .section-blue-gradient {
     background: linear-gradient(
       135deg,
-      hsl(215 50% 18%) 0%,
-      hsl(215 45% 25%) 100%
+      hsl(var(--brand-deep)) 0%,
+      hsl(var(--brand-1)) 100%
     );
   }
 
@@ -1101,9 +1246,9 @@
   .about-section-3d {
     background: linear-gradient(
       135deg,
-      hsl(215 60% 12%) 0%,
-      hsl(215 55% 18%) 55%,
-      hsl(215 50% 22%) 100%
+      hsl(var(--brand-deepest)) 0%,
+      hsl(var(--brand-mid)) 55%,
+      hsl(var(--brand-deep)) 100%
     );
     box-shadow:
       inset 0 2px 0 rgba(255, 255, 255, 0.08),
@@ -1303,11 +1448,11 @@
     background:
       linear-gradient(
         90deg,
-        hsl(215 50% 12%) 0%,
-        hsl(215 45% 18%) 12%,
-        hsl(215 40% 24%) 50%,
-        hsl(215 45% 18%) 88%,
-        hsl(215 50% 12%) 100%
+        hsl(var(--brand-deepest)) 0%,
+        hsl(var(--brand-mid)) 12%,
+        hsl(var(--brand-1)) 50%,
+        hsl(var(--brand-mid)) 88%,
+        hsl(var(--brand-deepest)) 100%
       );
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: white;
@@ -1338,11 +1483,11 @@
     background:
       linear-gradient(
         90deg,
-        hsl(215 50% 14%) 0%,
-        hsl(215 45% 20%) 12%,
-        hsl(215 40% 26%) 50%,
-        hsl(215 45% 20%) 88%,
-        hsl(215 50% 14%) 100%
+        hsl(var(--brand-mid)) 0%,
+        hsl(var(--brand-deep)) 12%,
+        hsl(var(--brand-2)) 50%,
+        hsl(var(--brand-deep)) 88%,
+        hsl(var(--brand-mid)) 100%
       );
     box-shadow:
       0 12px 28px rgba(0, 0, 0, 0.4),

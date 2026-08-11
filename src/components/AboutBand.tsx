@@ -38,7 +38,9 @@ const AboutBand = () => {
               ))}
             </ul>
 
-            <Link to="/sobre" className="btn-cyan px-7 py-3.5 text-sm uppercase tracking-wide">
+            {/* Navegação institucional, não conversão — fica de contorno pra não
+                competir com os botões de orçamento da página. */}
+            <Link to="/sobre" className="btn-outline-white px-7 py-3.5 text-sm uppercase tracking-wide">
               Conheça a Graficon <ArrowRight className="h-4 w-4" />
             </Link>
 
@@ -65,8 +67,10 @@ const AboutBand = () => {
           </div>
 
           <img
-            src="/cilindros-quem-somos.png"
+            src="/cilindros-quem-somos.webp"
             alt="Cilindros industriais revestidos pela Graficon, com acabamento espelhado"
+            width={1100}
+            height={733}
             loading="lazy"
             decoding="async"
             className="about-band-photo"

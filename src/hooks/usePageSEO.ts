@@ -2,7 +2,11 @@ import { useEffect } from "react";
 
 const SITE_URL = "https://graficonrevestimento.com";
 const SITE_NAME = "Graficon Revestimento de Cilindros";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/logo-graficon.png`;
+// Cartão 1200×630 da marca (scripts/gerar-assets-marca.mjs). Antes apontava pro
+// logo quadrado, que virava um selo recortado na prévia do WhatsApp.
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-graficon.jpg`;
+// O logo continua sendo o que vai no JSON-LD como logo da organização.
+const ORG_LOGO = `${SITE_URL}/logo-graficon-horizontal.png`;
 
 const DEFAULT_CANONICAL = `${SITE_URL}/`;
 const DEFAULT_TITLE = "Revestimento de Cilindros | Graficon - Recuperação e Revestimento Industrial em São Paulo";
@@ -139,7 +143,7 @@ export function usePageSEO({
           url: SITE_URL,
           logo: {
             "@type": "ImageObject",
-            url: DEFAULT_OG_IMAGE,
+            url: ORG_LOGO,
           },
         },
       });
