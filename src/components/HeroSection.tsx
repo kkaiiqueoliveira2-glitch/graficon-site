@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
 import CountUp from "@/components/CountUp";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 // Versões responsivas: o celular baixa ~640/960px em vez dos 1920px (LCP).
 import heroSrcset from "@/assets/hero-industrial.jpg?w=640;960;1280;1920&format=webp&as=srcset";
@@ -58,22 +59,26 @@ const HeroSection = () => {
             celulose — com alta precisão, desempenho e confiabilidade.
           </p>
 
+          {/* WhatsApp na frente: é o canal que a Graficon realmente atende, e
+              os leads da campanha chegam por ele. O formulário fica como
+              segundo caminho, pra quem prefere mandar especificação escrita. */}
           <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start">
-            <button
-              onClick={scrollToFormulario}
-              className="btn-cyan px-8 py-4 text-base uppercase tracking-wide"
-            >
-              Solicitar orçamento
-            </button>
             <a
               href={WHATSAPP_URL_ORCAMENTO}
               target="_blank"
               rel="noreferrer"
               onClick={trackWhatsAppHero}
-              className="btn-outline-white text-base"
+              className="btn-wa px-8 py-4 text-base uppercase tracking-wide"
             >
-              Chamar no WhatsApp
+              <WhatsAppIcon className="h-5 w-5" />
+              Falar no WhatsApp
             </a>
+            <button
+              onClick={scrollToFormulario}
+              className="btn-outline-white text-base uppercase tracking-wide"
+            >
+              Solicitar orçamento
+            </button>
           </div>
 
           <p className="mt-6 text-sm text-white/70 max-w-xl">
@@ -125,7 +130,7 @@ const HeroSection = () => {
           <path
             d="M0,70 C360,140 1080,10 1440,80"
             fill="none"
-            stroke="hsl(189 94% 43%)"
+            stroke="hsl(var(--brand-3))"
             strokeWidth="3"
           />
         </svg>

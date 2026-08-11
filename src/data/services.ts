@@ -16,6 +16,12 @@ export type Service = {
   longDescription: string[];
   bullets: string[];
   faq: ServiceFaq[];
+  /**
+   * Pergunta que abre pronta nos botões de IA (ver `PerguntarIA.tsx`).
+   * É sempre técnica, sobre a decisão que o comprador tem em mãos — nunca sobre
+   * a reputação da Graficon, que nenhum modelo conhece hoje.
+   */
+  promptIA: string;
 };
 
 export const services: Service[] = [
@@ -54,6 +60,8 @@ export const services: Service[] = [
         a: "Sim. Trabalhamos com cilindros para flexografia, rotogravura, embalagens, papel e celulose e outras aplicações industriais, ajustando o processo de galvanização e cromo à exigência de cada uso.",
       },
     ],
+    promptIA:
+      "Vale mais a pena recuperar um cilindro industrial desgastado com cromo duro ou comprar um cilindro novo? Quais critérios técnicos devo usar pra decidir?",
   },
   {
     slug: "preparacao-tecnica-e-tratamentos",
@@ -90,6 +98,8 @@ export const services: Service[] = [
         a: "Sim. A preparação técnica inclui ajustes e correções dimensionais para que o cilindro volte à especificação e encaixe corretamente no equipamento do cliente.",
       },
     ],
+    promptIA:
+      "Como identificar a causa do desgaste de um cilindro de impressão antes de mandar revestir? O que acontece se a causa não for corrigida?",
   },
   {
     slug: "processos-de-revestimento",
@@ -126,6 +136,8 @@ export const services: Service[] = [
         a: "Sim. Trabalhamos com controle de processo justamente para assegurar uniformidade de superfície e repetibilidade entre peças, o que é essencial para quem precisa de padrão constante em produção.",
       },
     ],
+    promptIA:
+      "Qual tipo de revestimento de cilindro é indicado para flexografia e qual para rotogravura? O que muda entre os dois processos?",
   },
   {
     slug: "usinagem-e-fabricacao",
@@ -162,6 +174,8 @@ export const services: Service[] = [
         a: "Sim. Entregamos a solução completa — usinagem, fabricação e revestimento — em um único fornecedor, o que reduz prazo e evita problemas de compatibilidade entre etapas.",
       },
     ],
+    promptIA:
+      "Quando compensa mandar fabricar um cilindro industrial sob medida em vez de adaptar um de catálogo? Que riscos a adaptação traz?",
   },
   {
     slug: "cilindros-especiais",
@@ -198,6 +212,8 @@ export const services: Service[] = [
         a: "Descreva a peça, o material e a condição de uso pelo formulário ou pelo WhatsApp (11) 91529-1313. A partir disso fazemos a avaliação técnica e indicamos a melhor combinação de processo e material.",
       },
     ],
+    promptIA:
+      "Que cuidados extras um cilindro industrial fora do padrão exige na escolha de material e de revestimento? O que costuma dar errado nesses casos?",
   },
   {
     slug: "prova-e-analise",
@@ -234,6 +250,8 @@ export const services: Service[] = [
         a: "Sim. A aprovação na prova e análise confirma que a peça está apta a operar com segurança e desempenho, e ficamos à disposição para alinhar os resultados conforme a necessidade do cliente.",
       },
     ],
+    promptIA:
+      "Como verificar se um cilindro revestido saiu dentro da especificação de espessura e dureza? Que medições devo exigir do fornecedor?",
   },
 ];
 

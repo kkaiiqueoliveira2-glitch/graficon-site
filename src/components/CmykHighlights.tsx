@@ -1,5 +1,17 @@
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
 
+/**
+ * As quatro cores de seleção do CMYK.
+ *
+ * É a única coisa nesta página que sai da paleta azul do manual da marca, e é
+ * PROPOSITAL (confirmado pelo cliente em 11/08/2026): a Graficon é ferramentaria
+ * gráfica, e ciano/magenta/amarelo/preto é o vocabulário do setor que ela
+ * atende. Quem vê reconhece na hora.
+ *
+ * Não trocar por tons de azul "pra ficar dentro do manual" — o manual rege a
+ * identidade da marca, e aqui a cor está funcionando como referência ao ramo do
+ * cliente, não como cor institucional.
+ */
 const CMYK = {
   cyan: "#00A5E0",
   magenta: "#D81B60",
@@ -10,28 +22,28 @@ const CMYK = {
 const highlights = [
   {
     color: CMYK.cyan,
-    image: "/card-revestimento.png",
+    image: "/card-revestimento.webp",
     alt: "Cilindro revestido com acabamento técnico espelhado",
     title: "Revestimento de alta qualidade",
     description: "Controle dimensional rigoroso e acabamento técnico em cada cilindro.",
   },
   {
     color: CMYK.magenta,
-    image: "/card-analise.png",
+    image: "/card-analise.webp",
     alt: "Técnico medindo um cilindro com paquímetro de precisão",
     title: "Análise técnica dedicada",
     description: "Avaliamos sua demanda e indicamos a melhor solução pra cada peça.",
   },
   {
     color: CMYK.yellow,
-    image: "/card-precisao.png",
+    image: "/card-precisao.webp",
     alt: "Usinagem de cilindro industrial em torno CNC",
     title: "Precisão e repetibilidade",
     description: "Tecnologia e processos sob controle pra entregar o mesmo padrão sempre.",
   },
   {
     color: CMYK.black,
-    image: "/card-sob-medida.png",
+    image: "/card-sob-medida.webp",
     alt: "Vários cilindros industriais de tamanhos diferentes",
     title: "Soluções sob medida",
     description: "Cilindros especiais que fogem do padrão por material, dimensão ou aplicação.",
@@ -54,12 +66,12 @@ const CmykHighlights = () => {
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
           <path
             d="M0,0 L1440,0 L1440,50 C1080,110 360,-10 0,40 Z"
-            fill="hsl(210 15% 94%)"
+            fill="hsl(var(--muted))"
           />
           <path
             d="M0,40 C360,-10 1080,110 1440,50"
             fill="none"
-            stroke="hsl(189 94% 43%)"
+            stroke="hsl(var(--brand-3))"
             strokeWidth="3"
           />
         </svg>

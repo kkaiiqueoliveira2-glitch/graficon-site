@@ -12,6 +12,8 @@ import {
 import { usePageSEO } from "@/hooks/usePageSEO";
 import { getServiceBySlug, services } from "@/data/services";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import PerguntarIA from "@/components/PerguntarIA";
 
 const SITE_URL = "https://graficonrevestimento.com";
 
@@ -53,6 +55,49 @@ const ServicoDetalhe = () => {
         item: `${SITE_URL}/servicos/${service.slug}`,
       },
     ],
+  };
+
+  /**
+   * Schema do serviço em si, separado do Article que o usePageSEO já injeta.
+   *
+   * O Article descreve "esta página é um texto sobre X"; o Service descreve
+   * "a Graficon presta o serviço X, na região Y". É esse segundo que amarra o
+   * serviço à entidade da empresa (via @id do LocalBusiness da home) e o que os
+   * mecanismos de resposta usam pra dizer quem faz o quê.
+   *
+   * Sem preço: cada orçamento sai de análise técnica da peça, então declarar
+   * faixa de valor aqui seria inventar dado.
+   */
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_URL}/servicos/${service.slug}#servico`,
+    name: service.title,
+    description: service.seoDescription,
+    url: `${SITE_URL}/servicos/${service.slug}`,
+    serviceType: service.title,
+    category: "Revestimento e recuperação de cilindros industriais",
+    provider: { "@id": `${SITE_URL}/#empresa` },
+    areaServed: [
+      { "@type": "City", name: "São Paulo" },
+      { "@type": "State", name: "São Paulo" },
+      { "@type": "Country", name: "Brasil" },
+    ],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: `${SITE_URL}/servicos/${service.slug}`,
+      servicePhone: "+55-11-91529-1313",
+      availableLanguage: "Portuguese",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `O que inclui — ${service.title}`,
+      itemListElement: service.bullets.map((b, i) => ({
+        "@type": "Offer",
+        position: i + 1,
+        itemOffered: { "@type": "Service", name: b },
+      })),
+    },
   };
 
   return (
@@ -116,17 +161,18 @@ const ServicoDetalhe = () => {
                 </ul>
 
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <Link to="/#contato" className="btn-cyan px-8 py-3.5 text-sm uppercase tracking-wide">
-                    Solicitar orçamento <ArrowRight className="h-4 w-4" />
-                  </Link>
                   <a
                     href={WHATSAPP_URL_ORCAMENTO}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold text-primary transition-colors hover:border-primary"
+                    className="btn-wa px-8 py-3.5 text-sm uppercase tracking-wide"
                   >
+                    <WhatsAppIcon className="h-4 w-4" />
                     Falar no WhatsApp
                   </a>
+                  <Link to="/#contato" className="btn-brand-outline px-8 py-3.5 text-sm uppercase tracking-wide">
+                    Solicitar orçamento <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -153,6 +199,16 @@ const ServicoDetalhe = () => {
                 </AccordionItem>
               ))}
             </Accordion>
+
+            {/* Fecha o FAQ oferecendo uma segunda opinião neutra. Quem chega
+                aqui já leu as respostas da própria Graficon — a checagem externa
+                vale mais no fim da leitura do que no começo. */}
+            <div className="mt-8">
+              <PerguntarIA
+                prompt={service.promptIA}
+                origem={`servico-${service.slug}`}
+              />
+            </div>
           </div>
         </section>
 
@@ -190,6 +246,10 @@ const ServicoDetalhe = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
     </div>
   );

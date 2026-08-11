@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import PerguntarIA from "@/components/PerguntarIA";
 
 const faqs = [
   {
@@ -59,6 +60,13 @@ const FaqHome = () => {
             </AccordionItem>
           ))}
         </Accordion>
+
+        <div className="mt-8">
+          <PerguntarIA
+            prompt="Meu cilindro de impressão está desgastado e perdeu medida. Vale a pena mandar recuperar e revestir, ou é melhor comprar um novo? Como avaliar isso?"
+            origem="faq-home"
+          />
+        </div>
       </div>
 
       <script
