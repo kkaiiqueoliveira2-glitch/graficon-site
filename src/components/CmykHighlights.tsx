@@ -1,23 +1,7 @@
 import heroImage from "@/assets/hero-industrial.jpg?w=1920&format=webp";
+import CurvaSecao from "@/components/CurvaSecao";
+import { CMYK } from "@/lib/cmyk";
 
-/**
- * As quatro cores de seleção do CMYK.
- *
- * É a única coisa nesta página que sai da paleta azul do manual da marca, e é
- * PROPOSITAL (confirmado pelo cliente em 11/08/2026): a Graficon é ferramentaria
- * gráfica, e ciano/magenta/amarelo/preto é o vocabulário do setor que ela
- * atende. Quem vê reconhece na hora.
- *
- * Não trocar por tons de azul "pra ficar dentro do manual" — o manual rege a
- * identidade da marca, e aqui a cor está funcionando como referência ao ramo do
- * cliente, não como cor institucional.
- */
-const CMYK = {
-  cyan: "#00A5E0",
-  magenta: "#D81B60",
-  yellow: "#FFB300",
-  black: "#212121",
-};
 
 const highlights = [
   {
@@ -62,20 +46,7 @@ const CmykHighlights = () => {
       <div className="absolute inset-0 hero-overlay" aria-hidden />
 
       {/* Borda curva no topo (vinda da seção clara acima) */}
-      <div className="section-curve-top" aria-hidden>
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path
-            d="M0,0 L1440,0 L1440,50 C1080,110 360,-10 0,40 Z"
-            fill="hsl(var(--muted))"
-          />
-          <path
-            d="M0,40 C360,-10 1080,110 1440,50"
-            fill="none"
-            stroke="hsl(var(--brand-3))"
-            strokeWidth="3"
-          />
-        </svg>
-      </div>
+      <CurvaSecao posicao="topo" corDestino="hsl(var(--muted))" />
       <div className="container relative z-10">
         <h2 data-reveal className="text-2xl md:text-3xl font-bold text-white text-center mb-10 md:mb-12">
           Por que escolher revestimento de cilindros com a Graficon?

@@ -1,11 +1,5 @@
 import { Cylinder, Cog, CheckCircle } from "lucide-react";
-
-const CMYK = {
-  cyan: "#00A5E0",
-  magenta: "#D81B60",
-  yellow: "#FFB300",
-  black: "#212121",
-};
+import { CMYK } from "@/lib/cmyk";
 
 const SectionDivider = () => {
   return (

@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
+import CurvaSecao from "@/components/CurvaSecao";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -90,12 +91,7 @@ const ContactForm = () => {
     <>
       <section className="contact-hero relative overflow-hidden pt-28 pb-28 md:pt-40 md:pb-40">
         {/* Curva no topo (vinda da faixa branca acima) */}
-        <div className="section-curve-top" aria-hidden>
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,0 L1440,0 L1440,50 C1080,110 360,-10 0,40 Z" fill="hsl(0 0% 100%)" />
-            <path d="M0,40 C360,-10 1080,110 1440,50" fill="none" stroke="hsl(189 94% 43%)" strokeWidth="3" />
-          </svg>
-        </div>
+        <CurvaSecao posicao="topo" corDestino="hsl(0 0% 100%)" />
 
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
@@ -122,12 +118,7 @@ const ContactForm = () => {
         </div>
 
         {/* Curva na base (descendo para a seção de cards) */}
-        <div className="hero-curve" aria-hidden>
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,70 C360,140 1080,10 1440,80 L1440,120 L0,120 Z" fill="hsl(210 15% 94%)" />
-            <path d="M0,70 C360,140 1080,10 1440,80" fill="none" stroke="hsl(189 94% 43%)" strokeWidth="3" />
-          </svg>
-        </div>
+        <CurvaSecao posicao="base" corDestino="hsl(var(--muted))" />
       </section>
 
       <section id="contato" className="section-industrial bg-muted py-16 md:py-24 scroll-mt-28 md:scroll-mt-32">

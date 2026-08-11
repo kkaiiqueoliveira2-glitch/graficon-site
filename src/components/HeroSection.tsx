@@ -4,6 +4,7 @@ import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
 import CountUp from "@/components/CountUp";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import CurvaSecao from "@/components/CurvaSecao";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 // Versões responsivas: o celular baixa ~640/960px em vez dos 1920px (LCP).
 import heroSrcset from "@/assets/hero-industrial.jpg?w=640;960;1280;1920&format=webp&as=srcset";
@@ -121,20 +122,7 @@ const HeroSection = () => {
       </button>
 
       {/* Borda curva na base, igual à referência */}
-      <div className="hero-curve" aria-hidden>
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path
-            d="M0,70 C360,140 1080,10 1440,80 L1440,120 L0,120 Z"
-            fill="hsl(0 0% 100%)"
-          />
-          <path
-            d="M0,70 C360,140 1080,10 1440,80"
-            fill="none"
-            stroke="hsl(var(--brand-3))"
-            strokeWidth="3"
-          />
-        </svg>
-      </div>
+      <CurvaSecao posicao="base" corDestino="hsl(0 0% 100%)" />
     </section>
   );
 };

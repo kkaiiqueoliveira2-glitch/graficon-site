@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
+import CurvaSecao from "@/components/CurvaSecao";
 
 const feedbacks = [
   {
@@ -124,20 +125,7 @@ const FeedbackSection = () => {
       </div>
 
       {/* Borda curva na base (transição para a FAQ branca) */}
-      <div className="hero-curve" aria-hidden>
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path
-            d="M0,70 C360,140 1080,10 1440,80 L1440,120 L0,120 Z"
-            fill="hsl(0 0% 100%)"
-          />
-          <path
-            d="M0,70 C360,140 1080,10 1440,80"
-            fill="none"
-            stroke="hsl(189 94% 43%)"
-            strokeWidth="3"
-          />
-        </svg>
-      </div>
+      <CurvaSecao posicao="base" corDestino="hsl(0 0% 100%)" />
     </section>
   );
 };
