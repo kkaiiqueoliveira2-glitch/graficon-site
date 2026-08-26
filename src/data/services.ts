@@ -1,4 +1,4 @@
-import { Zap, Settings, Layers, Cog, Box, TestTube, type LucideIcon } from "lucide-react";
+import { Zap, Settings, Layers, Cog, Box, TestTube, Wrench, type LucideIcon } from "lucide-react";
 
 export type ServiceFaq = {
   q: string;
@@ -39,32 +39,36 @@ export const services: Service[] = [
     exemploMensagem:
       "Ex: repor camada de cromo duro, voltar à medida original...",
     icon: Zap,
-    title: "Galvanização e Cromo",
+    title: "Cromo Duro e Galvanização",
     description:
-      "Todo trabalho de qualidade começa pela base. Processos de galvanização e aplicação de cromo com alto controle técnico, garantindo base confiável e uniforme para o revestimento.",
+      "Reposição de camada de cromo duro em cilindros e hastes para devolver a medida original e a resistência ao desgaste, com controle de espessura e dureza.",
     image: "/services/svc-galvanizacao.webp",
-    seoTitle: "Galvanização e Cromo Duro de Cilindros em SP | Graficon",
+    seoTitle: "Cromo Duro em Cilindros e Hastes em SP | Graficon",
     seoDescription:
-      "Galvanização e cromo duro em cilindros industriais com alto controle técnico — base uniforme e confiável para o revestimento. Orçamento em São Paulo.",
+      "Reposição de camada de cromo duro para recuperar a medida original de cilindros e hastes industriais em São Paulo. Mande a medida e a foto e receba um orçamento técnico.",
     longDescription: [
-      "A galvanização e a aplicação de cromo são a base de todo revestimento de qualidade. Antes de qualquer acabamento, o cilindro precisa de uma camada metálica uniforme, aderente e dentro das especificações técnicas da aplicação.",
-      "Na Graficon, esse processo é feito com controle rigoroso de espessura, dureza e acabamento, garantindo uma superfície confiável que prolonga a vida útil do cilindro e sustenta o desempenho ao longo das tiragens.",
-      "Atendemos indústrias e gráficas em São Paulo e região, tanto na aplicação inicial quanto na recuperação de cilindros desgastados que precisam voltar à medida e à dureza originais.",
+      "Quando um cilindro perde medida por desgaste, na maioria dos casos ele não precisa ser substituído. A reposição de camada de cromo duro devolve a peça à medida original e à dureza de projeto, por um custo bem menor do que comprar um cilindro novo.",
+      "O processo é feito com controle rigoroso de espessura, dureza e acabamento. A camada de cromo tem alta resistência ao desgaste, o que prolonga a vida útil da peça e sustenta o desempenho ao longo das tiragens. A galvanização entra quando a aplicação pede uma camada metálica de base antes do acabamento final.",
+      "Sobre escopo, para não fazer ninguém perder tempo: trabalhamos apenas com cilindros e hastes de máquinas industriais e gráficas. Não fazemos cromagem de peça avulsa, decorativa nem automotiva. Se a sua peça é de máquina, mande a medida e a foto que avaliamos se dá para recuperar.",
     ],
     bullets: [
-      "Camada uniforme e com boa aderência",
-      "Controle de espessura e dureza",
-      "Base adequada para diferentes tipos de revestimento",
-      "Maior durabilidade e resistência ao desgaste",
+      "Devolve a medida original da peça",
+      "Alta resistência ao desgaste",
+      "Controle de espessura, dureza e acabamento",
+      "Custa menos que um cilindro novo",
     ],
     faq: [
       {
-        q: "Qual a diferença entre galvanização e cromo duro?",
-        a: "A galvanização deposita uma camada metálica de proteção e base no cilindro, enquanto o cromo duro aplica uma camada de alta dureza voltada à resistência ao desgaste e à recuperação de medida. Na prática, os dois processos se complementam para entregar uma superfície durável e dentro da especificação.",
+        q: "O cromo duro serve para recuperar a medida de um cilindro desgastado?",
+        a: "Sim, e é o uso mais comum. O cromo duro devolve medida e acabamento a cilindros e hastes que sofreram desgaste em operação, restaurando as condições técnicas de uso por um custo menor do que comprar uma peça nova.",
       },
       {
-        q: "O cromo duro serve para recuperar a medida de um cilindro desgastado?",
-        a: "Sim. O cromo duro é muito usado para devolver a medida e o acabamento de cilindros que sofreram desgaste em operação, restaurando as condições técnicas de uso por um custo menor do que comprar uma peça nova.",
+        q: "Vocês fazem cromo em peça avulsa, aro, roda ou peça automotiva?",
+        a: "Não. A Graficon trabalha só com cilindros e hastes de máquinas industriais e gráficas. Cromagem decorativa, automotiva ou de peça avulsa não é o nosso serviço, e preferimos dizer isso antes de você perder tempo pedindo orçamento.",
+      },
+      {
+        q: "Qual a diferença entre galvanização e cromo duro?",
+        a: "A galvanização deposita uma camada metálica de proteção e base no cilindro, enquanto o cromo duro aplica uma camada de alta dureza voltada à resistência ao desgaste e à recuperação de medida. Na prática, os dois processos se complementam para entregar uma superfície durável e dentro da especificação.",
       },
       {
         q: "Vocês atendem cilindros para flexografia e rotogravura?",
@@ -125,40 +129,40 @@ export const services: Service[] = [
     exemploMensagem:
       "Ex: reencape de rolo de borracha, revestimento para flexografia...",
     icon: Layers,
-    title: "Processos de Revestimento",
+    title: "Revestimento e Reencape de Borracha",
     description:
-      "Revestimento realizado com controle rigoroso e tecnologia adequada para assegurar precisão, uniformidade e repetibilidade em cada entrega.",
+      "Reencape de rolos e cilindros de borracha para flexografia, rotogravura, papel e celulose, com precisão dimensional e uniformidade de superfície.",
     image: "/services/svc-revestimento.webp",
-    seoTitle: "Processos de Revestimento de Cilindros | Graficon SP",
+    seoTitle: "Revestimento de Cilindros e Reencape de Rolo de Borracha | SP",
     seoDescription:
-      "Revestimento de cilindros com controle rigoroso e tecnologia adequada — precisão, uniformidade e repetibilidade em cada entrega. São Paulo.",
+      "Reencape de rolo de borracha e revestimento de cilindros para flexografia, rotogravura, papel e celulose. Precisão dimensional e uniformidade em São Paulo.",
     longDescription: [
       "O revestimento é o coração do nosso trabalho. Aplicamos a camada técnica sobre o cilindro com controle rigoroso de processo, garantindo precisão dimensional, uniformidade de superfície e repetibilidade entre as peças.",
-      "Trabalhamos com diferentes tipos de revestimento conforme o processo de impressão ou a aplicação industrial, sempre com foco em desempenho e durabilidade.",
-      "Cada revestimento é definido a partir da aplicação real: o que funciona para flexografia pode não ser o ideal para rotogravura ou para uma peça de uso industrial pesado.",
+      "Reencapamos rolos e cilindros de borracha para flexografia, rotogravura, embalagens, papel e celulose. Cada aplicação pede uma dureza e um acabamento diferentes: o que funciona para flexografia pode não ser o ideal para rotogravura ou para uma peça de uso industrial pesado.",
+      "Cilindro emborrachado que perdeu diâmetro, endureceu ou passou a marcar a superfície costuma voltar à condição de uso com reencape, sem precisar de peça nova. Mande a medida e a foto que avaliamos.",
     ],
     bullets: [
-      "Precisão e uniformidade de superfície",
-      "Repetibilidade entre cilindros",
-      "Revestimento adequado a cada processo",
+      "Reencape de rolos e cilindros de borracha",
+      "Dureza ajustada à aplicação",
+      "Precisão dimensional e uniformidade",
       "Alta resistência para longas tiragens",
     ],
     faq: [
       {
-        q: "Quais tipos de revestimento de cilindro a Graficon faz?",
-        a: "Trabalhamos com diferentes revestimentos técnicos conforme o processo de impressão (flexografia, rotogravura) ou a aplicação industrial. A escolha é definida na preparação técnica, a partir do material, da exigência de dureza e das condições de uso.",
+        q: "Vocês fazem reencape de rolo de borracha?",
+        a: "Sim. Reencapamos rolos e cilindros de borracha para flexografia, rotogravura, embalagens, papel e celulose, ajustando a dureza e o acabamento à aplicação real da peça.",
       },
       {
-        q: "Quanto tempo dura um cilindro revestido?",
-        a: "Depende do tipo de revestimento, da tiragem e das condições de operação. Um revestimento bem executado e com a camada adequada prolonga significativamente a vida útil e mantém a qualidade de impressão por mais tempo.",
+        q: "Meu cilindro emborrachado está marcando o material. Dá para recuperar?",
+        a: "Na maioria dos casos, sim. Marcação, perda de diâmetro e endurecimento da borracha são sinais de desgaste normal do revestimento, e o reencape devolve a peça à condição de uso. Mande a medida e uma foto que avaliamos antes de orçar.",
       },
       {
-        q: "O revestimento garante repetibilidade entre vários cilindros?",
-        a: "Sim. Trabalhamos com controle de processo justamente para assegurar uniformidade de superfície e repetibilidade entre peças, o que é essencial para quem precisa de padrão constante em produção.",
+        q: "Como vocês definem a dureza da borracha?",
+        a: "Pela aplicação real do cilindro: tipo de máquina, material processado e pressão de trabalho. É por isso que pedimos a medida e a foto antes de fechar o orçamento, em vez de dar um valor genérico por telefone.",
       },
     ],
     promptIA:
-      "Qual tipo de revestimento de cilindro é indicado para flexografia e qual para rotogravura? O que muda entre os dois processos?",
+      "Quando um rolo de borracha de máquina gráfica precisa de reencape em vez de limpeza ou retífica? Que sinais indicam fim de vida do revestimento?",
   },
   {
     slug: "usinagem-e-fabricacao",
@@ -282,6 +286,48 @@ export const services: Service[] = [
     ],
     promptIA:
       "Como verificar se um cilindro revestido saiu dentro da especificação de espessura e dureza? Que medições devo exigir do fornecedor?",
+  },
+  {
+    slug: "cilindro-hidraulico-e-haste",
+    pecaPadrao: "Haste ou pistão de cilindro hidráulico",
+    exemploMensagem:
+      "Ex: haste riscada, pistão fora de medida, cilindro vazando...",
+    icon: Wrench,
+    // TODO: trocar por foto real da operação hidráulica quando houver.
+    image: "/services/svc-usinagem.webp",
+    title: "Cilindro Hidráulico e Haste",
+    description:
+      "Recuperação de haste e pistão de cilindro hidráulico: reposição de camada de cromo, correção de medida e acabamento para a peça voltar a operar.",
+    seoTitle: "Recuperação de Cilindro Hidráulico e Haste em SP | Graficon",
+    seoDescription:
+      "Conserto de pistão hidráulico e recuperação de haste de cilindro: reposição de cromo, correção de medida e acabamento. Orçamento técnico em São Paulo.",
+    longDescription: [
+      "Haste de cilindro hidráulico riscada, ovalizada ou fora de medida costuma ser recuperável. Repomos a camada de cromo, corrigimos a medida e devolvemos o acabamento necessário para a vedação trabalhar sem vazar, o que quase sempre sai mais barato e mais rápido do que comprar uma haste nova.",
+      "O mesmo vale para pistões e camisas que perderam especificação por desgaste de operação. O diagnóstico começa pela medida e pelo estado da superfície: nem toda peça compensa recuperar, e dizemos isso antes de orçar.",
+      "Atendemos indústrias, oficinas e frotas em São Paulo e região. Mande a medida e a foto da peça pelo WhatsApp e avaliamos se dá para recuperar.",
+    ],
+    bullets: [
+      "Reposição de cromo em haste e pistão",
+      "Correção de medida e ovalização",
+      "Acabamento adequado à vedação",
+      "Diagnóstico antes do orçamento",
+    ],
+    faq: [
+      {
+        q: "Vocês consertam pistão e haste de cilindro hidráulico?",
+        a: "Sim. Trabalhamos com recuperação de haste e pistão: reposição de camada de cromo, correção de medida e acabamento. O que não fazemos é peça avulsa de uso decorativo ou automotivo, como aro e para-choque.",
+      },
+      {
+        q: "Minha haste está riscada e o cilindro vaza. Isso tem conserto?",
+        a: "Normalmente sim. Risco na haste danifica a vedação e é uma das causas mais comuns de vazamento. Repor a camada de cromo e refazer o acabamento devolve a superfície que o retentor precisa para trabalhar.",
+      },
+      {
+        q: "Compensa recuperar ou é melhor comprar uma haste nova?",
+        a: "Depende do estado da peça e da profundidade do desgaste. É exatamente isso que avaliamos com a medida e a foto antes de orçar. Quando não compensar, falamos.",
+      },
+    ],
+    promptIA:
+      "Quando compensa recuperar a haste de um cilindro hidráulico com cromo duro em vez de trocar a peça? Que profundidade de desgaste inviabiliza o reparo?",
   },
 ];
 

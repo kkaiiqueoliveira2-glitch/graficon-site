@@ -52,6 +52,7 @@ const ROUTES = [
   "/servicos/usinagem-e-fabricacao",
   "/servicos/cilindros-especiais",
   "/servicos/prova-e-analise",
+  "/servicos/cilindro-hidraulico-e-haste",
   "/privacidade",
 ];
 
