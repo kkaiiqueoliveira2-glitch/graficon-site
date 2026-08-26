@@ -58,7 +58,7 @@ const Header = () => {
             />
           </Link>
 
-          <nav className="hidden md:flex flex-1 items-center justify-center">
+          <nav className="hidden lg:flex flex-1 items-center justify-center">
             <div className="flex items-center gap-8 text-sm font-semibold">
               <Link
                 to="/"
@@ -118,7 +118,7 @@ const Header = () => {
             </a>
             <Link
               to="/#contato"
-              className="btn-brand hidden md:inline-flex px-6 py-3 text-sm uppercase tracking-wide"
+              className="btn-brand hidden lg:inline-flex px-6 py-3 text-sm uppercase tracking-wide"
               onClick={(e) => {
                 if (location.pathname === "/") {
                   e.preventDefault();
@@ -130,7 +130,7 @@ const Header = () => {
             </Link>
             <button
               type="button"
-              className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground"
+              className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground"
               aria-label="Abrir menu"
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -142,7 +142,7 @@ const Header = () => {
         <div className="header-accent-line" />
 
         {isMenuOpen ? (
-          <div className="mobile-nav md:hidden">
+          <div className="mobile-nav lg:hidden">
             <Link
               to="/"
               className={isSobre || isOQueFazemos ? navLinkBase : navLinkActive}
