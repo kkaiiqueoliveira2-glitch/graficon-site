@@ -9,6 +9,7 @@ const OQueFazemos = () => {
     description:
       "Serviços de revestimento e recuperação de cilindros para flexografia, rotogravura, embalagens, papel e celulose. Soluções técnicas sob medida em São Paulo.",
     path: "/o-que-fazemos",
+    breadcrumbLabel: "Serviços",
     jsonLd: {
       name: "Serviços de revestimento e recuperação de cilindros",
       description:

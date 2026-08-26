@@ -10,6 +10,7 @@ const Sobre = () => {
     description:
       "Conheça a Graficon: +40 anos em revestimento e recuperação de cilindros industriais e gráficos. Equipe técnica, controle de qualidade e soluções sob medida em São Paulo.",
     path: "/sobre",
+    breadcrumbLabel: "Sobre a Graficon",
     jsonLd: {
       name: "Sobre a Graficon",
       description:

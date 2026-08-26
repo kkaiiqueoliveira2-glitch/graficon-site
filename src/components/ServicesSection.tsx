@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 import { services } from "@/data/services";
 
@@ -22,8 +23,19 @@ const ServicesSection = () => {
       <section className="section-industrial bg-muted py-16 md:py-24">
         <div className="container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, i) => (
-              <div key={i} className="services-card">
+            {/* Os cards eram <div> sem link. Como esta página é o hub de
+                serviços, e é o nível 2 do breadcrumb das páginas de serviço
+                ("Início > Serviços > X"), ela precisa apontar para os filhos:
+                sem isso, as 6 páginas comerciais só recebiam link da home.
+                O markup interno e as classes seguem idênticos, para não mexer
+                no visual. */}
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                to={`/servicos/${service.slug}`}
+                className="services-card"
+                aria-label={`${service.title}: ver detalhes do serviço`}
+              >
                 <div className="services-card-icon">
                   <service.icon className="w-6 h-6 text-primary" />
                 </div>
@@ -33,7 +45,7 @@ const ServicesSection = () => {
                 <p className="text-muted-foreground leading-relaxed text-sm">
                   {service.description}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
 

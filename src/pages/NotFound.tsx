@@ -6,6 +6,31 @@ import Footer from "@/components/Footer";
 const NotFound = () => {
   useEffect(() => {
     document.title = "Página não encontrada | Graficon";
+
+    // Esta página é servida em qualquer endereço que não exista, então precisa
+    // dizer duas coisas aos rastreadores: não me indexe, e não me trate como
+    // se eu fosse a home. O `index.html` traz um canonical fixo apontando para
+    // "/", e era justamente ele que fazia toda URL errada se apresentar como a
+    // página inicial. Aqui o canonical é removido e o robots vira noindex.
+    let robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const robotsCriado = !robots;
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.setAttribute("name", "robots");
+      document.head.appendChild(robots);
+    }
+    const robotsAnterior = robots.getAttribute("content");
+    robots.setAttribute("content", "noindex, nofollow");
+
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    canonical?.remove();
+
+    return () => {
+      // Ao sair para uma rota válida, o usePageSEO daquela página recria o
+      // canonical; aqui só desfazemos o noindex para não vazar para ela.
+      if (robotsCriado) robots?.remove();
+      else if (robotsAnterior) robots?.setAttribute("content", robotsAnterior);
+    };
   }, []);
 
   return (

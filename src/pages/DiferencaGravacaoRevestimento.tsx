@@ -9,6 +9,7 @@ const DiferencaGravacaoRevestimento = () => {
     description:
       "Entenda a diferença entre gravação e revestimento gráfico de cilindros na indústria de rotogravura e flexografia.",
     path: "/diferenca-entre-gravacao-e-revestimento",
+    breadcrumbLabel: "Diferença entre gravação e revestimento",
     type: "article",
     faqItems: [
       {

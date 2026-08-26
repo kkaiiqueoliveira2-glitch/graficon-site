@@ -114,8 +114,11 @@ const App = () => {
           <Route path="/privacidade" element={<Privacidade />} />
           <Route path="/como-funciona-revestimento-de-cilindros" element={<ComoFuncionaRevestimento />} />
           <Route path="/o-que-e-revestimento-grafico" element={<OQueERevestimentoGrafico />} />
+          {/* A variante com sufixo "-grafico" existia aqui e apontava para o
+              mesmo componente, mas ficava de fora do prerender: em produção ela
+              entregava o HTML da home com canonical "/". Virou 301 na borda,
+              no vercel.json, que é onde um endereço antigo deve ser resolvido. */}
           <Route path="/diferenca-entre-gravacao-e-revestimento" element={<DiferencaGravacaoRevestimento />} />
-          <Route path="/diferenca-entre-gravacao-e-revestimento-grafico" element={<DiferencaGravacaoRevestimento />} />
           <Route path="/problemas-desgaste-cilindros-graficos" element={<ProblemasDesgasteCilindros />} />
           <Route path="/servicos/:slug" element={<ServicoDetalhe />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

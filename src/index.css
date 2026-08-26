@@ -873,6 +873,29 @@
     border-color: hsl(var(--cyan) / 0.5);
   }
 
+  /* ===== Conteúdo do accordion sempre presente no HTML =====
+     O AccordionContent usa `forceMount` (ver ui/accordion.tsx) para que as
+     respostas do FAQ existam no HTML pré-renderizado, e não só no JSON-LD.
+
+     Com `forceMount` o Radix não aplica mais o atributo `hidden`, então o
+     recolhimento visual passa a ser feito aqui, por altura, recortado pelo
+     overflow-hidden que o componente já traz.
+
+     O `visibility: hidden` no estado fechado não é decoração: sem ele o texto
+     recolhido continuaria na árvore de acessibilidade, e um leitor de tela
+     leria todas as respostas com o FAQ fechado. O atraso de 200ms casa com a
+     duração do animate-accordion-up, para o texto não sumir antes de a caixa
+     terminar de fechar. */
+  .accordion-content[data-state="closed"] {
+    height: 0;
+    visibility: hidden;
+    transition: visibility 0s linear 200ms;
+  }
+
+  .accordion-content[data-state="open"] {
+    visibility: visible;
+  }
+
   .segment-card {
     @apply flex flex-col items-center gap-2 rounded-xl border border-border bg-card px-6 py-5 text-center transition-all;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
@@ -903,6 +926,16 @@
   /* evita o overflow do grid: itens não podem exceder a coluna (min-width: auto) */
   .segment-carousel-card > * {
     min-width: 0;
+  }
+
+  /* Os 5 segmentos ficam no DOM para existirem no HTML (ver SegmentsSection),
+     e só o ativo aparece. O atributo `hidden` sozinho não basta: o
+     `@apply grid` acima tem a mesma origem e sobrepõe o display:none que o
+     navegador aplica ao `hidden`. Esta regra tem especificidade maior e
+     devolve o comportamento esperado, o que também impede o navegador de
+     baixar as imagens dos slides ocultos. */
+  .segment-carousel-card[hidden] {
+    display: none;
   }
 
   .segment-carousel-card {

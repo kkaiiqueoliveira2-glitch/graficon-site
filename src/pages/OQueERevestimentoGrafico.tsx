@@ -9,6 +9,7 @@ const OQueERevestimentoGrafico = () => {
     description:
       "Entenda o que é revestimento gráfico, como funciona e quando ele é utilizado na indústria de impressão.",
     path: "/o-que-e-revestimento-grafico",
+    breadcrumbLabel: "O que é revestimento gráfico",
     type: "article",
     faqItems: [
       {

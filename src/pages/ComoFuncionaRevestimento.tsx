@@ -117,6 +117,7 @@ const ComoFuncionaRevestimento = () => {
     description:
       "Saiba como funciona o revestimento de cilindros gráficos, as etapas do processo e quando é indicado para rotogravura e flexografia.",
     path: "/como-funciona-revestimento-de-cilindros",
+    breadcrumbLabel: "Como funciona o revestimento de cilindros",
     type: "article",
     faqItems: [
       {

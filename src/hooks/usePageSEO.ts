@@ -43,6 +43,18 @@ export type PageSEOOptions = {
   image?: string;
   faqItems?: Array<{ question: string; answer: string }>;
   jsonLd?: { name: string; description: string };
+  /**
+   * Rótulo curto da página na trilha. Definir isso liga o BreadcrumbList:
+   * "Início > <breadcrumbLabel>". Só as páginas de serviço tinham trilha
+   * declarada; artigos e institucionais ficavam sem hierarquia.
+   *
+   * É uma string, e não um array, de propósito: array literal passado inline
+   * gera referência nova a cada render e faria o efeito rodar sem parar.
+   */
+  breadcrumbLabel?: string;
+  /** Nível intermediário opcional, entre o Início e a página. */
+  breadcrumbParentName?: string;
+  breadcrumbParentPath?: string;
 };
 
 /**
@@ -58,6 +70,9 @@ export function usePageSEO({
   image,
   faqItems = [],
   jsonLd,
+  breadcrumbLabel,
+  breadcrumbParentName,
+  breadcrumbParentPath,
 }: PageSEOOptions) {
   useEffect(() => {
     const canonicalUrl = path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
@@ -168,6 +183,30 @@ export function usePageSEO({
       document.head.appendChild(faqScriptEl);
     }
 
+    let breadcrumbScriptEl: HTMLScriptElement | null = null;
+    if (breadcrumbLabel) {
+      const trilha = [
+        { name: "Início", url: `${SITE_URL}/` },
+        ...(breadcrumbParentName && breadcrumbParentPath
+          ? [{ name: breadcrumbParentName, url: `${SITE_URL}${breadcrumbParentPath}` }]
+          : []),
+        { name: breadcrumbLabel, url: canonicalUrl },
+      ];
+      breadcrumbScriptEl = document.createElement("script");
+      breadcrumbScriptEl.type = "application/ld+json";
+      breadcrumbScriptEl.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: trilha.map((item, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      });
+      document.head.appendChild(breadcrumbScriptEl);
+    }
+
     return () => {
       document.title = DEFAULT_TITLE;
       metaDesc.setAttribute("content", prevDesc || DEFAULT_DESCRIPTION);
@@ -186,6 +225,7 @@ export function usePageSEO({
       robots.setAttribute("content", prevRobots || "index, follow");
       if (scriptEl?.parentNode) scriptEl.parentNode.removeChild(scriptEl);
       if (faqScriptEl?.parentNode) faqScriptEl.parentNode.removeChild(faqScriptEl);
+      if (breadcrumbScriptEl?.parentNode) breadcrumbScriptEl.parentNode.removeChild(breadcrumbScriptEl);
     };
   }, [
     title,
@@ -197,5 +237,8 @@ export function usePageSEO({
     faqItems,
     jsonLd?.name ?? "",
     jsonLd?.description ?? "",
+    breadcrumbLabel,
+    breadcrumbParentName,
+    breadcrumbParentPath,
   ]);
 }

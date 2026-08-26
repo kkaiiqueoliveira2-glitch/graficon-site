@@ -93,12 +93,33 @@ async function run() {
       ok++;
       await page.close();
     }
+    // Página 404 (dist/404.html).
+    //
+    // Antes, qualquer endereço inexistente caía no rewrite genérico do
+    // vercel.json e recebia a home pré-renderizada com status 200: soft 404 em
+    // escala, e o NotFound nunca aparecia no HTML. Agora geramos o arquivo
+    // visitando um caminho que não casa com nenhuma rota, deixando o catch-all
+    // do React Router renderizar o NotFound. O vercel.json serve este arquivo
+    // com status 404 de verdade.
+    const page404 = await browser.newPage();
+    await page404.evaluateOnNewDocument(() => {
+      window.__PRERENDER__ = true;
+    });
+    await page404.goto(`${base}/__404__`, { waitUntil: "networkidle2", timeout: 60000 });
+    await page404.waitForSelector("footer", { timeout: 30000 }).catch(() => {});
+    await sleep(500);
+    const html404 = await page404.evaluate(
+      () => "<!DOCTYPE html>\n" + document.documentElement.outerHTML
+    );
+    await writeFile(join(distDir, "404.html"), html404, "utf8");
+    console.log("prerendered 404 -> dist\\404.html");
+    await page404.close();
   } finally {
     await browser.close();
     await server.httpServer.close();
   }
 
-  console.log(`\nPrerender concluído: ${ok}/${ROUTES.length} rotas.`);
+  console.log(`\nPrerender concluído: ${ok}/${ROUTES.length} rotas + 404.html.`);
   if (ok !== ROUTES.length) process.exitCode = 1;
 }
 

@@ -10,6 +10,7 @@ const ProblemasDesgasteCilindros = () => {
     description:
       "Saiba como o desgaste de cilindros gráficos afeta qualidade, custo e produtividade, e como o revestimento técnico reduz falhas.",
     path: "/problemas-desgaste-cilindros-graficos",
+    breadcrumbLabel: "Problemas causados pelo desgaste de cilindros",
     type: "article",
     faqItems: [
       {

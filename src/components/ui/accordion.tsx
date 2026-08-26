@@ -34,13 +34,24 @@ const AccordionTrigger = React.forwardRef<
 ));
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
+/**
+ * `forceMount` é proposital e é o que mantém o conteúdo no HTML.
+ *
+ * Por padrão o Radix desmonta o item fechado. Como o prerender (scripts/
+ * prerender.mjs) fotografa a página com todos os itens fechados, as respostas
+ * do FAQ não chegavam ao HTML publicado: existiam só dentro do JSON-LD, onde
+ * rastreador de texto e modelo de linguagem não leem. Com `forceMount` o
+ * conteúdo fica sempre montado e o recolhimento passa a ser por altura, no CSS
+ * (`.accordion-content` em index.css), aproveitando o `overflow-hidden` daqui.
+ */
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    forceMount
+    className="accordion-content overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>
