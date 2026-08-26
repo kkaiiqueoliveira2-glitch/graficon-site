@@ -30,11 +30,32 @@ export type Service = {
   pecaPadrao?: string;
   /** Exemplo do campo livre, ajustado ao serviço da página. */
   exemploMensagem?: string;
+  /**
+   * Sintomas que o cliente sente, na linguagem dele, não na nossa.
+   * A página abre pelo problema antes de falar de processo: quem procura
+   * esse serviço está com máquina parada ou peça fora de medida, e se
+   * reconhece na descrição do sintoma muito antes de se reconhecer em
+   * "controle de espessura e dureza".
+   */
+  dores?: string[];
+  /**
+   * Mensagem que abre pronta no WhatsApp a partir desta página.
+   * Genérica para todas as páginas desperdiça o único sinal que a Gilda
+   * tem de por onde o lead entrou.
+   */
+  waMensagem?: string;
 };
 
 export const services: Service[] = [
   {
     slug: "galvanizacao-e-cromo",
+    dores: [
+      "O cilindro perdeu medida e saiu de especificação",
+      "A camada de cromo descascou, riscou ou está manchada",
+      "O desgaste voltou pouco tempo depois do último serviço",
+    ],
+    waMensagem:
+      "Olá! Vi a página de cromo duro no site. Tenho um cilindro que precisa de reposição de camada.",
     pecaPadrao: "Cilindro para cromo duro",
     exemploMensagem:
       "Ex: repor camada de cromo duro, voltar à medida original...",
@@ -80,6 +101,13 @@ export const services: Service[] = [
   },
   {
     slug: "preparacao-tecnica-e-tratamentos",
+    dores: [
+      "Não sei qual tratamento a peça realmente precisa",
+      "Já mandei fazer antes e o desgaste voltou rápido",
+      "A peça está fora de medida e não encaixa mais no equipamento",
+    ],
+    waMensagem:
+      "Olá! Vi a página de metalização e niquelagem no site. Queria avaliar uma peça.",
     pecaPadrao: "Eixo ou cilindro para metalização",
     exemploMensagem:
       "Ex: metalização de eixo, niquelagem, carboneto de cromo...",
@@ -125,6 +153,13 @@ export const services: Service[] = [
   },
   {
     slug: "processos-de-revestimento",
+    dores: [
+      "O rolo está marcando o material na passagem",
+      "A borracha endureceu e perdeu aderência",
+      "O cilindro perdeu diâmetro e desregulou a máquina",
+    ],
+    waMensagem:
+      "Olá! Vi a página de revestimento e reencape no site. Tenho um rolo de borracha pra avaliar.",
     pecaPadrao: "Cilindro para revestimento",
     exemploMensagem:
       "Ex: reencape de rolo de borracha, revestimento para flexografia...",
@@ -166,6 +201,13 @@ export const services: Service[] = [
   },
   {
     slug: "usinagem-e-fabricacao",
+    dores: [
+      "A peça saiu de medida e precisa voltar à especificação",
+      "Preciso de uma peça sob desenho e não acho quem faça",
+      "O reparo anterior não segurou a tolerância",
+    ],
+    waMensagem:
+      "Olá! Vi a página de usinagem e fabricação no site. Preciso de um orçamento.",
     pecaPadrao: "Peça para usinagem",
     exemploMensagem:
       "Ex: retífica, ajuste de medida, fabricação sob desenho...",
@@ -207,6 +249,13 @@ export const services: Service[] = [
   },
   {
     slug: "cilindros-especiais",
+    dores: [
+      "Minha aplicação foge do que existe em catálogo",
+      "Ninguém quer fazer em quantidade pequena",
+      "Preciso repor um cilindro antigo e não tenho o desenho",
+    ],
+    waMensagem:
+      "Olá! Vi a página de cilindros especiais no site. Tenho uma aplicação fora do padrão.",
     pecaPadrao: "Cilindro especial",
     exemploMensagem:
       "Ex: cilindro sob desenho, aplicação fora do padrão...",
@@ -248,6 +297,13 @@ export const services: Service[] = [
   },
   {
     slug: "prova-e-analise",
+    dores: [
+      "O desgaste volta sempre e ninguém explica a causa",
+      "Não sei se a camada aplicada está na especificação",
+      "Preciso comprovar dureza e espessura para o meu cliente",
+    ],
+    waMensagem:
+      "Olá! Vi a página de prova e análise no site. Preciso avaliar um cilindro.",
     pecaPadrao: "Cilindro para analise",
     exemploMensagem:
       "Ex: verificar dureza, espessura de camada, causa do desgaste...",
@@ -289,6 +345,13 @@ export const services: Service[] = [
   },
   {
     slug: "cilindro-hidraulico-e-haste",
+    dores: [
+      "O cilindro está vazando pela vedação",
+      "A haste está riscada, ovalizada ou fora de medida",
+      "A peça nova demora e a máquina está parada",
+    ],
+    waMensagem:
+      "Olá! Vi a página de cilindro hidráulico no site. Tenho uma haste pra avaliar.",
     pecaPadrao: "Haste ou pistão de cilindro hidráulico",
     exemploMensagem:
       "Ex: haste riscada, pistão fora de medida, cilindro vazando...",

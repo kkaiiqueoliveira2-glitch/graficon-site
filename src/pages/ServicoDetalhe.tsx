@@ -1,5 +1,13 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  ChevronRight,
+  AlertTriangle,
+  Camera,
+  Search,
+  FileCheck,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NotFound from "@/pages/NotFound";
@@ -11,12 +19,36 @@ import {
 } from "@/components/ui/accordion";
 import { usePageSEO } from "@/hooks/usePageSEO";
 import { getServiceBySlug, services } from "@/data/services";
-import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import PerguntarIA from "@/components/PerguntarIA";
 import FormularioOrcamento from "@/components/FormularioOrcamento";
+import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGoogleEvent } from "@/lib/gtagEvent";
 
 const SITE_URL = "https://graficonrevestimento.com";
+const WHATSAPP_NUMERO = "5511915291313";
+
+/** Como o atendimento funciona de verdade, na ordem em que acontece. */
+const PASSOS = [
+  {
+    icon: Camera,
+    titulo: "Você manda a medida e a foto",
+    texto:
+      "Diâmetro, comprimento e uma foto da peça. É o que permite avaliar o desgaste sem a peça sair do lugar.",
+  },
+  {
+    icon: Search,
+    titulo: "Avaliamos se dá para recuperar",
+    texto:
+      "Nem toda peça compensa. Quando não compensar, falamos, em vez de empurrar um serviço que não resolve.",
+  },
+  {
+    icon: FileCheck,
+    titulo: "Você recebe um orçamento técnico",
+    texto:
+      "Escopo do que será feito e prazo, no mesmo dia útil. Sem compromisso e sem valor genérico por telefone.",
+  },
+];
 
 const ServicoDetalhe = () => {
   const { slug } = useParams();
@@ -42,6 +74,22 @@ const ServicoDetalhe = () => {
   }
 
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+
+  /**
+   * Cada página abre o WhatsApp com uma frase própria, não com a genérica do
+   * botão flutuante. Do lado da Gilda isso é a única pista de por onde o lead
+   * entrou, e do lado do relatório é o que permite separar qual página converte.
+   */
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
+    service.waMensagem ??
+      "Olá! Vim pelo site e gostaria de solicitar um orçamento."
+  )}`;
+
+  const registraWhatsApp = (posicao: string) => () => {
+    const origem = `servico-${service.slug}-${posicao}`;
+    trackMetaEvent("CliqueWhatsApp", { origem, botao: "Falar no WhatsApp" });
+    trackGoogleEvent("clique_whatsapp", { origem });
+  };
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -105,7 +153,12 @@ const ServicoDetalhe = () => {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Banner */}
+        {/* Banner.
+
+            A primeira dobra antes só tinha breadcrumb, título e subtítulo: nem
+            um botão. Quem chega de anúncio decide nos primeiros segundos, então
+            aqui entram as três provas que a Graficon tem de verdade e os dois
+            caminhos de contato, sem precisar rolar. */}
         <section className="services-hero">
           <div className="container">
             <nav className="mb-5 flex items-center justify-center gap-1 text-sm text-white/70">
@@ -115,35 +168,122 @@ const ServicoDetalhe = () => {
               <ChevronRight className="h-4 w-4" />
               <span className="text-white">{service.title}</span>
             </nav>
-            <div className="max-w-3xl mx-auto text-center">
+
+            <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
               <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 {service.title}
               </h1>
               <p className="text-white/90 text-lg md:text-xl leading-relaxed">
                 {service.description}
               </p>
+
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                {[
+                  "+40 anos de profissão",
+                  "Diagnóstico técnico gratuito",
+                  "Resposta no mesmo dia útil",
+                ].map((t) => (
+                  <span key={t} className="contact-badge">
+                    <Check className="h-4 w-4 text-cyan" /> {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={registraWhatsApp("hero")}
+                  className="btn-wa px-8 py-4 text-base justify-center"
+                >
+                  <WhatsAppIcon className="h-5 w-5" />
+                  Falar no WhatsApp
+                </a>
+                <a
+                  href="#orcamento"
+                  className="btn-outline-white text-base justify-center"
+                >
+                  Mandar a medida da peça
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Conteúdo: imagem + texto */}
+        {/* A dor antes do processo.
+
+            Quem procura esse serviço não acorda querendo "controle de espessura
+            e dureza": ele tem uma máquina parada ou uma peça fora de medida. A
+            página começa pelo sintoma, na linguagem dele, e só depois explica o
+            que a Graficon faz a respeito.
+
+            Ícone de alerta em card neutro, nunca fundo vermelho: o tom do site é
+            técnico, não alarmista. */}
+        {service.dores && service.dores.length > 0 && (
+          <section className="section-industrial bg-muted">
+            <div className="container">
+              <div className="max-w-3xl mb-10">
+                <p className="section-eyebrow">Chegou aqui por causa disso?</p>
+                <h2 className="section-title">
+                  Os sinais de que a peça precisa de serviço
+                </h2>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {service.dores.map((d, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl bg-white p-6 shadow-sm"
+                    style={{ borderLeft: "4px solid hsl(var(--primary))" }}
+                  >
+                    <AlertTriangle
+                      className="h-6 w-6 text-primary mb-4"
+                      aria-hidden
+                    />
+                    <p className="text-foreground/90 leading-relaxed">{d}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-8 text-muted-foreground">
+                Se reconheceu a peça em algum desses, na maioria das vezes ela
+                volta a operar sem precisar comprar uma nova.{" "}
+                <a href="#orcamento" className="text-primary underline underline-offset-2 font-medium">
+                  Mande a medida e a foto
+                </a>{" "}
+                que avaliamos.
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* Conteúdo: imagem + texto.
+
+            O H2 aqui era o mesmo texto do H1, repetido a uma rolagem de
+            distância. Agora ele diz o que a seção realmente entrega. */}
         <section className="section-industrial bg-white">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-              <div className="overflow-hidden rounded-2xl border border-border shadow-lg">
-                <img
-                  src={service.image}
-                  alt={`${service.title} — Graficon Revestimento de Cilindros`}
-                  className="w-full h-full object-cover"
-                  fetchPriority="high"
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
+              <figure className="m-0">
+                <div className="overflow-hidden rounded-2xl border border-border shadow-lg">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} — Graficon Revestimento de Cilindros`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-muted-foreground">
+                  Laboratório próprio em São Paulo, com controle de processo em
+                  todas as etapas.
+                </figcaption>
+              </figure>
 
               <div>
-                <p className="section-eyebrow">Serviço</p>
-                <h2 className="section-title mb-5">{service.title}</h2>
+                <p className="section-eyebrow">Como resolvemos</p>
+                <h2 className="section-title mb-5">
+                  O que a Graficon faz com a sua peça
+                </h2>
                 {service.longDescription.map((p, i) => (
                   <p key={i} className="text-muted-foreground leading-relaxed mb-4">
                     {p}
@@ -160,23 +300,70 @@ const ServicoDetalhe = () => {
                     </li>
                   ))}
                 </ul>
-
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href={WHATSAPP_URL_ORCAMENTO}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-wa px-8 py-3.5 text-sm uppercase tracking-wide"
-                  >
-                    <WhatsAppIcon className="h-4 w-4" />
-                    Falar no WhatsApp
-                  </a>
-                  <Link to="/#contato" className="btn-brand-outline px-8 py-3.5 text-sm uppercase tracking-wide">
-                    Solicitar orçamento <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Como funciona o atendimento.
+
+            O CTA de WhatsApp deixa de ser um botão solto no meio do texto e passa
+            a vir com o processo explicado. Quem hesita em chamar no WhatsApp
+            hesita por não saber o que vem depois do "oi" — três passos curtos
+            custam menos que qualquer argumento de venda. */}
+        <section className="section-blue-gradient py-16 md:py-24">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <p className="services-eyebrow">Como funciona</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                Do primeiro contato ao orçamento
+              </h2>
+              <p className="text-white/85 text-lg leading-relaxed">
+                A Graficon recupera cilindros e hastes de máquinas industriais e
+                gráficas há mais de 40 anos, em São Paulo. O atendimento começa
+                pela peça, não por uma tabela de preço.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {PASSOS.map((passo, i) => (
+                <div key={i} className="text-center md:text-left">
+                  <div className="flex items-center gap-3 justify-center md:justify-start mb-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/20">
+                      <passo.icon className="h-5 w-5 text-cyan" aria-hidden />
+                    </span>
+                    <span className="text-cyan font-bold text-sm tracking-widest">
+                      0{i + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-white font-semibold text-lg mb-2">
+                    {passo.titulo}
+                  </h3>
+                  <p className="text-white/80 leading-relaxed text-sm">
+                    {passo.texto}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={registraWhatsApp("banda-atendimento")}
+                className="btn-wa px-8 py-4 text-base justify-center w-full sm:w-auto"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+                Falar no WhatsApp agora
+              </a>
+              <a href="#orcamento" className="btn-outline-white text-base justify-center w-full sm:w-auto">
+                Prefiro preencher os dados <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+            <p className="mt-5 text-center text-white/60 text-sm">
+              Atendimento de segunda a quinta, 8h às 18h · Sexta, 8h às 15h
+            </p>
           </div>
         </section>
 
@@ -222,7 +409,7 @@ const ServicoDetalhe = () => {
 
             O campo da peça já vem preenchido com o serviço desta página, então
             a mensagem chega no WhatsApp da consultora já classificada. */}
-        <section className="section-industrial bg-white">
+        <section id="orcamento" className="section-industrial bg-muted scroll-mt-28 md:scroll-mt-32">
           <div className="container max-w-3xl">
             <p className="section-eyebrow">Orçamento sem compromisso</p>
             <h2 className="section-title mb-4">
@@ -243,7 +430,7 @@ const ServicoDetalhe = () => {
         </section>
 
         {/* Outros serviços */}
-        <section className="section-industrial bg-muted">
+        <section className="section-industrial bg-white">
           <div className="container">
             <p className="section-eyebrow">Outros serviços</p>
             <h2 className="section-title mb-10">Conheça também</h2>
