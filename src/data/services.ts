@@ -356,8 +356,7 @@ export const services: Service[] = [
     exemploMensagem:
       "Ex: haste riscada, pistão fora de medida, cilindro vazando...",
     icon: Wrench,
-    // TODO: trocar por foto real da operação hidráulica quando houver.
-    image: "/services/svc-usinagem.webp",
+    image: "/services/svc-hidraulico.webp",
     title: "Cilindro Hidráulico e Haste",
     description:
       "Recuperação de haste e pistão de cilindro hidráulico: reposição de camada de cromo, correção de medida e acabamento para a peça voltar a operar.",
