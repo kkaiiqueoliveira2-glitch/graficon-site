@@ -66,32 +66,36 @@ export const services: Service[] = [
   {
     slug: "preparacao-tecnica-e-tratamentos",
     icon: Settings,
-    title: "Preparação Técnica e Tratamentos",
+    title: "Metalização, Niquelagem e Tratamentos",
     description:
-      "Análise de materiais, ajustes técnicos e definição do revestimento mais adequado para cada aplicação, com resultados consistentes.",
+      "Metalização de eixo, niquelagem e carboneto de cromo em cilindros e hastes, com a análise técnica que define o tratamento certo para cada aplicação.",
     image: "/services/svc-preparacao.webp",
-    seoTitle: "Preparação Técnica e Tratamentos de Cilindros | Graficon SP",
+    seoTitle: "Metalização de Eixo, Niquelagem e Carboneto de Cromo | Graficon",
     seoDescription:
-      "Análise de materiais, ajustes técnicos e definição do revestimento ideal para cada cilindro, com resultados consistentes e previsíveis. São Paulo.",
+      "Metalização de eixo, niquelagem e carboneto de cromo em cilindros e hastes industriais em São Paulo. Mande a medida e a foto e receba um orçamento técnico.",
     longDescription: [
-      "Cada cilindro tem uma aplicação, um material e uma exigência diferente. A etapa de preparação técnica analisa essas variáveis para definir o tratamento e o revestimento mais adequados antes da execução.",
-      "Esse diagnóstico evita retrabalho, garante repetibilidade e assegura que o resultado final atenda às condições reais de uso do cliente.",
-      "É a fase em que a experiência de +40 anos da Graficon mais pesa: identificar a causa do desgaste e indicar o caminho técnico certo antes de qualquer aplicação.",
+      "Além do cromo duro, a Graficon aplica metalização de eixo, niquelagem e carboneto de cromo em cilindros e hastes de máquinas industriais e gráficas. São tratamentos de superfície usados para devolver medida, aumentar a resistência ao desgaste e prolongar a vida útil da peça.",
+      "Cada cilindro tem uma aplicação, um material e uma exigência diferente. Antes de executar, a etapa de preparação técnica analisa essas variáveis para definir qual tratamento faz sentido: nem toda peça precisa do mesmo processo, e indicar o caminho errado é a principal causa de retrabalho e desgaste precoce.",
+      "É a fase em que a experiência de +40 anos mais pesa: identificar a causa do desgaste e indicar o caminho técnico certo antes de qualquer aplicação. Atendemos indústrias e gráficas em São Paulo e região.",
     ],
     bullets: [
+      "Metalização de eixo e recuperação de medida",
+      "Niquelagem e carboneto de cromo",
       "Análise técnica de materiais e aplicação",
-      "Definição do tratamento ideal",
       "Ajustes e correções dimensionais",
-      "Resultados consistentes e previsíveis",
     ],
     faq: [
       {
-        q: "Por que a preparação técnica é importante antes do revestimento?",
-        a: "Porque ela define o tratamento e o revestimento certos para a aplicação real do cilindro. Pular essa etapa é a principal causa de retrabalho, descolamento de camada e desgaste precoce. Uma boa preparação garante repetibilidade e durabilidade.",
+        q: "Vocês fazem metalização de eixo e niquelagem?",
+        a: "Sim. Trabalhamos com metalização de eixo, niquelagem e carboneto de cromo, sempre em cilindros e hastes de máquinas industriais e gráficas. Não atendemos peça avulsa nem cromagem decorativa ou automotiva.",
       },
       {
-        q: "Vocês avaliam o cilindro antes de fechar o orçamento?",
-        a: "Sim. Analisamos material, medidas, tipo de aplicação e estado da peça para indicar o tratamento mais adequado e dar um orçamento técnico, não um valor genérico.",
+        q: "Como sei qual tratamento a minha peça precisa?",
+        a: "Essa é justamente a etapa de preparação técnica. Analisamos material, medidas, tipo de aplicação e estado da peça para indicar o tratamento adequado e dar um orçamento técnico, não um valor genérico. Mande a medida e a foto no WhatsApp que avaliamos.",
+      },
+      {
+        q: "Por que a preparação técnica é importante antes do revestimento?",
+        a: "Porque ela define o tratamento e o revestimento certos para a aplicação real do cilindro. Pular essa etapa é a principal causa de retrabalho, descolamento de camada e desgaste precoce. Uma boa preparação garante repetibilidade e durabilidade.",
       },
       {
         q: "Dá para corrigir medidas e desvios dimensionais nessa etapa?",
@@ -99,7 +103,7 @@ export const services: Service[] = [
       },
     ],
     promptIA:
-      "Como identificar a causa do desgaste de um cilindro de impressão antes de mandar revestir? O que acontece se a causa não for corrigida?",
+      "Quando usar metalização de eixo em vez de cromo duro para recuperar a medida de um cilindro industrial? Quais critérios técnicos decidem?",
   },
   {
     slug: "processos-de-revestimento",

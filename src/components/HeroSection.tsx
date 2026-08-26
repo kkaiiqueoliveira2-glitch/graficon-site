@@ -57,7 +57,7 @@ const HeroSection = () => {
 
           <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-xl">
             Especialistas em cilindros para flexografia, rotogravura, embalagens, papel e
-            celulose — com alta precisão, desempenho e confiabilidade.
+            celulose. Cromo duro, metalização de eixo e niquelagem com alta precisão.
           </p>
 
           {/* WhatsApp na frente: é o canal que a Graficon realmente atende, e
