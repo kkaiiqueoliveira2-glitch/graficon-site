@@ -11,7 +11,7 @@
  *   node scripts/processar-imagens-servico.mjs --teste    (só mostra o que faria)
  */
 import sharp from "sharp";
-import { readdirSync, existsSync, mkdirSync, statSync } from "fs";
+import { readdirSync, existsSync, mkdirSync, statSync, writeFileSync } from "fs";
 import { join, extname, basename } from "path";
 
 const ENTRADA = "imagens-novas";
@@ -98,7 +98,10 @@ for (const arq of arquivos) {
         `${LARGURA}x${ALTURA}, q${r.q}, ${r.kb.toFixed(0)}KB`
     );
   } else {
-    await sharp(r.buf).toFile(join(SAIDA, destino));
+    // Grava o buffer direto. Passar por sharp() de novo decodificaria e
+    // recodificaria o WebP ja pronto: perda de geracao e o alvo de KB
+    // deixaria de valer, porque a segunda passada usa a qualidade padrao.
+    writeFileSync(join(SAIDA, destino), r.buf);
     console.log(
       `OK ${arq} (${meta.width}x${meta.height}) -> ${destino} ` +
         `${LARGURA}x${ALTURA}, q${r.q}, ${r.kb.toFixed(0)}KB`
