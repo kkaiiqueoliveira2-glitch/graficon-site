@@ -22,11 +22,22 @@ export type Service = {
    * a reputação da Graficon, que nenhum modelo conhece hoje.
    */
   promptIA: string;
+  /**
+   * Pré-preenche o campo "qual peça" do formulário no rodapé da página.
+   * Quem chega numa página de serviço já disse o que quer ao clicar nela:
+   * repetir a pergunta custa um campo e não acrescenta informação.
+   */
+  pecaPadrao?: string;
+  /** Exemplo do campo livre, ajustado ao serviço da página. */
+  exemploMensagem?: string;
 };
 
 export const services: Service[] = [
   {
     slug: "galvanizacao-e-cromo",
+    pecaPadrao: "Cilindro para cromo duro",
+    exemploMensagem:
+      "Ex: repor camada de cromo duro, voltar à medida original...",
     icon: Zap,
     title: "Galvanização e Cromo",
     description:
@@ -65,6 +76,9 @@ export const services: Service[] = [
   },
   {
     slug: "preparacao-tecnica-e-tratamentos",
+    pecaPadrao: "Eixo ou cilindro para metalização",
+    exemploMensagem:
+      "Ex: metalização de eixo, niquelagem, carboneto de cromo...",
     icon: Settings,
     title: "Metalização, Niquelagem e Tratamentos",
     description:
@@ -107,6 +121,9 @@ export const services: Service[] = [
   },
   {
     slug: "processos-de-revestimento",
+    pecaPadrao: "Cilindro para revestimento",
+    exemploMensagem:
+      "Ex: reencape de rolo de borracha, revestimento para flexografia...",
     icon: Layers,
     title: "Processos de Revestimento",
     description:
@@ -145,6 +162,9 @@ export const services: Service[] = [
   },
   {
     slug: "usinagem-e-fabricacao",
+    pecaPadrao: "Peça para usinagem",
+    exemploMensagem:
+      "Ex: retífica, ajuste de medida, fabricação sob desenho...",
     icon: Cog,
     title: "Usinagem e Fabricação",
     description:
@@ -183,6 +203,9 @@ export const services: Service[] = [
   },
   {
     slug: "cilindros-especiais",
+    pecaPadrao: "Cilindro especial",
+    exemploMensagem:
+      "Ex: cilindro sob desenho, aplicação fora do padrão...",
     icon: Box,
     title: "Cilindros Especiais",
     description:
@@ -221,6 +244,9 @@ export const services: Service[] = [
   },
   {
     slug: "prova-e-analise",
+    pecaPadrao: "Cilindro para analise",
+    exemploMensagem:
+      "Ex: verificar dureza, espessura de camada, causa do desgaste...",
     icon: TestTube,
     title: "Prova e Análise",
     description:

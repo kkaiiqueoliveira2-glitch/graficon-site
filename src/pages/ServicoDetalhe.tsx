@@ -14,6 +14,7 @@ import { getServiceBySlug, services } from "@/data/services";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import PerguntarIA from "@/components/PerguntarIA";
+import FormularioOrcamento from "@/components/FormularioOrcamento";
 
 const SITE_URL = "https://graficonrevestimento.com";
 
@@ -209,6 +210,35 @@ const ServicoDetalhe = () => {
                 origem={`servico-${service.slug}`}
               />
             </div>
+          </div>
+        </section>
+
+        {/* Orçamento na própria página.
+
+            Antes daqui o único caminho era um link para /#contato, ou seja: o
+            visitante tinha que sair da página que respondeu a dúvida dele pra
+            pedir preço. Com a verba de tráfego caindo direto nestas URLs, esse
+            pulo era o vazamento mais caro do funil.
+
+            O campo da peça já vem preenchido com o serviço desta página, então
+            a mensagem chega no WhatsApp da consultora já classificada. */}
+        <section className="section-industrial bg-white">
+          <div className="container max-w-3xl">
+            <p className="section-eyebrow">Orçamento sem compromisso</p>
+            <h2 className="section-title mb-4">
+              Mande a medida e receba um orçamento técnico
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Preencha abaixo e a conversa abre no WhatsApp já com os dados da
+              peça. Sem formulário longo, sem esperar retorno de e-mail:
+              respondemos no mesmo dia útil.
+            </p>
+            <FormularioOrcamento
+              pecaPadrao={service.pecaPadrao}
+              placeholderMensagem={service.exemploMensagem}
+              origem={`servico-${service.slug}`}
+              className="contact-card"
+            />
           </div>
         </section>
 
