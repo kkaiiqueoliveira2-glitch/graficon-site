@@ -262,6 +262,15 @@ const FormularioOrcamento = ({
           </p>
         </div>
 
+        {/* Aviso de escopo (18/09/2026). A Gilda recebia pedido de cromação de
+            carro, moto e cadeira pelo WhatsApp; quem busca isso não digita
+            "carro", então a negativa do Google não segura. O filtro tem que
+            estar aqui, antes da mensagem sair. */}
+        <p className="text-sm text-muted-foreground border-l-2 border-primary/40 pl-3">
+          <span className="font-medium text-foreground">Atendemos indústrias e gráficas.</span>{" "}
+          Não fazemos peças automotivas, de moto ou decorativas.
+        </p>
+
         <Button
           type="submit"
           size="lg"

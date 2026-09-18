@@ -207,6 +207,12 @@ const ServicoDetalhe = () => {
                   Mandar a medida da peça
                 </a>
               </div>
+              {/* Mesmo aviso de escopo do formulário, aqui porque é onde o
+                  tráfego pago cai e clica antes de rolar a página. */}
+              <p className="mt-4 text-sm text-white/70">
+                Atendemos indústrias e gráficas. Não fazemos peças automotivas,
+                de moto ou decorativas.
+              </p>
             </div>
           </div>
         </section>
