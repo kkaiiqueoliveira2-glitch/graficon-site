@@ -25,7 +25,7 @@ import FormularioOrcamento from "@/components/FormularioOrcamento";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
 
-const SITE_URL = "https://graficonrevestimento.com";
+const SITE_URL = "https://graficonrevestimento.com.br";
 const WHATSAPP_NUMERO = "5511915291313";
 
 /** Como o atendimento funciona de verdade, na ordem em que acontece. */

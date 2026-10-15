@@ -1,4 +1,4 @@
-# graficonrevestimento.com
+# graficonrevestimento.com.br
 # O arquivo estava vazio (0 byte) até 10/08/2026. Vazio não bloqueia nada, mas
 # também não declarava o sitemap nem dizia nada aos rastreadores de IA.
 
@@ -48,4 +48,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://graficonrevestimento.com/sitemap.xml
+Sitemap: https://graficonrevestimento.com.br/sitemap.xml

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SITE_URL = "https://graficonrevestimento.com";
+const SITE_URL = "https://graficonrevestimento.com.br";
 const SITE_NAME = "Graficon Revestimento de Cilindros";
 // Cartão 1200×630 da marca (scripts/gerar-assets-marca.mjs). Antes apontava pro
 // logo quadrado, que virava um selo recortado na prévia do WhatsApp.
