@@ -603,6 +603,69 @@
     );
   }
 
+  /* ===== Hero centrado (15/10/2026) =====
+     Fundo = degradê "a" dos carrosséis da Graficon (_build-graficon-semanal.js):
+     Cor 2 clareada no alto, #1a2254 no meio, #101434 na base. Mesmo padrão em
+     posts, vídeos e site. */
+  .hero-graficon {
+    @apply relative flex min-h-[600px] items-center overflow-hidden md:min-h-[760px];
+    background: radial-gradient(120% 78% at 50% 6%, #5361b5 0%, #1a2254 44%, #101434 82%);
+  }
+
+  /* brilho suave atrás do título, sem imagem (não entra no peso da página) */
+  .hero-graficon-brilho {
+    @apply pointer-events-none absolute left-1/2 top-[28%] h-[420px] w-[720px] max-w-[140vw] -translate-x-1/2 -translate-y-1/2 rounded-full;
+    background: radial-gradient(closest-side, rgb(113 160 226 / 0.22), transparent);
+  }
+
+  .hero-graficon-titulo {
+    @apply text-[2.25rem] leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl;
+    font-weight: 900; /* Poppins Black: título do manual v2 */
+    letter-spacing: -0.03em;
+  }
+
+  /* Palavra que troca (components/ui/animated-hero.tsx). Todas na mesma
+     célula do grid: a célula fica do tamanho da maior e o título não pula. */
+  .palavra-giratoria {
+    @apply block;
+  }
+
+  .palavra-giratoria-trilho {
+    @apply grid overflow-hidden pb-[0.12em];
+  }
+
+  .palavra-giratoria-item {
+    grid-area: 1 / 1;
+    transition:
+      transform 0.75s cubic-bezier(0.2, 0.9, 0.25, 1.12),
+      opacity 0.5s ease;
+  }
+
+  .palavra-giratoria-item[data-estado="atual"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .palavra-giratoria-item[data-estado="espera"] {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+
+  .palavra-giratoria-item[data-estado="saiu"] {
+    opacity: 0;
+    transform: translateY(-105%);
+  }
+
+  /* Movimento reduzido: troca por esmaecimento, sem deslizar */
+  @media (prefers-reduced-motion: reduce) {
+    .palavra-giratoria-item,
+    .palavra-giratoria-item[data-estado="espera"],
+    .palavra-giratoria-item[data-estado="saiu"] {
+      transform: none;
+      transition: opacity 0.6s ease;
+    }
+  }
+
   .hero-eyebrow {
     @apply mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80;
   }
@@ -1265,6 +1328,12 @@
     background-color: #25D366;
     box-shadow: 0 4px 16px rgba(37, 211, 102, 0.5);
     animation: whatsapp-pulse 2.4s ease-in-out infinite;
+  }
+
+  .whatsapp-floating-button[data-escondido="true"] {
+    opacity: 0;
+    transform: scale(0.6);
+    pointer-events: none;
   }
 
   .whatsapp-floating-button:hover {

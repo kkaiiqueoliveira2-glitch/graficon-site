@@ -44,18 +44,14 @@ const AboutBand = () => {
               Conheça a Graficon <ArrowRight className="h-4 w-4" />
             </Link>
 
-            <div className="grid grid-cols-3 gap-4 mt-10 max-w-md">
+            {/* "100% controle de qualidade" saiu em 15/10/2026: número sem prova,
+                e a regra da marca só afirma número que a Gilda confirma. */}
+            <div className="grid grid-cols-2 gap-4 mt-10 max-w-xs">
               <div className="about-band-stat">
                 <p className="text-2xl md:text-3xl font-bold text-white">
                   <CountUp end={40} prefix="+" />
                 </p>
                 <p className="text-xs text-white/70 mt-1">anos de profissão</p>
-              </div>
-              <div className="about-band-stat">
-                <p className="text-2xl md:text-3xl font-bold text-white">
-                  <CountUp end={100} suffix="%" />
-                </p>
-                <p className="text-xs text-white/70 mt-1">controle de qualidade</p>
               </div>
               <div className="about-band-stat">
                 <p className="text-2xl md:text-3xl font-bold text-white">
