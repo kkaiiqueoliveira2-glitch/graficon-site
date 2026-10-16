@@ -283,7 +283,7 @@ const FormularioOrcamento = ({
           Quero meu orçamento agora
         </Button>
         <p className="text-center text-xs text-muted-foreground mt-3">
-          Resposta no mesmo dia útil · Sem compromisso · Diagnóstico gratuito
+          Sem compromisso · Diagnóstico gratuito
         </p>
       </form>
     </div>

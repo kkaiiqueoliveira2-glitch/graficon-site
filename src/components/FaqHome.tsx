@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Quais segmentos a Graficon atende?",
-    a: "Flexografia e gráficas, papel e celulose, embalagens e cartonagem, metalgrafia e automação industrial, além de plásticos e indústria em geral.",
+    a: "Gráficas de offset e flexografia, rotogravura, papel e celulose, embalagens e cartonagem, metalgrafia e automação industrial, além de plásticos e indústria em geral.",
   },
   {
     q: "Como solicito um orçamento?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Onde a Graficon está localizada?",
-    a: "Estamos em São Paulo/SP, na Rua Mara Rosa, 95 — Bairro dos Eucaliptos. Atendimento de segunda a quinta das 08h às 18h, e sexta das 08h às 15h.",
+    a: "Estamos em São Paulo/SP, na Rua Mara Rosa, 95, no Bairro dos Eucaliptos. Atendimento de segunda a quinta das 08h às 18h, e sexta das 08h às 15h.",
   },
 ];
 

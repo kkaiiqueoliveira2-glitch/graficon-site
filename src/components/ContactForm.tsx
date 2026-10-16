@@ -90,7 +90,7 @@ const ContactForm = () => {
               </h2>
               <p className="text-white/90 leading-relaxed mb-6">
                 Leva menos de 1 minuto. Preencha os campos ao lado e fale direto com nossa
-                equipe técnica pelo WhatsApp — retorno no mesmo dia útil.
+                equipe técnica pelo WhatsApp.
               </p>
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">

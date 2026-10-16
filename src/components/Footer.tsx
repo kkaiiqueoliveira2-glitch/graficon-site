@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
             <p className="text-primary-foreground/75 text-sm leading-relaxed">
               Especialistas em revestimento e recuperação de cilindros
-              industriais para flexografia, gráfica e processos industriais.
+              industriais para gráfica (offset, flexografia e rotogravura) e processos industriais.
             </p>
             <div className="footer-cta">
               <a

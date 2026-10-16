@@ -851,6 +851,39 @@
     gap: 0.5rem;
   }
 
+  /* Celular (16/10/2026): os 7 cards empilhados ocupavam ~4 telas. Vira linha
+     compacta, com a foto ao lado do título e a descrição em 2 linhas. A letra
+     continua em 16px (o público é mais velho e lê no celular). */
+  @media (max-width: 639px) {
+    .svc-card {
+      @apply flex-row;
+    }
+
+    .svc-card-media {
+      @apply h-auto w-28 shrink-0;
+    }
+
+    .svc-card-icon {
+      @apply hidden;
+    }
+
+    .svc-card-body {
+      @apply p-4;
+    }
+
+    .svc-card-body h3 {
+      @apply mb-1 text-lg leading-snug;
+    }
+
+    .svc-card-body p {
+      @apply line-clamp-2;
+    }
+
+    .svc-card-link {
+      @apply mt-2;
+    }
+  }
+
   /* ===== Faixa CTA escura (estilo USITEMB) ===== */
   .cta-band {
     @apply relative overflow-hidden rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center;
@@ -974,6 +1007,26 @@
     color: hsl(var(--cyan-strong));
     background-color: hsl(var(--cyan) / 0.1);
     border: 1px solid hsl(var(--cyan) / 0.3);
+  }
+
+  /* ===== Segmentos em grade (16/10/2026) =====
+     3 colunas no desktop; o card de gráfica ocupa 2 e abre a grade. */
+  .segmentos-grade {
+    @apply mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .segmento-card {
+    @apply overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  /* mesma altura em todos a partir do tablet: o card de 2 colunas não fica
+     mais alto que o vizinho */
+  .segmento-card-imagem {
+    @apply aspect-[2/1] w-full object-cover sm:aspect-auto sm:h-52;
+  }
+
+  .segmento-card-destaque {
+    @apply sm:col-span-2;
   }
 
   .segment-carousel {

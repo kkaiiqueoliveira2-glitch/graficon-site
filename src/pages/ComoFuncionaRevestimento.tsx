@@ -41,7 +41,7 @@ const steps = [
   {
     n: "03",
     title: "Definição de material e espessura",
-    desc: "Escolha técnica conforme a aplicação — rotogravura, flexografia ou laminação.",
+    desc: "Escolha técnica para cada aplicação, seja rotogravura, flexografia ou laminação.",
   },
   {
     n: "04",
@@ -170,7 +170,7 @@ const ComoFuncionaRevestimento = () => {
                 </h1>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
                   O processo técnico, etapa por etapa, que define a durabilidade e a
-                  qualidade de impressão do seu cilindro — e os critérios para decidir
+                  qualidade de impressão do seu cilindro. E os critérios para decidir
                   entre revestir, recuperar ou trocar.
                 </p>
 
@@ -232,7 +232,7 @@ const ComoFuncionaRevestimento = () => {
                 <div className="order-1 lg:order-2 overflow-hidden rounded-2xl border border-border shadow-lg">
                   <img
                     src="/services/svc-revestimento.webp"
-                    alt="Cilindro industrial em processo de revestimento técnico — Graficon"
+                    alt="Cilindro industrial em processo de revestimento técnico na Graficon"
                     className="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
@@ -255,7 +255,7 @@ const ComoFuncionaRevestimento = () => {
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Sem o revestimento adequado, o cilindro não atende às especificações da
-                máquina e do processo — a falta de uniformidade provoca variação de cor,
+                máquina e do processo. A falta de uniformidade provoca variação de cor,
                 falhas de registro e desperdício de material.
               </p>
             </div>
@@ -295,7 +295,7 @@ const ComoFuncionaRevestimento = () => {
                 <figure className="overflow-hidden rounded-2xl border border-border shadow-lg">
                   <img
                     src="/services/svc-preparacao.webp"
-                    alt="Inspeção técnica de cilindro com paquímetro de precisão — etapa inicial do processo"
+                    alt="Inspeção técnica de cilindro com paquímetro de precisão, a etapa inicial do processo"
                     className="w-full h-64 object-cover"
                     loading="lazy"
                     decoding="async"
@@ -307,7 +307,7 @@ const ComoFuncionaRevestimento = () => {
                 <figure className="overflow-hidden rounded-2xl border border-border shadow-lg">
                   <img
                     src="/services/svc-prova.webp"
-                    alt="Prova e análise técnica do cilindro revestido — etapa final do processo"
+                    alt="Prova e análise técnica do cilindro revestido, a etapa final do processo"
                     className="w-full h-64 object-cover"
                     loading="lazy"
                     decoding="async"
@@ -435,7 +435,7 @@ const ComoFuncionaRevestimento = () => {
                   <p className="text-muted-foreground leading-relaxed">
                     A ausência de revestimento adequado ou a má execução do processo
                     levam a desgaste prematuro, descolamento da camada e variação
-                    dimensional — em rotogravura e flexografia, isso se traduz em falhas
+                    dimensional. Em rotogravura e flexografia, isso se traduz em falhas
                     de registro, manchas, variação de cor e impressão fora do padrão.
                   </p>
                 </div>

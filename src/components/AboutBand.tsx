@@ -22,7 +22,7 @@ const AboutBand = () => {
             </h2>
             <p className="text-white/80 leading-relaxed mb-6">
               A Graficon une conhecimento técnico, tecnologia e foco em desempenho para
-              entregar soluções confiáveis em cada projeto — novo ou recuperação.
+              entregar soluções confiáveis em cada projeto, seja cilindro novo ou recuperação.
               Cada cilindro é analisado de forma criteriosa, considerando aplicação,
               material e necessidade do cliente, com acabamento dentro dos padrões.
             </p>
@@ -51,19 +51,21 @@ const AboutBand = () => {
                 <p className="text-2xl md:text-3xl font-bold text-white">
                   <CountUp end={40} prefix="+" />
                 </p>
-                <p className="text-xs text-white/70 mt-1">anos de profissão</p>
+                <p className="text-sm text-white/70 mt-1">anos de profissão</p>
               </div>
               <div className="about-band-stat">
                 <p className="text-2xl md:text-3xl font-bold text-white">
                   <CountUp end={5} suffix="+" />
                 </p>
-                <p className="text-xs text-white/70 mt-1">segmentos atendidos</p>
+                <p className="text-sm text-white/70 mt-1">segmentos atendidos</p>
               </div>
             </div>
           </div>
 
           <img
-            src="/cilindros-quem-somos.webp"
+            src="/cilindros-quem-somos-640.webp"
+            srcSet="/cilindros-quem-somos-640.webp 640w, /cilindros-quem-somos.webp 1024w"
+            sizes="(min-width: 768px) 45vw, 210px"
             alt="Cilindros industriais revestidos pela Graficon, com acabamento espelhado"
             width={1100}
             height={733}

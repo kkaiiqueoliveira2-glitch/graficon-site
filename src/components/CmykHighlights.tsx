@@ -69,7 +69,7 @@ const CmykHighlights = () => {
               <h3 className="text-white font-semibold text-base md:text-lg mb-2">
                 {item.title}
               </h3>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-white/90 text-base leading-relaxed">
                 {item.description}
               </p>
             </div>

@@ -8,7 +8,6 @@ import AboutBand from "@/components/AboutBand";
 import CmykHighlights from "@/components/CmykHighlights";
 import FeedbackSection from "@/components/FeedbackSection";
 import FaqHome from "@/components/FaqHome";
-import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -38,7 +37,6 @@ const Index = () => {
         <CmykHighlights />
         <FeedbackSection />
         <FaqHome />
-        <CTASection />
         <ContactForm />
       </main>
       <Footer />

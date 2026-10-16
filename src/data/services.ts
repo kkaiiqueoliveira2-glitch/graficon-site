@@ -154,46 +154,52 @@ export const services: Service[] = [
   {
     slug: "processos-de-revestimento",
     dores: [
-      "O rolo está marcando o material na passagem",
-      "A borracha endureceu e perdeu aderência",
+      "O rolo de borracha está marcando o material na passagem",
+      "A borracha do rolo endureceu, ficou brilhante e não pega tinta",
       "O cilindro perdeu diâmetro e desregulou a máquina",
     ],
     waMensagem:
       "Olá! Vi a página de revestimento e reencape no site. Tenho um rolo de borracha pra avaliar.",
     pecaPadrao: "Cilindro para revestimento",
     exemploMensagem:
-      "Ex: reencape de rolo de borracha, revestimento para flexografia...",
+      "Ex: reencape de rolo entintador de offset, retífica de rolo de borracha...",
     icon: Layers,
     title: "Revestimento e Reencape de Borracha",
     description:
-      "Reencape de rolos e cilindros de borracha para flexografia, rotogravura, papel e celulose, com precisão dimensional e uniformidade de superfície.",
+      "Reencape e retífica de rolos de borracha para offset, flexografia, rotogravura, papel e celulose, com a dureza medida em Shore A.",
     image: "/services/svc-revestimento.webp",
     seoTitle: "Revestimento de Cilindros e Reencape de Rolo de Borracha | SP",
     seoDescription:
-      "Reencape de rolo de borracha e revestimento de cilindros para flexografia, rotogravura, papel e celulose. Precisão dimensional e uniformidade em São Paulo.",
+      "Reencape e retífica de rolo de borracha para offset, flexografia e rotogravura. Dureza em Shore A e compostos NBR, EPDM, SBR, silicone e PU. São Paulo.",
     longDescription: [
       "O revestimento é o coração do nosso trabalho. Aplicamos a camada técnica sobre o cilindro com controle rigoroso de processo, garantindo precisão dimensional, uniformidade de superfície e repetibilidade entre as peças.",
-      "Reencapamos rolos e cilindros de borracha para flexografia, rotogravura, embalagens, papel e celulose. Cada aplicação pede uma dureza e um acabamento diferentes: o que funciona para flexografia pode não ser o ideal para rotogravura ou para uma peça de uso industrial pesado.",
+      "Reencapamos e retificamos rolos e cilindros de borracha para offset (rolos entintadores e molhadores), flexografia, rotogravura, embalagens, papel e celulose. Cada aplicação pede uma dureza e um composto diferentes, entre NBR, EPDM, SBR, silicone e poliuretano: o que funciona para flexografia pode não ser o ideal para offset ou para uma peça de uso industrial pesado.",
+      "A dureza se mede em Shore A, com durômetro, e não apertando a borracha com o dedo. Mole demais, a tinta espalha; dura demais, a borracha não encosta direito e a cor falha. Quando a superfície fica lisa e brilhante (vitrificada), a borracha para de pegar tinta: se ainda sobra espessura, a retífica resolve; se não sobra, o caminho é o reencape.",
       "Cilindro emborrachado que perdeu diâmetro, endureceu ou passou a marcar a superfície costuma voltar à condição de uso com reencape, sem precisar de peça nova. Mande a medida e a foto que avaliamos.",
     ],
     bullets: [
       "Reencape de rolos e cilindros de borracha",
-      "Dureza ajustada à aplicação",
+      "Dureza medida em Shore A",
+      "Compostos NBR, EPDM, SBR, silicone e PU",
       "Precisão dimensional e uniformidade",
       "Alta resistência para longas tiragens",
     ],
     faq: [
       {
         q: "Vocês fazem reencape de rolo de borracha?",
-        a: "Sim. Reencapamos rolos e cilindros de borracha para flexografia, rotogravura, embalagens, papel e celulose, ajustando a dureza e o acabamento à aplicação real da peça.",
+        a: "Sim. Reencapamos rolos e cilindros de borracha para offset, flexografia, rotogravura, embalagens, papel e celulose, ajustando a dureza e o acabamento à aplicação real da peça.",
       },
       {
         q: "Meu cilindro emborrachado está marcando o material. Dá para recuperar?",
         a: "Na maioria dos casos, sim. Marcação, perda de diâmetro e endurecimento da borracha são sinais de desgaste normal do revestimento, e o reencape devolve a peça à condição de uso. Mande a medida e uma foto que avaliamos antes de orçar.",
       },
       {
+        q: "A borracha do meu rolo está brilhando. Precisa trocar?",
+        a: "Nem sempre. Borracha lisa e brilhante (vitrificada) para de pegar tinta, mas, se ainda houver espessura, a retífica devolve a superfície de trabalho. Se não houver, fazemos o reencape. Mande a medida e a foto que avaliamos.",
+      },
+      {
         q: "Como vocês definem a dureza da borracha?",
-        a: "Pela aplicação real do cilindro: tipo de máquina, material processado e pressão de trabalho. É por isso que pedimos a medida e a foto antes de fechar o orçamento, em vez de dar um valor genérico por telefone.",
+        a: "Pela aplicação real do cilindro: tipo de máquina, tinta, material processado e pressão de trabalho, com a dureza medida em Shore A no durômetro. É por isso que pedimos a medida e a foto antes de fechar o orçamento, em vez de dar um valor genérico por telefone.",
       },
     ],
     promptIA:
@@ -241,7 +247,7 @@ export const services: Service[] = [
       },
       {
         q: "É possível usinar e revestir o mesmo cilindro com vocês?",
-        a: "Sim. Entregamos a solução completa — usinagem, fabricação e revestimento — em um único fornecedor, o que reduz prazo e evita problemas de compatibilidade entre etapas.",
+        a: "Sim. Usinagem, fabricação e revestimento ficam com um único fornecedor, o que reduz prazo e evita problemas de compatibilidade entre etapas.",
       },
     ],
     promptIA:
@@ -268,7 +274,7 @@ export const services: Service[] = [
     seoDescription:
       "Soluções para demandas específicas: processos diferenciados, materiais especiais ou condições particulares de aplicação. São Paulo.",
     longDescription: [
-      "Algumas demandas fogem do padrão — seja por material, dimensão, processo ou condição de uso. Para esses casos, desenvolvemos soluções sob medida.",
+      "Algumas demandas fogem do padrão por material, dimensão, processo ou condição de uso. Para esses casos, desenvolvemos soluções sob medida.",
       "Avaliamos a necessidade técnica e indicamos a melhor combinação de processo e material, entregando um cilindro adequado à sua aplicação específica.",
       "É aqui que os +40 anos de experiência fazem diferença: quanto mais incomum o desafio, mais conta o repertório técnico de quem já resolveu casos parecidos.",
     ],
@@ -281,7 +287,7 @@ export const services: Service[] = [
     faq: [
       {
         q: "O que é considerado um cilindro especial?",
-        a: "É qualquer cilindro que foge do padrão por material, dimensão, processo ou condição de uso — por exemplo, peças muito grandes, aplicações de alta exigência ou combinações específicas de revestimento. Para esses casos desenvolvemos solução sob medida.",
+        a: "É qualquer cilindro que foge do padrão por material, dimensão, processo ou condição de uso. Por exemplo: peças muito grandes, aplicações de alta exigência ou combinações específicas de revestimento. Para esses casos desenvolvemos solução sob medida.",
       },
       {
         q: "Vocês atendem demandas fora do padrão da indústria gráfica?",

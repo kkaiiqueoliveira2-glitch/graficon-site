@@ -45,7 +45,7 @@ const DifferentialsSection = () => {
                 </div>
                 <div>
                   <p className="text-foreground font-semibold">{item.title}</p>
-                  <p className="text-sm text-muted-foreground mt-2">
+                  <p className="text-base text-muted-foreground mt-2">
                     {item.description}
                   </p>
                 </div>

@@ -42,14 +42,14 @@ const Header = () => {
 
       <header className="header-solid">
         <div className="header-solid-inner">
-          <Link to="/" className="flex items-center gap-3" aria-label="Graficon — página inicial">
+          <Link to="/" className="flex items-center gap-3" aria-label="Graficon, página inicial">
             {/* Logo oficial do manual (10/08/2026), com o descritor
                 "Ferramentaria Gráfica". Substitui a versão empilhada que o site
                 usava. Proporção 3,31:1 — o mobile fica num degrau menor pra não
                 comer a largura do header. */}
             <img
               src="/logo-graficon-horizontal.webp?v=5"
-              alt="Graficon Ferramentaria Gráfica — revestimento e recuperação de cilindros"
+              alt="Graficon Ferramentaria Gráfica, revestimento e recuperação de cilindros"
               className="h-10 md:h-12 w-auto object-contain"
               width={199}
               height={60}

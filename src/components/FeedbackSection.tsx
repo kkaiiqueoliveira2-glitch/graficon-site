@@ -73,7 +73,7 @@ const FeedbackCard = ({
         />
       ))}
     </div>
-    <p className="text-sm text-foreground/90 leading-relaxed">{text}</p>
+    <p className="text-base text-foreground/90 leading-relaxed">{text}</p>
   </div>
 );
 

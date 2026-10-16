@@ -7,7 +7,7 @@ const OQueFazemos = () => {
   usePageSEO({
     title: "Revestimento e Recuperação de Cilindros | Graficon - Serviços",
     description:
-      "Serviços de revestimento e recuperação de cilindros para flexografia, rotogravura, embalagens, papel e celulose. Soluções técnicas sob medida em São Paulo.",
+      "Serviços de revestimento e recuperação de cilindros e rolos de borracha para offset, flexografia, rotogravura, embalagens, papel e celulose. Soluções técnicas sob medida em São Paulo.",
     path: "/o-que-fazemos",
     breadcrumbLabel: "Serviços",
     jsonLd: {

@@ -24,6 +24,7 @@ import PerguntarIA from "@/components/PerguntarIA";
 import FormularioOrcamento from "@/components/FormularioOrcamento";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
+import { miniatura } from "@/lib/miniatura";
 
 const SITE_URL = "https://graficonrevestimento.com.br";
 const WHATSAPP_NUMERO = "5511915291313";
@@ -46,7 +47,7 @@ const PASSOS = [
     icon: FileCheck,
     titulo: "Você recebe um orçamento técnico",
     texto:
-      "Escopo do que será feito e prazo, no mesmo dia útil. Sem compromisso e sem valor genérico por telefone.",
+      "Escopo do que será feito e prazo de entrega. Sem compromisso e sem valor genérico por telefone.",
   },
 ];
 
@@ -140,7 +141,7 @@ const ServicoDetalhe = () => {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: `O que inclui — ${service.title}`,
+      name: `O que inclui o serviço de ${service.title}`,
       itemListElement: service.bullets.map((b, i) => ({
         "@type": "Offer",
         position: i + 1,
@@ -181,7 +182,7 @@ const ServicoDetalhe = () => {
                 {[
                   "+40 anos de profissão",
                   "Diagnóstico técnico gratuito",
-                  "Resposta no mesmo dia útil",
+                  "Avaliação pela foto",
                 ].map((t) => (
                   <span key={t} className="contact-badge">
                     <Check className="h-4 w-4 text-cyan" /> {t}
@@ -273,7 +274,7 @@ const ServicoDetalhe = () => {
                 <div className="overflow-hidden rounded-2xl border border-border shadow-lg">
                   <img
                     src={service.image}
-                    alt={`${service.title} — Graficon Revestimento de Cilindros`}
+                    alt={`${service.title} na Graficon Revestimento de Cilindros`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
@@ -423,8 +424,7 @@ const ServicoDetalhe = () => {
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Preencha abaixo e a conversa abre no WhatsApp já com os dados da
-              peça. Sem formulário longo, sem esperar retorno de e-mail:
-              respondemos no mesmo dia útil.
+              peça. Sem formulário longo e sem esperar retorno de e-mail.
             </p>
             <FormularioOrcamento
               pecaPadrao={service.pecaPadrao}
@@ -444,7 +444,14 @@ const ServicoDetalhe = () => {
               {others.map((s) => (
                 <Link key={s.slug} to={`/servicos/${s.slug}`} className="svc-card">
                   <div className="svc-card-media">
-                    <img src={s.image} alt={s.title} loading="lazy" decoding="async" />
+                    <img
+                      src={miniatura(s.image, 720)}
+                      srcSet={`${miniatura(s.image, 720)} 720w, ${s.image} 1800w`}
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 240px"
+                      alt={s.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-[hsl(215_60%_10%/0.65)] to-transparent" />
                     <div className="svc-card-icon absolute bottom-4 left-4">
                       <s.icon className="h-6 w-6 text-cyan" />
