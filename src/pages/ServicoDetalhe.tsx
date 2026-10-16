@@ -47,7 +47,7 @@ const PASSOS = [
     icon: FileCheck,
     titulo: "Você recebe um orçamento técnico",
     texto:
-      "Escopo do que será feito e prazo de entrega. Sem compromisso e sem valor genérico por telefone.",
+      "Em até 24 horas, com o escopo do que será feito e o prazo de entrega. Sem compromisso e sem valor genérico por telefone.",
   },
 ];
 

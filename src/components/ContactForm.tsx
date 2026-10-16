@@ -32,7 +32,7 @@ const ContactForm = () => {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               {[
                 "Diagnóstico técnico gratuito",
-                "Resposta rápida",
+                "Resposta em até 24 horas",
                 "+40 anos de profissão",
               ].map((t) => (
                 <span key={t} className="contact-badge">
@@ -98,8 +98,8 @@ const ContactForm = () => {
                     <Clock className="w-5 h-5 text-cyan" />
                   </span>
                   <div>
-                    <p className="font-medium text-white text-sm">Resposta rápida</p>
-                    <p className="text-sm text-white/80">Retorno ágil para projetos e manutenção.</p>
+                    <p className="font-medium text-white text-sm">Resposta em até 24 horas</p>
+                    <p className="text-sm text-white/80">Seu orçamento respondido em até 1 dia.</p>
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">

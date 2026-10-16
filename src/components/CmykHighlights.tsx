@@ -36,7 +36,7 @@ const highlights = [
 
 const CmykHighlights = () => {
   return (
-    <section className="relative pt-28 md:pt-36 pb-16 md:pb-20 cmyk-highlights-section overflow-hidden">
+    <section className="relative pt-28 md:pt-36 pb-28 md:pb-40 cmyk-highlights-section overflow-hidden">
       {/* Background Image - mesma do Hero */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat cmyk-bg-image"
@@ -76,6 +76,9 @@ const CmykHighlights = () => {
           ))}
         </div>
       </div>
+
+      {/* Borda curva na base (transição para a FAQ branca) */}
+      <CurvaSecao posicao="base" corDestino="hsl(0 0% 100%)" />
     </section>
   );
 };

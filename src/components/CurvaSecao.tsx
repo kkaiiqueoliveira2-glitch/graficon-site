@@ -1,7 +1,7 @@
 /**
  * Curva de transição entre seções, com o fio da Cor 3 por cima.
  *
- * Esse SVG estava copiado seis vezes (hero, cards CMYK, depoimentos, duas no
+ * Esse SVG estava copiado seis vezes (hero, cards CMYK, a antiga seção de depoimentos, duas no
  * formulário de contato e rodapé). Quando a paleta trocou pelo manual da marca,
  * três dessas cópias ficaram pra trás e continuaram com o ciano antigo no fio —
  * dava pra ver a diferença rolando a página. Agora existe um lugar só.

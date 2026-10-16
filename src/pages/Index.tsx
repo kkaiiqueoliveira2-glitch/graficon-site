@@ -6,7 +6,6 @@ import ServicesHome from "@/components/ServicesHome";
 import SegmentsSection from "@/components/SegmentsSection";
 import AboutBand from "@/components/AboutBand";
 import CmykHighlights from "@/components/CmykHighlights";
-import FeedbackSection from "@/components/FeedbackSection";
 import FaqHome from "@/components/FaqHome";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -35,7 +34,6 @@ const Index = () => {
         <SegmentsSection />
         <AboutBand />
         <CmykHighlights />
-        <FeedbackSection />
         <FaqHome />
         <ContactForm />
       </main>
