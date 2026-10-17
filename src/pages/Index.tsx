@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ServicesHome from "@/components/ServicesHome";
+import ComoFunciona from "@/components/ComoFunciona";
 import SegmentsSection from "@/components/SegmentsSection";
 import AboutBand from "@/components/AboutBand";
 import CmykHighlights from "@/components/CmykHighlights";
@@ -31,6 +32,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <ServicesHome />
+        <ComoFunciona />
         <SegmentsSection />
         <AboutBand />
         <CmykHighlights />

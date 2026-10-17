@@ -995,6 +995,224 @@
     }
   }
 
+  /* ===== Como funciona: etapas que avançam com a rolagem (17/10/2026) =====
+     Componente em ui/feature-section.tsx. O trilho é alto (uma tela + 0,6 tela
+     por etapa) e o palco fica preso logo abaixo do header fixo (36 + 80 px);
+     a posição da rolagem dentro do trilho escolhe a etapa. */
+  .fs-secao {
+    --fs-header: 116px;
+    --fs-tela: calc(100svh - var(--fs-header));
+    @apply relative pb-16 md:pb-24;
+    background: radial-gradient(120% 70% at 85% 10%, #3a48a3 0%, #1a2254 48%, #101434 90%);
+    color: #fff;
+  }
+
+  .fs-palco {
+    @apply sticky flex items-center;
+    top: var(--fs-header);
+    height: var(--fs-tela);
+  }
+
+  .fs-cabeca {
+    @apply mb-4 max-w-4xl md:mb-10;
+  }
+
+  .fs-eyebrow {
+    @apply hidden md:inline-flex;
+    color: hsl(var(--brand-3));
+  }
+
+  .fs-titulo {
+    @apply font-heading text-[1.625rem] font-black leading-tight md:text-4xl lg:text-[2.5rem];
+  }
+
+  .fs-titulo em {
+    @apply not-italic;
+    color: hsl(var(--brand-3));
+  }
+
+  .fs-subtitulo {
+    @apply mt-4 hidden text-lg leading-relaxed text-white/80;
+  }
+
+  .fs-grade {
+    @apply flex flex-col gap-4 md:grid md:grid-cols-2 md:items-center md:gap-12;
+  }
+
+  .fs-lista {
+    @apply order-2 md:order-1;
+  }
+
+  .fs-etapa {
+    @apply relative;
+    transition: opacity 0.5s ease;
+    opacity: 0.45;
+  }
+
+  .fs-etapa[data-estado="atual"] {
+    opacity: 1;
+  }
+
+  .fs-etapa-botao {
+    @apply flex w-full items-start gap-4 text-left md:gap-6;
+    padding-bottom: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .fs-etapa-botao {
+      padding-bottom: 1.25rem;
+    }
+  }
+
+  @media (min-width: 768px) and (min-height: 800px) {
+    .fs-etapa-botao {
+      padding-bottom: 1.75rem;
+    }
+  }
+
+  .fs-marcador {
+    @apply relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 font-heading text-base font-bold md:h-11 md:w-11 md:text-lg;
+    border-color: hsl(0 0% 100% / 0.35);
+    background-color: hsl(var(--brand-deepest));
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
+  }
+
+  .fs-etapa[data-estado="feita"] .fs-marcador {
+    border-color: hsl(var(--brand-3));
+    color: hsl(var(--brand-3));
+  }
+
+  .fs-etapa[data-estado="atual"] .fs-marcador {
+    border-color: hsl(var(--brand-3));
+    background-color: hsl(var(--brand-3));
+    color: hsl(var(--brand-deepest));
+    transform: scale(1.1);
+  }
+
+  .fs-etapa-corpo {
+    @apply flex-1 pt-1 md:pt-1.5;
+  }
+
+  .fs-etapa-titulo {
+    @apply block font-heading text-[1.0625rem] font-bold leading-snug md:text-2xl;
+  }
+
+  /* texto da etapa: no celular e em tela baixa só a etapa ativa abre (o palco
+     não cabe as 4 abertas); em tela alta todas ficam abertas e a ativa acende */
+  .fs-etapa-texto {
+    @apply grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s ease;
+  }
+
+  .fs-etapa-texto > span {
+    @apply overflow-hidden pt-1 text-base leading-relaxed text-white/80 md:text-lg;
+  }
+
+  .fs-etapa[data-estado="atual"] .fs-etapa-texto {
+    grid-template-rows: 1fr;
+  }
+
+  @media (min-width: 768px) and (min-height: 800px) {
+    .fs-etapa-texto {
+      grid-template-rows: 1fr;
+    }
+
+    .fs-subtitulo {
+      @apply block;
+    }
+  }
+
+  /* linha entre os marcadores, que enche conforme a rolagem */
+  .fs-linha {
+    @apply absolute w-0.5 overflow-hidden rounded-full;
+    left: calc(1.125rem - 1px);
+    top: 2.25rem;
+    bottom: 0;
+    background-color: hsl(0 0% 100% / 0.18);
+  }
+
+  @media (min-width: 768px) {
+    .fs-linha {
+      left: calc(1.375rem - 1px);
+      top: 2.75rem;
+    }
+  }
+
+  .fs-linha-cheia {
+    @apply absolute inset-0 origin-top;
+    background-color: hsl(var(--brand-3));
+    transform: scaleY(0);
+  }
+
+  .fs-fotos {
+    @apply relative order-1 h-24 overflow-hidden rounded-xl md:order-2 md:h-[300px] lg:h-[360px];
+    perspective: 1000px;
+    background-color: hsl(var(--brand-deepest));
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  .fs-foto {
+    @apply absolute inset-0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .fs-foto img {
+    @apply h-full w-full object-cover;
+  }
+
+  .fs-foto::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(to top, hsl(var(--brand-deepest) / 0.85), hsl(var(--brand-deep) / 0.25) 55%, transparent);
+  }
+
+  .fs-foto[data-estado="espera"] {
+    opacity: 0;
+    transform: translateY(100px) rotateX(-20deg);
+  }
+
+  .fs-foto[data-estado="saiu"] {
+    opacity: 0;
+    transform: translateY(-100px) rotateX(20deg);
+  }
+
+  .fs-rodape {
+    @apply flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fs-foto[data-estado="espera"],
+    .fs-foto[data-estado="saiu"] {
+      transform: none;
+    }
+  }
+
+  /* Tela baixa (celular deitado, notebook pequeno): o palco não cabe preso.
+     A seção vira uma lista comum, com todas as etapas abertas. */
+  @media (max-height: 540px) {
+    .fs-trilho {
+      height: auto !important;
+    }
+
+    .fs-palco {
+      @apply static block h-auto pt-16;
+    }
+
+    .fs-etapa,
+    .fs-etapa[data-estado] {
+      opacity: 1;
+    }
+
+    .fs-etapa .fs-etapa-texto {
+      grid-template-rows: 1fr;
+    }
+
+    .fs-linha {
+      display: none;
+    }
+  }
+
   /* ===== Faixa CTA escura (estilo USITEMB) ===== */
   .cta-band {
     @apply relative overflow-hidden rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center;
