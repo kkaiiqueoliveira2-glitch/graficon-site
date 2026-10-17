@@ -14,19 +14,19 @@ import sharp from "sharp";
 const ALVOS = [
   { pasta: "public/services", largura: 720 },
   // 1200: card de serviço da home ocupa a largura do celular (color-change-card, 17/10)
-  { pasta: "public/services", largura: 1200 },
+  { pasta: "public/services", largura: 1200, qualidade: 62 },
   { pasta: "public/segments", largura: 840 },
   { pasta: "public", largura: 640, so: ["cilindros-quem-somos.webp"] },
 ];
 
-for (const { pasta, largura, so } of ALVOS) {
+for (const { pasta, largura, so, qualidade = 72 } of ALVOS) {
   const arquivos = (so ?? fs.readdirSync(pasta)).filter(
     (f) => f.endsWith(".webp") && !/-\d+\.webp$/.test(f),
   );
   for (const f of arquivos) {
     const origem = path.join(pasta, f);
     const destino = path.join(pasta, f.replace(/\.webp$/, `-${largura}.webp`));
-    await sharp(origem).resize({ width: largura }).webp({ quality: 72 }).toFile(destino);
+    await sharp(origem).resize({ width: largura }).webp({ quality: qualidade }).toFile(destino);
     const kb = (p) => Math.round(fs.statSync(p).size / 1024);
     console.log(`${origem} ${kb(origem)} KB -> ${destino} ${kb(destino)} KB`);
   }

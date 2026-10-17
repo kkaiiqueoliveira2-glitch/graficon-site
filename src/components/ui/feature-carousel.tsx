@@ -97,7 +97,7 @@ export function FeatureCarousel({ itens, intervalo = 4000, className }: Props) {
               <img
                 src={item.img}
                 srcSet={item.srcSet}
-                sizes="(min-width: 768px) 600px, 80vw"
+                sizes="(min-width: 830px) 600px, calc((100vw - 4rem) * 0.8)"
                 alt={item.alt}
                 loading="lazy"
                 decoding="async"

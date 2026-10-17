@@ -17,7 +17,7 @@ const VBH = 599;
 
 // Do chão (0) pro alto (1): preto → ciano → ciano claro → quase branco →
 // amarelo → magenta → magenta transparente.
-export const CMYK_STOPS: Stop[] = [
+const CMYK_STOPS: Stop[] = [
   { offset: 0, color: "#1D1D1B" },
   { offset: 0.1827, color: "#009FE3" },
   { offset: 0.2837, color: "#5CC6F0" },

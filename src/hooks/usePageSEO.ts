@@ -11,7 +11,7 @@ const ORG_LOGO = `${SITE_URL}/logo-graficon-horizontal.png`;
 const DEFAULT_CANONICAL = `${SITE_URL}/`;
 const DEFAULT_TITLE = "Revestimento de Cilindros | Graficon - Recuperação e Revestimento Industrial em São Paulo";
 const DEFAULT_DESCRIPTION =
-  "Revestimento de cilindros industriais e gráficos. Recuperação de cilindros para flexografia, embalagens, papel e celulose. Orçamento em São Paulo. +40 anos de profissão.";
+  "Revestimento e recuperação de cilindros e rolos de borracha para offset, flexografia, embalagens e indústria. Orçamento em São Paulo, +40 anos.";
 
 function ensureCanonical(): HTMLLinkElement {
   let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');

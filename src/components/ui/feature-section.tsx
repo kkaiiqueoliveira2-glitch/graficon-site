@@ -147,7 +147,7 @@ export function FeatureSteps({ etapas, eyebrow, titulo, subtitulo, rodape, id, c
                     <img
                       src={etapa.img}
                       srcSet={etapa.srcSet}
-                      sizes="(min-width: 768px) 600px, 100vw"
+                      sizes="(min-width: 1280px) 600px, (min-width: 768px) calc(50vw - 4rem), calc(100vw - 4rem)"
                       alt={etapa.alt}
                       loading="lazy"
                       decoding="async"

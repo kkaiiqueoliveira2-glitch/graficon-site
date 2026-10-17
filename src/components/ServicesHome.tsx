@@ -42,8 +42,8 @@ const ServicesHome = () => {
                 srcSet={fotos(service.image)}
                 sizes={
                   destaque
-                    ? "(min-width: 1400px) 1340px, 100vw"
-                    : "(min-width: 1400px) 660px, (min-width: 768px) 50vw, 100vw"
+                    ? "(min-width: 1400px) 1340px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 4rem)"
+                    : "(min-width: 1400px) 660px, (min-width: 768px) calc(50vw - 3rem), calc(100vw - 4rem)"
                 }
                 className={destaque ? "md:col-span-2" : undefined}
               />
