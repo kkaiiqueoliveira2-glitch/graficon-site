@@ -13,6 +13,8 @@ import sharp from "sharp";
 
 const ALVOS = [
   { pasta: "public/services", largura: 720 },
+  // 1200: card de serviço da home ocupa a largura do celular (color-change-card, 17/10)
+  { pasta: "public/services", largura: 1200 },
   { pasta: "public/segments", largura: 840 },
   { pasta: "public", largura: 640, so: ["cilindros-quem-somos.webp"] },
 ];

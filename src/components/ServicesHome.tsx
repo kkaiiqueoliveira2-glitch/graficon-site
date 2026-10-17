@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
 import { miniatura } from "@/lib/miniatura";
+import { ColorChangeCard } from "@/components/ui/color-change-card";
+
+// Borracha abre a grade, em largura dupla: os 2 leads reais da conta foram de
+// borracha (28/07) e é o serviço que fala com gráfica. Os outros 6 seguem a
+// ordem de services.ts, dois por linha.
+const DESTAQUE = "processos-de-revestimento";
+const ordenados = [
+  ...services.filter((s) => s.slug === DESTAQUE),
+  ...services.filter((s) => s.slug !== DESTAQUE),
+];
+
+const fotos = (src: string) =>
+  `${miniatura(src, 720)} 720w, ${miniatura(src, 1200)} 1200w, ${src} 1800w`;
 
 const ServicesHome = () => {
   return (
@@ -18,36 +29,26 @@ const ServicesHome = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <Link key={i} to={`/servicos/${service.slug}`} className="svc-card">
-              <div className="svc-card-media">
-                <img
-                  src={miniatura(service.image, 720)}
-                  srcSet={`${miniatura(service.image, 720)} 720w, ${service.image} 1800w`}
-                  sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 240px"
-                  alt={service.title}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(215_60%_10%/0.65)] to-transparent" />
-                <div className="svc-card-icon absolute bottom-4 left-4">
-                  <service.icon className="h-6 w-6 text-cyan" />
-                </div>
-              </div>
-              <div className="svc-card-body">
-                <h3 className="text-xl font-semibold text-primary mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-base flex-1">
-                  {service.description}
-                </p>
-                <span className="svc-card-link">
-                  Saiba mais <ArrowRight className="h-4 w-4" />
-                </span>
-              </div>
-            </Link>
-          ))}
+        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
+          {ordenados.map((service) => {
+            const destaque = service.slug === DESTAQUE;
+            return (
+              <ColorChangeCard
+                key={service.slug}
+                to={`/servicos/${service.slug}`}
+                titulo={service.title}
+                descricao={service.description}
+                img={miniatura(service.image, 720)}
+                srcSet={fotos(service.image)}
+                sizes={
+                  destaque
+                    ? "(min-width: 1400px) 1340px, 100vw"
+                    : "(min-width: 1400px) 660px, (min-width: 768px) 50vw, 100vw"
+                }
+                className={destaque ? "md:col-span-2" : undefined}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

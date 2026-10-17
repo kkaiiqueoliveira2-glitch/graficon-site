@@ -884,6 +884,117 @@
     }
   }
 
+  /* ===== Card de serviço que ganha cor (17/10/2026) =====
+     Componente em ui/color-change-card.tsx. Foto em preto e branco sob o véu
+     da marca no computador; no hover ganha cor, as letras sobem e a seta gira.
+     No celular não tem hover: a foto já vem colorida. */
+  .cc-card {
+    @apply relative block min-h-[13rem] w-full overflow-hidden rounded-xl md:h-64;
+    background-color: hsl(var(--brand-deepest));
+  }
+
+  .cc-card-foto {
+    @apply absolute inset-0 h-full w-full object-cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+
+  .cc-card-veu {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      hsl(var(--brand-deepest) / 0.92) 0%,
+      hsl(var(--brand-deep) / 0.55) 55%,
+      hsl(var(--brand-2) / 0.2) 100%
+    );
+    transition: opacity 0.5s ease;
+  }
+
+  .cc-card-conteudo {
+    @apply relative z-10 flex min-h-[13rem] flex-col justify-between gap-6 p-5 md:h-full md:p-6;
+    color: hsl(0 0% 100% / 0.82);
+    transition: color 0.5s ease;
+  }
+
+  .cc-card-seta {
+    @apply ml-auto h-7 w-7 shrink-0 md:h-8 md:w-8;
+    transition: transform 0.5s ease;
+  }
+
+  .cc-card-titulo {
+    @apply mb-2 font-heading text-[1.375rem] font-black md:text-[1.75rem];
+    word-spacing: 0.12em;
+  }
+
+  /* Cada letra é uma janela de uma linha com duas cópias empilhadas; no hover
+     o trilho sobe meia altura e a cópia de baixo entra, uma letra após a outra. */
+  .cc-letra {
+    @apply inline-block overflow-hidden align-top;
+    height: 1.25em;
+    line-height: 1.25em;
+  }
+
+  .cc-letra-trilho {
+    @apply flex flex-col;
+    transition: transform 0.5s ease;
+    transition-delay: calc(var(--i, 0) * 25ms);
+  }
+
+  .cc-card-descricao {
+    @apply line-clamp-2 text-base leading-relaxed md:line-clamp-none;
+  }
+
+  .cc-card:hover .cc-card-conteudo,
+  .cc-card:focus-visible .cc-card-conteudo {
+    color: #fff;
+  }
+
+  .cc-card:hover .cc-card-foto,
+  .cc-card:focus-visible .cc-card-foto {
+    transform: scale(1.1);
+  }
+
+  .cc-card:hover .cc-card-veu,
+  .cc-card:focus-visible .cc-card-veu {
+    opacity: 0.8;
+  }
+
+  .cc-card:hover .cc-card-seta,
+  .cc-card:focus-visible .cc-card-seta {
+    transform: rotate(-45deg);
+  }
+
+  .cc-card:hover .cc-letra-trilho,
+  .cc-card:focus-visible .cc-letra-trilho {
+    transform: translateY(-50%);
+  }
+
+  .cc-card:focus-visible {
+    outline: 3px solid hsl(var(--brand-3));
+    outline-offset: 3px;
+  }
+
+  @media (hover: hover) and (min-width: 768px) {
+    .cc-card-foto {
+      filter: saturate(0);
+    }
+
+    .cc-card:hover .cc-card-foto,
+    .cc-card:focus-visible .cc-card-foto {
+      filter: saturate(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cc-card:hover .cc-card-foto,
+    .cc-card:focus-visible .cc-card-foto,
+    .cc-card:hover .cc-card-seta,
+    .cc-card:focus-visible .cc-card-seta,
+    .cc-card:hover .cc-letra-trilho,
+    .cc-card:focus-visible .cc-letra-trilho {
+      transform: none;
+    }
+  }
+
   /* ===== Faixa CTA escura (estilo USITEMB) ===== */
   .cta-band {
     @apply relative overflow-hidden rounded-2xl px-8 py-14 md:px-16 md:py-16 text-center;

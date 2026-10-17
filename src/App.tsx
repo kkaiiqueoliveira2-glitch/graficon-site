@@ -32,6 +32,7 @@ const ScrollToTop = () => {
 const REVEAL_SELECTORS = [
   "[data-reveal]",
   ".svc-card",
+  ".cc-card",
   ".segment-carousel",
   ".about-band",
   ".cmyk-highlight-card",
