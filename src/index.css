@@ -1338,24 +1338,106 @@
     border: 1px solid hsl(var(--cyan) / 0.3);
   }
 
-  /* ===== Segmentos em grade (16/10/2026) =====
-     3 colunas no desktop; o card de gráfica ocupa 2 e abre a grade. */
-  .segmentos-grade {
-    @apply mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3;
+  /* ===== Segmentos em carrossel 3D (17/10/2026) =====
+     Componente em ui/feature-carousel.tsx. Cards deitados (as fotos são
+     16:10); o do centro em destaque, os vizinhos menores, girados e
+     esmaecidos; os outros somem atrás. */
+  .fc-raiz {
+    @apply relative mx-auto max-w-6xl;
   }
 
-  .segmento-card {
-    @apply overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-shadow hover:shadow-md;
+  /* brilho da marca atrás do palco, no lugar das bolhas roxas do original */
+  .fc-raiz::before {
+    content: "";
+    @apply pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-3xl -translate-x-1/2;
+    background: radial-gradient(closest-side, hsl(var(--brand-3) / 0.35), transparent);
   }
 
-  /* mesma altura em todos a partir do tablet: o card de 2 colunas não fica
-     mais alto que o vizinho */
-  .segmento-card-imagem {
-    @apply aspect-[2/1] w-full object-cover sm:aspect-auto sm:h-52;
+  .fc-palco {
+    @apply relative flex h-44 items-center justify-center sm:h-72 md:h-[380px];
+    perspective: 1000px;
   }
 
-  .segmento-card-destaque {
-    @apply sm:col-span-2;
+  .fc-card {
+    @apply absolute m-0 h-full w-[80%] max-w-[600px] cursor-pointer overflow-hidden rounded-3xl;
+    border: 2px solid hsl(0 0% 100% / 0.6);
+    box-shadow: 0 30px 60px -20px hsl(var(--brand-deepest) / 0.45);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+  }
+
+  .fc-card img {
+    @apply h-full w-full object-cover;
+  }
+
+  .fc-card[data-pos="centro"] {
+    @apply z-10 cursor-default;
+  }
+
+  .fc-card[data-pos="vizinho"] {
+    @apply z-[5];
+    opacity: 0.45;
+    filter: blur(3px);
+  }
+
+  .fc-card[data-pos="fora"] {
+    @apply invisible z-0 opacity-0;
+  }
+
+  .fc-legenda {
+    @apply absolute inset-x-0 bottom-0 px-5 pb-4 pt-16 font-heading text-lg font-black text-white md:px-7 md:pb-6 md:text-2xl;
+    background: linear-gradient(to top, hsl(var(--brand-deepest) / 0.9), transparent);
+    transition: opacity 0.4s ease;
+  }
+
+  .fc-card:not([data-pos="centro"]) .fc-legenda {
+    opacity: 0;
+  }
+
+  .fc-seta {
+    @apply absolute top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border bg-white/80 backdrop-blur-sm transition-colors hover:bg-white;
+    border-color: hsl(var(--brand-1) / 0.15);
+    color: hsl(var(--brand-1));
+    box-shadow: 0 6px 18px hsl(var(--brand-deepest) / 0.15);
+  }
+
+  .fc-seta-esq {
+    @apply left-0 sm:left-4;
+  }
+
+  .fc-seta-dir {
+    @apply right-0 sm:right-4;
+  }
+
+  .fc-textos {
+    @apply relative mx-auto mt-8 min-h-[3.5rem] max-w-2xl text-center text-base leading-relaxed text-muted-foreground md:text-lg;
+  }
+
+  .fc-nomes {
+    @apply relative mt-6 flex flex-wrap justify-center gap-2;
+  }
+
+  .fc-nome {
+    @apply rounded-full border bg-white px-4 py-2 text-sm font-semibold transition-colors md:text-base;
+    border-color: hsl(var(--border));
+    color: hsl(var(--brand-1));
+  }
+
+  @media (hover: hover) {
+    .fc-nome:hover {
+      border-color: hsl(var(--brand-3));
+    }
+  }
+
+  .fc-nome[aria-pressed="true"] {
+    background-color: hsl(var(--brand-1));
+    border-color: hsl(var(--brand-1));
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fc-card {
+      transition: opacity 0.4s ease;
+    }
   }
 
   .segment-carousel {

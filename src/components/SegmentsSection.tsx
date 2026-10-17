@@ -1,8 +1,10 @@
 import { miniatura } from "@/lib/miniatura";
+import { FeatureCarousel } from "@/components/ui/feature-carousel";
 
-// Grade com os 5 segmentos à vista (16/10/2026). O carrossel anterior mostrava
-// um por vez, e quem não clicava na seta não via que a Graficon atende gráfica.
-// As imagens são lazy: só baixam quando a seção chega perto da tela.
+// Carrossel 3D (17/10/2026), no lugar da grade de 16/10. A grade tinha entrado
+// porque o carrossel antigo mostrava um por vez e quem não clicava na seta não
+// via que a Graficon atende gráfica; por isso os 5 nomes ficam à vista abaixo
+// do carrossel, e gráfica abre a fila.
 const segments = [
   {
     title: "Gráficas: offset e flexografia",
@@ -35,7 +37,7 @@ const segments = [
 ];
 
 const SegmentsSection = () => (
-  <section id="segmentos" className="section-industrial bg-muted">
+  <section id="segmentos" className="section-industrial bg-muted overflow-x-clip">
     <div className="container">
       <div className="mx-auto max-w-3xl text-center" data-reveal>
         <p className="section-eyebrow justify-center">Segmentos atendidos</p>
@@ -48,32 +50,15 @@ const SegmentsSection = () => (
         </p>
       </div>
 
-      <div className="segmentos-grade">
-        {segments.map((segment, i) => (
-          <article
-            key={segment.title}
-            className={`segmento-card${i === 0 ? " segmento-card-destaque" : ""}`}
-          >
-            <img
-              src={miniatura(segment.image, 840)}
-              srcSet={`${miniatura(segment.image, 840)} 840w, ${segment.image} 1100w`}
-              sizes={i === 0 ? "(min-width: 1024px) 760px, 280px" : "(min-width: 1024px) 370px, (min-width: 640px) 45vw, 280px"}
-              alt={segment.title}
-              width={800}
-              height={400}
-              loading="lazy"
-              decoding="async"
-              className="segmento-card-imagem"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-foreground">{segment.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-muted-foreground">
-                {segment.description}
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
+      <FeatureCarousel
+        itens={segments.map((segment) => ({
+          titulo: segment.title,
+          texto: segment.description,
+          img: miniatura(segment.image, 840),
+          srcSet: `${miniatura(segment.image, 840)} 840w, ${segment.image} 1100w`,
+          alt: segment.title,
+        }))}
+      />
     </div>
   </section>
 );
