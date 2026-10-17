@@ -1288,6 +1288,95 @@
     }
   }
 
+  /* ===== FAQ da home (17/10/2026) =====
+     Componente em FaqHome.tsx. Com data-estado="armado" os elementos esperam
+     escondidos; em "visto" as palavras do título entram desfocadas uma a uma
+     e as perguntas sobem em sequência. Sem JS o estado fica vazio e tudo
+     aparece direto. */
+  .faqv-secao {
+    @apply bg-white py-16 md:py-24;
+  }
+
+  .faqv-titulo {
+    @apply text-center font-heading text-[2rem] font-black leading-tight md:text-5xl;
+    color: hsl(var(--brand-1));
+  }
+
+  .faqv-palavra {
+    @apply mr-[0.25em] inline-block last:mr-0;
+  }
+
+  .faqv-descricao {
+    @apply mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-muted-foreground md:text-lg;
+  }
+
+  .faqv-descricao a {
+    @apply font-semibold underline underline-offset-4 transition-opacity hover:opacity-80;
+    color: hsl(var(--brand-2));
+  }
+
+  .faqv-lista {
+    @apply mt-10 md:mt-14;
+  }
+
+  .faqv-item {
+    border-color: hsl(var(--border));
+  }
+
+  .faqv-pergunta {
+    @apply gap-4 py-5 text-left font-heading text-[1.0625rem] font-bold leading-snug md:text-lg;
+    color: hsl(var(--brand-1));
+  }
+
+  .faqv-pergunta svg {
+    @apply h-5 w-5;
+    color: hsl(var(--brand-2));
+  }
+
+  .faqv-resposta {
+    @apply pb-5 text-base leading-relaxed text-muted-foreground;
+  }
+
+  .faqv-ia {
+    @apply mt-10;
+  }
+
+  .faqv-palavra,
+  .faqv-descricao,
+  .faqv-item {
+    transition:
+      opacity 0.45s ease,
+      transform 0.45s ease,
+      filter 0.45s ease;
+  }
+
+  .faqv-palavra {
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+
+  .faqv-descricao {
+    transition-delay: 0.3s;
+  }
+
+  .faqv-item {
+    transition-delay: calc(0.4s + var(--i, 0) * 70ms);
+  }
+
+  .faqv-secao[data-estado="armado"] .faqv-palavra {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(12px);
+  }
+
+  .faqv-secao[data-estado="armado"] .faqv-descricao {
+    opacity: 0;
+  }
+
+  .faqv-secao[data-estado="armado"] .faqv-item {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
   /* ===== FAQ (estilo USITEMB) ===== */
   .faq-item {
     @apply rounded-xl border border-border bg-white px-5 transition-all;
