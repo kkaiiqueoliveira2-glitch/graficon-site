@@ -3,10 +3,11 @@ import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import CurvaSecao from "@/components/CurvaSecao";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
+import { RuixenGradientFooter } from "@/components/ui/ruixen-gradient-footer";
 
 const Footer = () => {
   return (
-    <footer className="footer-industrial relative overflow-hidden pt-28 md:pt-36">
+    <RuixenGradientFooter className="footer-industrial relative overflow-hidden pt-28 md:pt-36">
       {/* Curva no topo (vinda da seção clara acima) */}
       <CurvaSecao posicao="topo" corDestino="hsl(var(--muted))" />
 
@@ -135,7 +136,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+    </RuixenGradientFooter>
   );
 };
 

@@ -1944,6 +1944,18 @@
     @apply w-full h-full;
   }
 
+  /* Brilho que sobe do chão no fim da página (17/10/2026), componente em
+     ui/ruixen-gradient-footer.tsx. Fica atrás do conteúdo do rodapé (z-10). */
+  .rgf-brilho {
+    @apply pointer-events-none fixed inset-x-0 bottom-0 z-0;
+    transform-origin: bottom;
+    will-change: transform;
+  }
+
+  .rgf-brilho svg {
+    @apply block h-full w-full;
+  }
+
   .footer-industrial {
     @apply bg-primary text-primary-foreground py-14;
   }
