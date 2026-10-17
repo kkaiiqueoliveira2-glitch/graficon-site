@@ -3,7 +3,6 @@ import { Check, ExternalLink, Instagram, Mail, MapPin } from "lucide-react";
 import GoogleMapEmbed from "@/components/GoogleMapEmbed";
 import CurvaSecao from "@/components/CurvaSecao";
 import FormularioOrcamento from "@/components/FormularioOrcamento";
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { WHATSAPP_URL_ORCAMENTO } from "@/components/WhatsAppFloatingButton";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGoogleEvent } from "@/lib/gtagEvent";
@@ -124,16 +123,6 @@ const ContactForm = () => {
                 </a>
                 <div className="ctt-icones">
                   <span className="text-sm text-muted-foreground">ou</span>
-                  <a
-                    href={WHATSAPP_URL_ORCAMENTO}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={registra("Ícone do card de contato")}
-                    aria-label="WhatsApp"
-                    className="ctt-icone"
-                  >
-                    <WhatsAppIcon className="h-4 w-4" />
-                  </a>
                   <a href="mailto:comercialgraficon@gmail.com" aria-label="E-mail" className="ctt-icone">
                     <Mail className="h-4 w-4" />
                   </a>

@@ -1944,6 +1944,30 @@
     @apply w-full h-full;
   }
 
+  /* Capa leve no lugar do mapa: o iframe do Google só carrega no clique */
+  .map-capa {
+    @apply relative flex h-full w-full flex-col items-center justify-center gap-4 bg-[#eef1f6] text-primary;
+    cursor: pointer;
+  }
+
+  .map-capa-ruas {
+    @apply absolute inset-0 h-full w-full;
+    stroke: #d6dce8;
+  }
+
+  .map-capa-pino {
+    @apply relative flex h-14 w-14 items-center justify-center rounded-full bg-background shadow-lg;
+  }
+
+  .map-capa-botao {
+    @apply relative rounded-md border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-colors;
+  }
+
+  .map-capa:hover .map-capa-botao,
+  .map-capa:focus-visible .map-capa-botao {
+    @apply bg-primary text-primary-foreground;
+  }
+
   /* Brilho que sobe do chão no fim da página (17/10/2026), componente em
      ui/ruixen-gradient-footer.tsx. Fica atrás do conteúdo do rodapé (z-10). */
   .rgf-brilho {
