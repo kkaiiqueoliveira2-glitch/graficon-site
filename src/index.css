@@ -1377,6 +1377,130 @@
     transform: translateY(10px);
   }
 
+  /* ===== Contato da home (17/10/2026) =====
+     Componente em ContactForm.tsx. Foto com o véu da marca, bolhas subindo
+     (só com a seção na tela, data-ativa="sim"), título à esquerda e card com
+     contatos e formulário à direita. */
+  .ctt-secao {
+    @apply relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-40;
+    background-color: hsl(var(--brand-deepest));
+  }
+
+  .ctt-foto {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
+  .ctt-veu {
+    @apply absolute inset-0;
+    background:
+      radial-gradient(90% 70% at 15% 20%, hsl(var(--brand-2) / 0.55), transparent 70%),
+      linear-gradient(160deg, hsl(var(--brand-deep) / 0.78) 0%, hsl(var(--brand-deepest) / 0.92) 70%);
+  }
+
+  .ctt-bolhas {
+    @apply pointer-events-none absolute inset-0 overflow-hidden;
+  }
+
+  .ctt-bolhas span {
+    @apply absolute bottom-[-40px] rounded-full;
+    background-color: hsl(var(--brand-3) / 0.28);
+    border: 1px solid hsl(0 0% 100% / 0.25);
+    opacity: 0;
+    animation-name: ctt-bolha;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+  }
+
+  .ctt-secao[data-ativa="sim"] .ctt-bolhas span {
+    animation-play-state: running;
+  }
+
+  @keyframes ctt-bolha {
+    0% {
+      transform: translateY(0) scale(0.5);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ctt-bolhas {
+      display: none;
+    }
+  }
+
+  .ctt-grade {
+    @apply grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-14;
+  }
+
+  .ctt-chamada {
+    @apply text-center lg:pb-8 lg:text-left;
+  }
+
+  .ctt-titulo {
+    @apply font-heading text-[2rem] font-black leading-[1.1] text-white md:text-5xl lg:text-[3.5rem];
+    text-shadow: 0 4px 30px hsl(var(--brand-deepest) / 0.5);
+  }
+
+  .ctt-titulo em {
+    @apply not-italic;
+    color: hsl(var(--brand-3));
+  }
+
+  .ctt-texto {
+    @apply mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/85 lg:mx-0;
+  }
+
+  .ctt-selos {
+    @apply mt-7 flex flex-wrap justify-center gap-3 lg:justify-start;
+  }
+
+  .ctt-selos li {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-sm;
+  }
+
+  .ctt-selos svg {
+    color: hsl(var(--brand-3));
+  }
+
+  .ctt-card {
+    @apply rounded-2xl border border-white/60 bg-white/95 p-6 md:p-8;
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.45);
+  }
+
+  .ctt-card-titulo {
+    @apply mb-5 font-heading text-2xl font-black;
+    color: hsl(var(--brand-1));
+  }
+
+  .ctt-telefone {
+    @apply mt-1 inline-block font-heading text-xl font-bold hover:underline;
+    color: hsl(var(--brand-2));
+  }
+
+  .ctt-icones {
+    @apply mt-4 flex items-center gap-3;
+  }
+
+  .ctt-icone {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-white transition-colors;
+    color: hsl(var(--brand-1));
+  }
+
+  @media (hover: hover) {
+    .ctt-icone:hover {
+      border-color: hsl(var(--brand-3));
+      background-color: hsl(var(--muted));
+    }
+  }
+
   /* ===== FAQ (estilo USITEMB) ===== */
   .faq-item {
     @apply rounded-xl border border-border bg-white px-5 transition-all;
