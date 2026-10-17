@@ -18,20 +18,36 @@ export const WHATSAPP_URL_ORCAMENTO = `https://wa.me/${WHATSAPP_NUMBER}?text=${e
 
 const WhatsAppFloatingButton = () => {
   const { pathname } = useLocation();
-  // Some enquanto o hero da home está na tela: lá já tem o botão grande do
-  // WhatsApp, e no celular o flutuante ficava em cima dele (15/10/2026).
+  // Some onde a página já tem o próprio botão do WhatsApp e o flutuante ficava
+  // em cima de texto no celular: o hero da home (15/10/2026), o "Como funciona"
+  // e a seção de contato (17/10/2026). O número é a fração da seção que precisa
+  // estar na tela pra esconder.
   const [escondido, setEscondido] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("home");
-    if (!hero || !("IntersectionObserver" in window)) {
-      setEscondido(false);
-      return;
-    }
-    const obs = new IntersectionObserver(([e]) => setEscondido(e.intersectionRatio > 0.35), {
-      threshold: [0, 0.35, 1],
-    });
-    obs.observe(hero);
+    setEscondido(false);
+    if (!("IntersectionObserver" in window)) return;
+    const regras: [string, number][] = [
+      ["home", 0.35],
+      ["como-funciona", 0],
+      ["contato", 0.15],
+    ];
+    const alvos = regras
+      .map(([id, min]) => [document.getElementById(id), min] as const)
+      .filter((r): r is readonly [HTMLElement, number] => r[0] !== null);
+    if (!alvos.length) return;
+    const ativo = new Map<Element, boolean>();
+    const obs = new IntersectionObserver(
+      (entradas) => {
+        for (const e of entradas) {
+          const min = alvos.find(([el]) => el === e.target)?.[1] ?? 0;
+          ativo.set(e.target, e.isIntersecting && e.intersectionRatio > min);
+        }
+        setEscondido([...ativo.values()].some(Boolean));
+      },
+      { threshold: [0, 0.15, 0.35, 1] },
+    );
+    alvos.forEach(([el]) => obs.observe(el));
     return () => obs.disconnect();
   }, [pathname]);
 

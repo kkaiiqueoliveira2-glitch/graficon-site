@@ -213,7 +213,7 @@ const FormularioOrcamento = ({
               opcional, mas agiliza o orçamento
             </span>
           </label>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 min-[420px]:gap-5">
             <Input
               name="diametro"
               value={formData.diametro}
@@ -274,7 +274,7 @@ const FormularioOrcamento = ({
         <Button
           type="submit"
           size="lg"
-          className="contact-form-submit w-full py-7 text-base font-bold"
+          className="contact-form-submit h-auto w-full whitespace-normal py-4 text-base font-bold sm:py-7"
           disabled={!isFormValid}
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

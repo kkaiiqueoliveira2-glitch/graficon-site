@@ -34,7 +34,7 @@ const Header = () => {
           <a href="tel:+5511915291313">
             <Phone className="h-3.5 w-3.5" /> (11) 91529-1313
           </a>
-          <span className="inline-flex items-center gap-1.5 text-white/70">
+          <span className="hidden items-center gap-1.5 whitespace-nowrap text-white/70 min-[400px]:inline-flex">
             <Clock className="h-3.5 w-3.5" /> Seg a qui, 08h–18h · Sex, 08h–15h
           </span>
         </div>

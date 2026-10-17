@@ -63,7 +63,7 @@ const ComoFunciona = () => {
           target="_blank"
           rel="noreferrer"
           onClick={registraWhatsApp}
-          className="btn-wa w-full justify-center px-8 py-4 text-base uppercase tracking-wide sm:w-auto"
+          className="btn-wa w-full justify-center whitespace-nowrap px-5 py-4 text-[15px] uppercase tracking-normal sm:w-auto sm:px-8 sm:text-base sm:tracking-wide"
         >
           <WhatsAppIcon className="h-5 w-5" />
           Mande a foto do cilindro
