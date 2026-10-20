@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "Vocês medem a dureza da borracha do rolo?",
-    a: "Sim. A dureza se mede em Shore A, com durômetro, e o reencape sai na dureza da aplicação: rolo entintador ou molhador de offset, flexografia, rotogravura ou uso industrial.",
+    a: "Sim. A dureza se mede em Shore A, com durômetro, e o reencape sai na dureza que você indicar ou que a gente define junto pela aplicação: rolo entintador ou molhador de offset, flexografia, rotogravura ou uso industrial.",
   },
   {
     q: "Quais segmentos a Graficon atende?",

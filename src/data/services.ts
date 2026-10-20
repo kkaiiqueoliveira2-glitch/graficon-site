@@ -166,21 +166,24 @@ export const services: Service[] = [
     icon: Layers,
     title: "Revestimento e Reencape de Borracha",
     description:
-      "Reencape e retífica de rolos de borracha para offset, flexografia, rotogravura, papel e celulose, com a dureza medida em Shore A.",
+      "Vulcanização, reencape e retífica de rolos de borracha em NBR, neoprene, silicone, Hypalon, EPDM, SBR e PU, até 1.400 mm de diâmetro e 5.500 mm de comprimento.",
     image: "/services/svc-revestimento.webp",
     seoTitle: "Revestimento de Cilindros e Reencape de Rolo de Borracha | SP",
     seoDescription:
-      "Reencape e retífica de rolo de borracha para offset, flexografia e rotogravura. Dureza em Shore A e compostos NBR, EPDM, SBR, silicone e PU. São Paulo.",
+      "Vulcanização e reencape de rolo de borracha em NBR, neoprene, silicone, Hypalon, EPDM e PU. Até 1.400 mm x 5.500 mm, dureza em Shore A. São Paulo.",
     longDescription: [
       "O revestimento é o coração do nosso trabalho. Aplicamos a camada técnica sobre o cilindro com controle rigoroso de processo, garantindo precisão dimensional, uniformidade de superfície e repetibilidade entre as peças.",
-      "Reencapamos e retificamos rolos e cilindros de borracha para offset (rolos entintadores e molhadores), flexografia, rotogravura, embalagens, papel e celulose. Cada aplicação pede uma dureza e um composto diferentes, entre NBR, EPDM, SBR, silicone e poliuretano: o que funciona para flexografia pode não ser o ideal para offset ou para uma peça de uso industrial pesado.",
-      "A dureza se mede em Shore A, com durômetro, e não apertando a borracha com o dedo. Mole demais, a tinta espalha; dura demais, a borracha não encosta direito e a cor falha. Quando a superfície fica lisa e brilhante (vitrificada), a borracha para de pegar tinta: se ainda sobra espessura, a retífica resolve; se não sobra, o caminho é o reencape.",
+      "Reencapamos e retificamos rolos e cilindros de borracha para offset (rolos entintadores e molhadores), flexografia, rotogravura, embalagens, papel e celulose. Cada aplicação pede uma dureza e um composto diferentes: o que funciona para flexografia pode não ser o ideal para offset ou para uma peça de uso industrial pesado.",
+      "Fazemos a vulcanização da borracha em vários elastômeros: nitrílica (NBR), neoprene, silicone, Hypalon, EPDM, SBR e poliuretano. Se a aplicação pede um composto fora dessa lista, desenvolvemos no nosso laboratório conforme a necessidade da peça. O revestimento vai até 1.400 mm de diâmetro e 5.500 mm de comprimento.",
+      "A dureza sai na indicação do cliente ou é definida junto com a gente, pela aplicação. Ela se mede em Shore A, com durômetro, e não apertando a borracha com o dedo. Mole demais, a tinta espalha; dura demais, a borracha não encosta direito e a cor falha. Quando a superfície fica lisa e brilhante (vitrificada), a borracha para de pegar tinta: se ainda sobra espessura, a retífica resolve; se não sobra, o caminho é o reencape.",
       "Cilindro emborrachado que perdeu diâmetro, endureceu ou passou a marcar a superfície costuma voltar à condição de uso com reencape, sem precisar de peça nova. Mande a medida e a foto que avaliamos.",
     ],
     bullets: [
-      "Reencape de rolos e cilindros de borracha",
-      "Dureza medida em Shore A",
-      "Compostos NBR, EPDM, SBR, silicone e PU",
+      "Vulcanização e reencape de rolos e cilindros de borracha",
+      "NBR, neoprene, silicone, Hypalon, EPDM, SBR e PU",
+      "Composto desenvolvido no nosso laboratório",
+      "Até 1.400 mm de diâmetro e 5.500 mm de comprimento",
+      "Dureza na sua indicação, medida em Shore A",
       "Precisão dimensional e uniformidade",
       "Alta resistência para longas tiragens",
     ],
@@ -198,8 +201,16 @@ export const services: Service[] = [
         a: "Nem sempre. Borracha lisa e brilhante (vitrificada) para de pegar tinta, mas, se ainda houver espessura, a retífica devolve a superfície de trabalho. Se não houver, fazemos o reencape. Mande a medida e a foto que avaliamos.",
       },
       {
+        q: "Quais borrachas vocês vulcanizam?",
+        a: "Nitrílica (NBR), neoprene, silicone, Hypalon, EPDM, SBR e poliuretano. Quando a aplicação pede um composto diferente, desenvolvemos no nosso laboratório conforme a necessidade da peça.",
+      },
+      {
+        q: "Qual o tamanho máximo de cilindro que vocês revestem?",
+        a: "Até 1.400 mm de diâmetro e 5.500 mm de comprimento. Mande o diâmetro, o comprimento e uma foto da peça que avaliamos.",
+      },
+      {
         q: "Como vocês definem a dureza da borracha?",
-        a: "Pela aplicação real do cilindro: tipo de máquina, tinta, material processado e pressão de trabalho, com a dureza medida em Shore A no durômetro. É por isso que pedimos a medida e a foto antes de fechar o orçamento, em vez de dar um valor genérico por telefone.",
+        a: "Pela sua indicação ou junto com você, pela aplicação real do cilindro: tipo de máquina, tinta, material processado e pressão de trabalho, com a dureza medida em Shore A no durômetro. É por isso que pedimos a medida e a foto antes de fechar o orçamento, em vez de dar um valor genérico por telefone.",
       },
     ],
     promptIA:
