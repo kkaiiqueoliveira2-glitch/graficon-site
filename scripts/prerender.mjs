@@ -49,6 +49,8 @@ const ROUTES = [
   "/servicos/galvanizacao-e-cromo",
   "/servicos/preparacao-tecnica-e-tratamentos",
   "/servicos/processos-de-revestimento",
+  "/servicos/rolos-graficos",
+  "/servicos/vulcanizacao-de-borracha",
   "/servicos/usinagem-e-fabricacao",
   "/servicos/cilindros-especiais",
   "/servicos/prova-e-analise",

@@ -1,4 +1,4 @@
-import { Zap, Settings, Layers, Cog, Box, TestTube, Wrench, type LucideIcon } from "lucide-react";
+import { Zap, Settings, Layers, Cog, Box, TestTube, Wrench, Printer, FlaskConical, type LucideIcon } from "lucide-react";
 
 export type ServiceFaq = {
   q: string;
@@ -215,6 +215,119 @@ export const services: Service[] = [
     ],
     promptIA:
       "Quando um rolo de borracha de máquina gráfica precisa de reencape em vez de limpeza ou retífica? Que sinais indicam fim de vida do revestimento?",
+  },
+  {
+    // Página do grupo "Rolos Gráficos" do Google Ads (06/11/2026). Antes o
+    // anúncio de gráfica caía na página genérica de revestimento.
+    slug: "rolos-graficos",
+    dores: [
+      "A impressão saiu manchada, com falha de cor ou fantasma",
+      "O rolo entintador endureceu e não transfere mais a tinta",
+      "O rolo molhador está marcando ou deixando a água irregular",
+    ],
+    waMensagem:
+      "Olá! Vi a página de rolos gráficos no site. Tenho um rolo de impressão pra avaliar.",
+    pecaPadrao: "Rolo de máquina gráfica",
+    exemploMensagem:
+      "Ex: rolo entintador de offset GTO, rolo de flexografia endurecido...",
+    icon: Printer,
+    title: "Rolos Gráficos: Offset, Flexo e Rotogravura",
+    description:
+      "Reencape e retífica de rolo entintador, molhador e de impressão para offset, flexografia, rotogravura e embalagem, com a dureza certa para a sua máquina.",
+    image: "/services/svc-graficos.webp",
+    seoTitle: "Reencape de Rolo de Offset e Flexografia em SP | Graficon",
+    seoDescription:
+      "Reencape e retífica de rolo entintador e molhador de offset, rolo de flexografia e rotogravura. Dureza em Shore A, até 1.400 x 5.500 mm. São Paulo.",
+    longDescription: [
+      "Muita falha de impressão que parece problema de tinta está na borracha do rolo. Rolo entintador endurecido não transfere a tinta por igual, rolo molhador gasto deixa a água irregular, e a superfície lisa e brilhante (vitrificada) para de pegar tinta. O resultado aparece no impresso: mancha, falha de cor, fantasma e perda de registro.",
+      "Reencapamos e retificamos rolos de offset (entintadores, molhadores e de impressão), de flexografia e de rotogravura, para gráficas, convertedoras e fábricas de embalagem. Atendemos rolos de máquinas como GTO, Speedmaster e Roland, e rolos de linhas de embalagem e cartonagem.",
+      "Cada posição da máquina pede uma dureza e um composto. A dureza sai na indicação do cliente ou é definida junto com a gente, pela tinta, pelo material e pela pressão de trabalho, e é medida em Shore A com durômetro. Quando a borracha ainda tem espessura, a retífica devolve a superfície de trabalho; quando não tem, o caminho é o reencape.",
+      "Mande a medida e uma foto do rolo pelo WhatsApp. Avaliamos se é caso de retífica ou de reencape antes de passar o orçamento.",
+    ],
+    bullets: [
+      "Rolo entintador, molhador e de impressão de offset",
+      "Rolos de flexografia e rotogravura",
+      "Reencape e retífica na medida da máquina",
+      "Dureza na sua indicação, medida em Shore A",
+      "Até 1.400 mm de diâmetro e 5.500 mm de comprimento",
+      "Mais de 40 anos atendendo gráficas em São Paulo",
+    ],
+    faq: [
+      {
+        q: "Vocês reencapam rolo de offset?",
+        a: "Sim. Reencapamos e retificamos rolos entintadores, molhadores e de impressão de offset, além de rolos de flexografia e rotogravura. Mande a medida e a foto que avaliamos.",
+      },
+      {
+        q: "A impressão está falhando. Pode ser o rolo?",
+        a: "Com frequência é. Borracha endurecida ou vitrificada não transfere a tinta por igual e aparece como mancha, falha de cor ou fantasma. Medimos a dureza em Shore A para saber se o rolo ainda trabalha na especificação.",
+      },
+      {
+        q: "Retífica ou reencape: qual o meu rolo precisa?",
+        a: "Depende da espessura de borracha que sobrou. Se ainda há espessura, a retífica devolve a superfície. Se não há, o caminho é o reencape. Avaliamos pela medida e pela foto antes do orçamento.",
+      },
+      {
+        q: "Qual dureza de borracha usar no rolo da minha máquina?",
+        a: "Varia pela posição do rolo, pela tinta e pelo material impresso. Seguimos a sua indicação ou definimos junto com você, sempre medindo em Shore A.",
+      },
+    ],
+    promptIA:
+      "Como saber se a falha de impressão em offset vem do rolo entintador e não da tinta? Quando um rolo de offset precisa de retífica e quando precisa de reencape?",
+  },
+  {
+    // Página do grupo "Vulcanização e Elastômeros" do Google Ads (06/11/2026).
+    // Elastômeros e medida máxima confirmados pela Gilda em 20/10/2026.
+    slug: "vulcanizacao-de-borracha",
+    dores: [
+      "A borracha do rolo não aguenta o produto químico, o óleo ou a temperatura da linha",
+      "O revestimento atual descola, trinca ou desgasta antes do esperado",
+      "Ninguém encontra o composto certo para a aplicação",
+    ],
+    waMensagem:
+      "Olá! Vi a página de vulcanização no site. Preciso de um revestimento de borracha pra um cilindro.",
+    pecaPadrao: "Cilindro para vulcanização",
+    exemploMensagem:
+      "Ex: revestimento em silicone para alta temperatura, rolo em NBR para óleo...",
+    icon: FlaskConical,
+    title: "Vulcanização de Borracha em Cilindros",
+    description:
+      "Vulcanização de rolos e cilindros em NBR, neoprene, silicone, Hypalon, EPDM, SBR e poliuretano, com composto desenvolvido no nosso laboratório.",
+    image: "/services/svc-vulcanizacao.webp",
+    seoTitle: "Vulcanização de Rolos e Cilindros de Borracha em SP | Graficon",
+    seoDescription:
+      "Vulcanização de cilindros em NBR, neoprene, silicone, Hypalon, EPDM, SBR e PU. Composto de laboratório, até 1.400 x 5.500 mm, dureza em Shore A.",
+    longDescription: [
+      "O composto da borracha decide quanto o rolo dura. Um revestimento que não combina com o produto químico, o óleo ou a temperatura da linha incha, trinca ou descola antes do tempo, e a máquina para de novo.",
+      "Vulcanizamos rolos e cilindros em sete elastômeros: nitrílica (NBR), neoprene, silicone, Hypalon, EPDM, SBR e poliuretano. Se a aplicação pede um composto fora dessa lista, desenvolvemos no nosso laboratório conforme a necessidade da peça.",
+      "O revestimento vai até 1.400 mm de diâmetro e 5.500 mm de comprimento. A dureza sai na sua indicação ou é definida junto com a gente, pela aplicação, e é medida em Shore A.",
+      "Para orçar, mande pelo WhatsApp a medida da peça, uma foto e o que o cilindro enfrenta no dia a dia: produto, temperatura e o composto que ele usa hoje, se você souber.",
+    ],
+    bullets: [
+      "NBR, neoprene, silicone, Hypalon, EPDM, SBR e PU",
+      "Composto desenvolvido no nosso laboratório",
+      "Até 1.400 mm de diâmetro e 5.500 mm de comprimento",
+      "Dureza na sua indicação, medida em Shore A",
+      "Atendemos gráfica, embalagem, papel e indústria em geral",
+    ],
+    faq: [
+      {
+        q: "Quais borrachas vocês vulcanizam?",
+        a: "Nitrílica (NBR), neoprene, silicone, Hypalon, EPDM, SBR e poliuretano. Quando a aplicação pede outro composto, desenvolvemos no nosso laboratório.",
+      },
+      {
+        q: "Como escolher o composto do revestimento?",
+        a: "Pelo que o cilindro enfrenta: produto químico, óleo, solvente, temperatura e atrito. Se você não tem a especificação, definimos junto com você a partir da aplicação.",
+      },
+      {
+        q: "Qual o tamanho máximo de cilindro?",
+        a: "Até 1.400 mm de diâmetro e 5.500 mm de comprimento. Mande a medida e a foto da peça que avaliamos.",
+      },
+      {
+        q: "Vocês vendem borracha ou peça de borracha avulsa?",
+        a: "Não. Nosso trabalho é revestir e recuperar cilindros e rolos: a borracha é vulcanizada sobre a sua peça.",
+      },
+    ],
+    promptIA:
+      "Qual elastômero usar no revestimento de um rolo industrial exposto a óleo, solvente ou alta temperatura? Quando escolher NBR, EPDM, silicone ou poliuretano?",
   },
   {
     slug: "usinagem-e-fabricacao",
